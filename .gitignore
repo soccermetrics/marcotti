@@ -1,0 +1,7 @@
+.idea/
+.cache
+__pycache__
+
+*.pyc
+local.skel
+sandbox.py

@@ -9,34 +9,6 @@ import models.common.enums as enums
 import models.common.overview as mco
 
 
-@pytest.fixture
-def venue_data():
-    uefa = mco.Confederations(name=u"UEFA")
-    england = mco.Countries(name=u"England", confederation=uefa)
-    tz_london = mco.Timezones(name=u"Europe/London", offset=0.0, confederation=uefa)
-    return {
-        "name": "Emirates Stadium",
-        "city": "London",
-        "country": england,
-        "timezone": tz_london,
-        "latitude": 51.555000,
-        "longitude": -0.108611,
-        "altitude": 41
-    }
-
-
-@pytest.fixture
-def venue_config():
-    return {
-        "date": date(2006, 7, 22),
-        "length": 105,
-        "width": 68,
-        "capacity": 60361,
-        "seats": 60361,
-        "surface": mco.Surfaces(description="Desso GrassMaster", type=enums.SurfaceType.hybrid)
-    }
-
-
 def test_confederation_insert(session):
     """Confederation 001: Insert a single record into Confederation table and verify data."""
     uefa = mco.Confederations(name=u"UEFA")
@@ -410,8 +382,8 @@ def test_venue_history_capacity_error(session, venue_data, venue_config):
     emirates = mco.Venues(**venue_data)
     venue_config['venue'] = emirates
     for field in ['capacity', 'seats']:
-        venue_config[field] = -1
-        emirates_config = mco.VenueHistory(**venue_config)
+        new_venue_config = dict(venue_config, **{field: -1})
+        emirates_config = mco.VenueHistory(**new_venue_config)
         with pytest.raises(IntegrityError):
             session.add(emirates_config)
             session.commit()
@@ -435,6 +407,6 @@ def test_surface_generic_insert(session):
 def test_surface_empty_description_error(session):
     """Playing Surface 002: Verify error if description field for Surfaces model is empty."""
     surface = mco.Surfaces(type=enums.SurfaceType.natural)
-    with pytest.raises(DataError):
+    with pytest.raises(IntegrityError):
         session.add(surface)
         session.commit()

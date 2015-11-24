@@ -50,10 +50,17 @@ class MatchConditions(BaseSchema):
     id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
 
     kickoff_time = Column(Time)
-    kickoff_temp = Column(Numeric(4, 2), CheckConstraint('kickoff_temp >= -15.0 AND kickoff_temp <= 45.0'))
+    kickoff_temp = Column(Numeric(3, 1), CheckConstraint('kickoff_temp >= -15.0 AND kickoff_temp <= 50.0'))
     kickoff_weather = Column(enums.WeatherConditionType.db_type())
     halftime_weather = Column(enums.WeatherConditionType.db_type())
     fulltime_weather = Column(enums.WeatherConditionType.db_type())
+
+    match = relationship('Matches', backref=backref('conditions'))
+
+    def __repr__(self):
+        return "<MatchCondition(id={}, kickoff={}, temp={}, kickoff_weather={})>".format(
+            self.id, self.kickoff_time.strftime("%H:%M"), self.kickoff_temp, self.kickoff_weather.value
+        )
 
 
 class LeagueMatches(BaseSchema):
@@ -124,7 +131,7 @@ class MatchLineups(BaseSchema):
     position_id = Column(Integer, ForeignKey('positions.id'))
 
     match = relationship('Matches', backref=backref('lineups'))
-    players = relationship('Players', backref=backref('lineups'))
+    player = relationship('Players', backref=backref('lineups'))
 
     __mapper_args__ = {
         'polymorphic_identity': 'lineups',

@@ -61,3 +61,74 @@ def test_match_conditions_temp_error(session, match_data, match_condition_data):
             session.add(match_conditions)
             session.commit()
         session.rollback()
+
+
+def test_match_lineup_generic_insert(session, match_data, person_data, position_data):
+    lineup = mcm.MatchLineups(
+        match=mcm.Matches(**match_data),
+        player=mcp.Players(**person_data['player'][1]),
+        position=position_data[1]
+    )
+    session.add(lineup)
+
+    lineup_from_db = session.query(mcm.MatchLineups).one()
+    match_from_db = session.query(mcm.Matches).one()
+    player_from_db = session.query(mcp.Players).one()
+
+    assert lineup_from_db.is_starting is False
+    assert lineup_from_db.is_captain is False
+    assert lineup_from_db.match_id == match_from_db.id
+    assert lineup_from_db.player_id == player_from_db.player_id
+
+
+def test_lineup_designate_captain(session, match_data, person_data, position_data):
+    capn_indx = 1
+    lineups = [
+        mcm.MatchLineups(
+            match=mcm.Matches(**match_data),
+            player=mcp.Players(**plyr),
+            position=pos,
+            is_starting=True,
+            is_captain=(j == capn_indx))
+        for j, (plyr, pos) in enumerate(zip(person_data['player'], position_data))
+        ]
+    session.add_all(lineups)
+
+    capn_position = position_data[capn_indx]
+
+    lineup_from_db = session.query(mcm.MatchLineups).join(mcp.Positions).filter(
+        mcp.Positions.name == capn_position.name).all()
+    assert len(lineup_from_db) == 1
+    assert lineup_from_db[0].is_captain is True
+
+    other_lineup_from_db = session.query(mcm.MatchLineups).join(mcp.Positions).filter(
+        mcp.Positions.name != capn_position.name).all()
+    for others in other_lineup_from_db:
+        assert others.is_captain is False
+
+
+def test_lineup_designate_starter(session, match_data, person_data, position_data):
+    starter_indx = 0
+    lineups = [
+        mcm.MatchLineups(
+            match=mcm.Matches(**match_data),
+            player=mcp.Players(**plyr),
+            position=pos,
+            is_starting=(j == starter_indx))
+        for j, (plyr, pos) in enumerate(zip(person_data['player'], position_data))
+        ]
+    session.add_all(lineups)
+
+    starter_position = position_data[starter_indx]
+
+    lineup_from_db = session.query(mcm.MatchLineups).join(mcp.Positions).filter(
+        mcp.Positions.name == starter_position.name).all()
+    assert len(lineup_from_db) == 1
+    assert lineup_from_db[0].is_starter is True
+    assert lineup_from_db[0].is_captain is False
+
+    other_lineup_from_db = session.query(mcm.MatchLineups).join(mcp.Positions).filter(
+        mcp.Positions.name != starter_position.name).all()
+    for others in other_lineup_from_db:
+        assert others.is_starter is False
+        assert others.is_captain is False

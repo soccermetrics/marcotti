@@ -120,7 +120,7 @@ class MatchLineups(BaseSchema):
     """
     __tablename__ = 'lineups'
 
-    id = Column(Integer, Sequence('match_id_seq', start=1000000), primary_key=True)
+    id = Column(Integer, Sequence('lineup_id_seq', start=1000000), primary_key=True)
 
     is_starting = Column(Boolean, default=False)
     is_captain = Column(Boolean, default=False)
@@ -132,6 +132,7 @@ class MatchLineups(BaseSchema):
 
     match = relationship('Matches', backref=backref('lineups'))
     player = relationship('Players', backref=backref('lineups'))
+    position = relationship('Positions')
 
     __mapper_args__ = {
         'polymorphic_identity': 'lineups',

@@ -1,26 +1,10 @@
 # coding=utf-8
 
-from datetime import date
-
 import pytest
 from sqlalchemy.exc import IntegrityError
 
-import models.common.overview as mco
 import models.common.personnel as mcp
 import models.common.match as mcm
-
-
-@pytest.fixture
-def match_data(comp_data, season_data, venue_data, person_data):
-    return {
-        "date": date(2012, 12, 12),
-        "competition": mco.DomesticCompetitions(**comp_data['domestic']),
-        "season": mco.Seasons(**{k: mco.Years(**v) for k, v in season_data.items()}),
-        "venue": mco.Venues(**venue_data),
-        "home_manager": mcp.Managers(**person_data['manager'][0]),
-        "away_manager": mcp.Managers(**person_data['manager'][1]),
-        "referee": mcp.Referees(**person_data['referee'][0])
-    }
 
 
 def test_match_generic_insert(session, match_data):

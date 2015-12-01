@@ -46,10 +46,10 @@ class ShotOutcomeType(DeclEnum):
     goal = "Goal", "Goal"
     miss = "Miss", "Miss"
     save = "Save", "Save"
-    wide = "Wide", "Wide of post"
-    over = "Over", "Over crossbar"
-    post = "Post", "Hit post"
-    bar = "Bar", "Hit bar"
+    wide = "Wide of post", "Wide of post"
+    over = "Over crossbar", "Over crossbar"
+    post = "Hit post", "Hit post"
+    bar = "Hit crossbar", "Hit crossbar"
 
 
 class BodypartType(DeclEnum):

@@ -124,11 +124,11 @@ def test_lineup_designate_starter(session, match_data, person_data, position_dat
     lineup_from_db = session.query(mcm.MatchLineups).join(mcp.Positions).filter(
         mcp.Positions.name == starter_position.name).all()
     assert len(lineup_from_db) == 1
-    assert lineup_from_db[0].is_starter is True
+    assert lineup_from_db[0].is_starting is True
     assert lineup_from_db[0].is_captain is False
 
     other_lineup_from_db = session.query(mcm.MatchLineups).join(mcp.Positions).filter(
         mcp.Positions.name != starter_position.name).all()
     for others in other_lineup_from_db:
-        assert others.is_starter is False
+        assert others.is_starting is False
         assert others.is_captain is False

@@ -62,7 +62,7 @@ class Substitutions(MatchTimeMixin, BaseSchema):
     lineup_out_id = Column(Integer, ForeignKey('lineups.id'))
 
     lineup_in = relationship('MatchLineups', foreign_keys=[lineup_in_id], backref=backref('subbed_in'))
-    lineup_out = relationship('MatchLineups', foreign_keys=[lineup_in_id], backref=backref('subbed_out'))
+    lineup_out = relationship('MatchLineups', foreign_keys=[lineup_out_id], backref=backref('subbed_out'))
 
 
 class PenaltyShootouts(BaseSchema):

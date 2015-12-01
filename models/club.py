@@ -109,7 +109,7 @@ class ClubFriendlyMatches(FriendlyMixin, ClubMatchMixin, ClubSchema, mcm.Matches
     id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
 
 
-class ClubLeagueMatches(LeagueMixin, ClubMatchMixin, ClubSchema, mcm.LeagueMatches):
+class ClubLeagueMatches(LeagueMixin, ClubMatchMixin, ClubSchema, mcm.LeagueMatches, mcm.Matches):
     __tablename__ = "club_league_matches"
     __mapper_args__ = {'polymorphic_identity': 'league'}
 

@@ -8,6 +8,7 @@ import pytest
 import models.common.enums as enums
 import models.common.overview as mco
 import models.common.personnel as mcp
+import models.club as mc
 
 
 @pytest.fixture
@@ -188,4 +189,26 @@ def match_data(comp_data, season_data, venue_data, person_data):
         "home_manager": mcp.Managers(**person_data['manager'][0]),
         "away_manager": mcp.Managers(**person_data['manager'][1]),
         "referee": mcp.Referees(**person_data['referee'][0])
+    }
+
+
+@pytest.fixture
+def club_data():
+    uefa = mco.Confederations(name=u"UEFA")
+    england = mco.Countries(name=u"England", confederation=uefa)
+    france = mco.Countries(name=u"France", confederation=uefa)
+    tz_london = mco.Timezones(name=u"Europe/London", offset=0.0, confederation=uefa)
+    return {
+        'date': date(2015, 1, 1),
+        'competition': mco.DomesticCompetitions(name=u'Test Competition', level=1, country=england),
+        'season': mco.Seasons(start_year=mco.Years(yr=2014), end_year=mco.Years(yr=2015)),
+        'venue': mco.Venues(name=u"Emirates Stadium", city=u"London", country=england, timezone=tz_london),
+        'home_team': mc.Clubs(name=u"Arsenal FC", country=england),
+        'away_team': mc.Clubs(name=u"Lincoln City FC", country=england),
+        'home_manager': mcp.Managers(first_name=u"Arsène", last_name=u"Wenger",
+                                     birth_date=date(1949, 10, 22), country=france),
+        'away_manager': mcp.Managers(first_name=u"Gary", last_name=u"Simpson",
+                                     birth_date=date(1961, 4, 11), country=england),
+        'referee': mcp.Referees(first_name=u"Mark", last_name=u"Clattenburg",
+                                birth_date=date(1975, 3, 13), country=england)
     }

@@ -3,6 +3,8 @@ from sqlalchemy import (Column, Integer, Numeric, Date, Time,
 from sqlalchemy.schema import CheckConstraint
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declared_attr
+from sqlalchemy.ext.hybrid import hybrid_property
+
 
 from models.common import BaseSchema
 import models.common.enums as enums
@@ -138,3 +140,7 @@ class MatchLineups(BaseSchema):
         'polymorphic_identity': 'lineups',
         'polymorphic_on': type
     }
+
+    @hybrid_property
+    def full_name(self):
+        return self.player.full_name

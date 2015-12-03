@@ -115,19 +115,53 @@ class ClubLeagueMatches(LeagueMixin, ClubMatchMixin, ClubSchema, mcm.LeagueMatch
 
     id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
 
+    def __repr__(self):
+        return u"<ClubLeagueMatch(home={}, away={}, competition={}, matchday={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name, self.matchday, self.date.isoformat()
+        ).encode('utf-8')
 
-class ClubGroupMatches(GroupMixin, ClubMatchMixin, ClubSchema, mcm.GroupMatches):
+    def __unicode__(self):
+        return u"<ClubLeagueMatch(home={}, away={}, competition={}, matchday={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name, self.matchday, self.date.isoformat()
+        )
+
+
+class ClubGroupMatches(GroupMixin, ClubMatchMixin, ClubSchema, mcm.GroupMatches, mcm.Matches):
     __tablename__ = "club_group_matches"
     __mapper_args__ = {'polymorphic_identity': 'group'}
 
     id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
 
+    def __repr__(self):
+        return u"<ClubGroupMatch(home={}, away={}, competition={}, round={}, group={}, matchday={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name, self.group_round.name,
+            self.group, self.matchday, self.date.isoformat()
+        ).encode('utf-8')
 
-class ClubKnockoutMatches(KnockoutMixin, ClubMatchMixin, ClubSchema, mcm.KnockoutMatches):
+    def __unicode__(self):
+        return u"<ClubGroupMatch(home={}, away={}, competition={}, round={}, group={}, matchday={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name, self.group_round.name,
+            self.group, self.matchday, self.date.isoformat()
+        )
+
+
+class ClubKnockoutMatches(KnockoutMixin, ClubMatchMixin, ClubSchema, mcm.KnockoutMatches, mcm.Matches):
     __tablename__ = "club_knockout_matches"
     __mapper_args__ = {'polymorphic_identity': 'knockout'}
 
     id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
+
+    def __repr__(self):
+        return u"<ClubKnockoutMatch(home={}, away={}, competition={}, round={}, matchday={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name,
+            self.ko_round.name, self.matchday, self.date.isoformat()
+        ).encode('utf-8')
+
+    def __unicode__(self):
+        return u"<ClubKnockoutMatch(home={}, away={}, competition={}, round={}, matchday={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name,
+            self.ko_round.name, self.matchday, self.date.isoformat()
+        )
 
 
 class ClubMatchLineups(ClubMixin, ClubSchema, mcm.MatchLineups):
@@ -137,6 +171,16 @@ class ClubMatchLineups(ClubMixin, ClubSchema, mcm.MatchLineups):
     id = Column(Integer, ForeignKey('lineups.id'), primary_key=True)
 
     team = relationship('Clubs', foreign_keys="ClubMatchLineups.team_id", backref=backref("lineups"))
+
+    def __repr__(self):
+        return u"<ClubMatchLineup(match={}, player={}, team={}, position={}, starter={}, captain={})>".format(
+            self.match_id, self.full_name, self.team.name, self.position.name, self.is_starting, self.is_captain
+        ).encode('utf-8')
+
+    def __unicode__(self):
+        return u"<ClubMatchLineup(match={}, player={}, team={}, position={}, starter={}, captain={})>".format(
+            self.match_id, self.full_name, self.team.name, self.position.name, self.is_starting, self.is_captain
+        )
 
 
 class ClubGoals(ClubMixin, ClubSchema, mce.Goals):
@@ -150,3 +194,9 @@ class ClubPenaltyShootoutOpeners(ClubMixin, ClubSchema, mce.PenaltyShootoutOpene
 
     team = relationship('Clubs', foreign_keys="ClubPenaltyShootoutOpeners.team_id",
                         backref=backref("shootout_openers"))
+
+    def __repr__(self):
+        return u"<ClubPenaltyShootoutOpener(match={}, team={})>".format(self.match_id, self.team.name).decode('utf-8')
+
+    def __unicode__(self):
+        return u"<ClubPenaltyShootoutOpener(match={}, team={})>".format(self.match_id, self.team.name)

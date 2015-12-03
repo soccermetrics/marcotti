@@ -104,7 +104,7 @@ class KnockoutMatches(BaseSchema):
     """
     __abstract__ = True
 
-    matchday = Column(Integer)
+    matchday = Column(Integer, default=1)
     extra_time = Column(Boolean, default=False)
 
     @declared_attr

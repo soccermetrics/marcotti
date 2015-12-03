@@ -6,6 +6,8 @@ from sqlalchemy.exc import DataError
 
 import models.club as mc
 import models.common.overview as mco
+import models.common.personnel as mcp
+import models.common.enums as enums
 
 
 club_only = pytest.mark.skipif(
@@ -87,3 +89,139 @@ def test_club_league_match_insert(session, club_data):
     assert match_from_db.away_manager.full_name == u"Gary Simpson"
     assert match_from_db.referee.full_name == u"Mark Clattenburg"
 
+
+@club_only
+def test_club_group_match_insert(session, club_data):
+    group_match = mc.ClubGroupMatches(
+        group_round=mco.GroupRounds(name='Group Stage'),
+        group='A',
+        matchday=1,
+        **club_data)
+    session.add(group_match)
+
+    match_from_db = session.query(mc.ClubGroupMatches).one()
+
+    assert match_from_db.phase == "group"
+    assert match_from_db.group_round.name == u"Group Stage"
+    assert match_from_db.group == "A"
+    assert match_from_db.matchday == 1
+    assert match_from_db.season.name == "2014-2015"
+    assert match_from_db.competition.name == u"Test Competition"
+    assert match_from_db.competition.country.name == u"England"
+    assert match_from_db.venue.name == u"Emirates Stadium"
+    assert match_from_db.home_team.name == u"Arsenal FC"
+    assert match_from_db.away_team.name == u"Lincoln City FC"
+    assert match_from_db.home_manager.full_name == u"Arsène Wenger"
+    assert match_from_db.away_manager.full_name == u"Gary Simpson"
+    assert match_from_db.referee.full_name == u"Mark Clattenburg"
+
+
+@club_only
+def test_club_knockout_match_insert(session, club_data):
+    knockout_match = mc.ClubKnockoutMatches(
+        ko_round=mco.KnockoutRounds(name="Quarterfinal (1/8)"),
+        **club_data)
+    session.add(knockout_match)
+
+    match_from_db = session.query(mc.ClubKnockoutMatches)\
+        .join(mco.KnockoutRounds).filter(mco.KnockoutRounds.name == "Quarterfinal (1/8)")
+
+    assert match_from_db[0].phase == "knockout"
+    assert match_from_db[0].ko_round.name == u"Quarterfinal (1/8)"
+    assert match_from_db[0].matchday == 1
+    assert match_from_db[0].extra_time is False
+    assert match_from_db[0].season.name == "2014-2015"
+    assert match_from_db[0].competition.name == u"Test Competition"
+    assert match_from_db[0].competition.country.name == u"England"
+    assert match_from_db[0].venue.name == u"Emirates Stadium"
+    assert match_from_db[0].home_team.name == u"Arsenal FC"
+    assert match_from_db[0].away_team.name == u"Lincoln City FC"
+    assert match_from_db[0].home_manager.full_name == u"Arsène Wenger"
+    assert match_from_db[0].away_manager.full_name == u"Gary Simpson"
+    assert match_from_db[0].referee.full_name == u"Mark Clattenburg"
+
+
+@club_only
+def test_club_match_lineup_insert(session, club_data, person_data, position_data):
+    match = mc.ClubLeagueMatches(matchday=15, **club_data)
+    session.add(match)
+    player = mcp.Players(position=position_data[0], **person_data['player'][0])
+    session.add(player)
+    session.commit()
+
+    club_from_db = session.query(mc.Clubs).filter(mc.Clubs.name == u"Arsenal FC").one()
+
+    lineup = mc.ClubMatchLineups(
+        match_id=match.id,
+        team_id=club_from_db.id,
+        player_id=player.player_id,
+        position_id=player.position_id
+    )
+    session.add(lineup)
+
+    lineup_from_db = session.query(mc.ClubMatchLineups).join(mc.ClubLeagueMatches)\
+        .filter(mc.ClubLeagueMatches.id == match.id)
+
+    assert lineup_from_db.count() == 1
+    assert unicode(lineup_from_db[0]) == u"<ClubMatchLineup(match={}, player=Miguel Ángel Ponce, team=Arsenal FC, " \
+                                         u"position=Left back, starter=False, captain=False)>".format(match.id)
+
+
+@club_only
+def test_club_goal_insert(session, club_data, person_data, position_data):
+    match = mc.ClubLeagueMatches(matchday=15, **club_data)
+    session.add(match)
+    player = mcp.Players(position=position_data[0], **person_data['player'][0])
+    session.add(player)
+    session.commit()
+
+    club_from_db = session.query(mc.Clubs).filter(mc.Clubs.name == u"Arsenal FC").one()
+
+    lineup = mc.ClubMatchLineups(
+        match_id=match.id,
+        team_id=club_from_db.id,
+        player_id=player.player_id,
+        position_id=player.position_id
+    )
+    session.add(lineup)
+    session.commit()
+
+    goal = mc.ClubGoals(
+        lineup_id=lineup.id,
+        team_id=club_from_db.id,
+        bodypart=enums.BodypartType.head,
+        event=enums.ShotEventType.cross_ck,
+        time=70
+    )
+    session.add(goal)
+
+    goals_from_db = session.query(mc.ClubGoals).join(mc.ClubMatchLineups).join(mc.ClubLeagueMatches).filter(
+        mc.ClubLeagueMatches.id == match.id
+    )
+
+    assert goals_from_db.count() == 1
+    assert goals_from_db[0].team.name == u"Arsenal FC"
+    assert goals_from_db[0].lineup.full_name == u"Miguel Ángel Ponce"
+    assert goals_from_db[0].bodypart.value == "Head"
+    assert goals_from_db[0].event.value == "Cross from corner kick"
+    assert goals_from_db[0].time == 70
+
+
+@club_only
+def test_club_penalty_shootout_opener_insert(session, club_data):
+    match = mc.ClubKnockoutMatches(ko_round=mco.KnockoutRounds(name=u"Semi-final"), **club_data)
+    session.add(match)
+    session.commit()
+
+    result = session.query(mc.ClubKnockoutMatches.home_team_id, mc.ClubKnockoutMatches.away_team_id)\
+        .filter_by(id=match.id)
+
+    home, away = result[0]
+
+    shootout = mc.ClubPenaltyShootoutOpeners(match_id=match.id, team_id=home)
+    session.add(shootout)
+
+    shootout_from_db = session.query(mc.ClubPenaltyShootoutOpeners)\
+        .filter(mc.ClubPenaltyShootoutOpeners.match_id == match.id).one()
+
+    assert unicode(shootout_from_db) == u"<ClubPenaltyShootoutOpener(match={}, team=Arsenal FC)>".format(match.id)

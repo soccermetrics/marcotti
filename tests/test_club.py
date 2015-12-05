@@ -89,7 +89,7 @@ def test_club_league_match_insert(session, club_data):
 @club_only
 def test_club_group_match_insert(session, club_data):
     group_match = mc.ClubGroupMatches(
-        group_round=mco.GroupRounds(name='Group Stage'),
+        group_round=enums.GroupRoundType.group_stage,
         group='A',
         matchday=1,
         **club_data)
@@ -98,7 +98,7 @@ def test_club_group_match_insert(session, club_data):
     match_from_db = session.query(mc.ClubGroupMatches).one()
 
     assert match_from_db.phase == "group"
-    assert match_from_db.group_round.name == u"Group Stage"
+    assert match_from_db.group_round.value == u"Group Stage"
     assert match_from_db.group == "A"
     assert match_from_db.matchday == 1
     assert match_from_db.season.name == "2014-2015"
@@ -115,15 +115,15 @@ def test_club_group_match_insert(session, club_data):
 @club_only
 def test_club_knockout_match_insert(session, club_data):
     knockout_match = mc.ClubKnockoutMatches(
-        ko_round=mco.KnockoutRounds(name="Quarterfinal (1/8)"),
+        ko_round=enums.KnockoutRoundType.quarterfinal,
         **club_data)
     session.add(knockout_match)
 
-    match_from_db = session.query(mc.ClubKnockoutMatches)\
-        .join(mco.KnockoutRounds).filter(mco.KnockoutRounds.name == "Quarterfinal (1/8)")
+    match_from_db = session.query(mc.ClubKnockoutMatches).filter(
+        mc.ClubKnockoutMatches.ko_round == enums.KnockoutRoundType.quarterfinal)
 
     assert match_from_db[0].phase == "knockout"
-    assert match_from_db[0].ko_round.name == u"Quarterfinal (1/8)"
+    assert match_from_db[0].ko_round.value == u"Quarterfinal (1/4)"
     assert match_from_db[0].matchday == 1
     assert match_from_db[0].extra_time is False
     assert match_from_db[0].season.name == "2014-2015"
@@ -205,7 +205,7 @@ def test_club_goal_insert(session, club_data, person_data, position_data):
 
 @club_only
 def test_club_penalty_shootout_opener_insert(session, club_data):
-    match = mc.ClubKnockoutMatches(ko_round=mco.KnockoutRounds(name=u"Semi-final"), **club_data)
+    match = mc.ClubKnockoutMatches(ko_round=enums.KnockoutRoundType.semifinal, **club_data)
     session.add(match)
     session.commit()
 

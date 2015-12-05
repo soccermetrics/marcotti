@@ -144,13 +144,13 @@ class ClubGroupMatches(GroupMixin, ClubMatchMixin, ClubSchema, mcm.GroupMatches,
 
     def __repr__(self):
         return u"<ClubGroupMatch(home={}, away={}, competition={}, round={}, group={}, matchday={}, date={})>".format(
-            self.home_team.name, self.away_team.name, self.competition.name, self.group_round.name,
+            self.home_team.name, self.away_team.name, self.competition.name, self.group_round.value,
             self.group, self.matchday, self.date.isoformat()
         ).encode('utf-8')
 
     def __unicode__(self):
         return u"<ClubGroupMatch(home={}, away={}, competition={}, round={}, group={}, matchday={}, date={})>".format(
-            self.home_team.name, self.away_team.name, self.competition.name, self.group_round.name,
+            self.home_team.name, self.away_team.name, self.competition.name, self.group_round.value,
             self.group, self.matchday, self.date.isoformat()
         )
 
@@ -164,13 +164,13 @@ class ClubKnockoutMatches(KnockoutMixin, ClubMatchMixin, ClubSchema, mcm.Knockou
     def __repr__(self):
         return u"<ClubKnockoutMatch(home={}, away={}, competition={}, round={}, matchday={}, date={})>".format(
             self.home_team.name, self.away_team.name, self.competition.name,
-            self.ko_round.name, self.matchday, self.date.isoformat()
+            self.ko_round.value, self.matchday, self.date.isoformat()
         ).encode('utf-8')
 
     def __unicode__(self):
         return u"<ClubKnockoutMatch(home={}, away={}, competition={}, round={}, matchday={}, date={})>".format(
             self.home_team.name, self.away_team.name, self.competition.name,
-            self.ko_round.name, self.matchday, self.date.isoformat()
+            self.ko_round.value, self.matchday, self.date.isoformat()
         )
 
 

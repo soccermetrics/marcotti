@@ -2,7 +2,6 @@ from sqlalchemy import (Column, Integer, Numeric, Date, Time,
                         String, Sequence, ForeignKey, Boolean)
 from sqlalchemy.schema import CheckConstraint
 from sqlalchemy.orm import relationship, backref
-from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy.ext.hybrid import hybrid_property
 
 
@@ -86,14 +85,7 @@ class GroupMatches(BaseSchema):
 
     matchday = Column(Integer)
     group = Column(String(length=2))
-
-    @declared_attr
-    def group_round_id(cls):
-        return Column(Integer, ForeignKey('group_rounds.id'))
-
-    @declared_attr
-    def group_round(cls):
-        return relationship('GroupRounds')
+    group_round = Column(enums.GroupRoundType.db_type())
 
 
 class KnockoutMatches(BaseSchema):
@@ -106,14 +98,7 @@ class KnockoutMatches(BaseSchema):
 
     matchday = Column(Integer, default=1)
     extra_time = Column(Boolean, default=False)
-
-    @declared_attr
-    def ko_round_id(cls):
-        return Column(Integer, ForeignKey('knockout_rounds.id'))
-
-    @declared_attr
-    def ko_round(cls):
-        return relationship('KnockoutRounds')
+    ko_round = Column(enums.KnockoutRoundType.db_type())
 
 
 class MatchLineups(BaseSchema):

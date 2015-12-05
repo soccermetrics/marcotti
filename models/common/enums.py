@@ -1,6 +1,52 @@
 from models.common import DeclEnum
 
 
+class GroupRoundType(DeclEnum):
+    """
+    Enumerated names of rounds in group stages of football competitions.
+    """
+    group_stage = "Group Stage", "Group Stage"
+    first_round = "First Round", "First Round"
+    second_round = "Second Round", "Second Round"
+    third_round = "Third Round", "Third Round"
+    fourth_round = "Fourth Round", "Fourth Round"
+    final_round = "Final Round", "Final Round"
+    playoff = "Playoff Group", "Playoff Group"
+    championship = "Championship Group", "Championship Group"
+    promotion = "Promotion Group", "Promotion Group"
+    relegation = "Relegation Group", "Relegation Group"
+
+
+class KnockoutRoundType(DeclEnum):
+    """
+    Enumerated names of rounds in knockout stages of football competitions.
+    """
+    extra_prelim = "Extra Preliminary Round", "Extra Preliminary Round"
+    prelim = "Preliminary Round", "Preliminary Round"
+    first_qualifying = "First Qualifying Round", "First Qualifying Round"
+    second_qualifying = "Second Qualifying Round", "Second Qualifying Round"
+    third_qualifying = "Third Qualifying Round", "Third Qualifying Round"
+    fourth_qualifying = "Fourth Qualifying Round", "Fourth Qualifying Round"
+    playoff = "Playoff Round", "Playoff Round"
+    first_round = "First Round", "First Round"
+    second_round = "Second Round", "Second Round"
+    third_round = "Third Round", "Third Round"
+    fourth_round = "Fourth Round", "Fourth Round"
+    fifth_round = "Fifth Round", "Fifth Round"
+    sixth_round = "Sixth Round", "Sixth Round"
+    seventh_round = "Seventh Round", "Seventh Round"
+    eighth_round = "Eighth Round", "Eighth Round"
+    round_64 = "Round of 64 (1/32)", "Round of 64 (1/32)"
+    round_32 = "Round of 32 (1/16)", "Round of 32 (1/16)"
+    round_16 = "Round of 16 (1/8)", "Round of 16 (1/8)"
+    quarterfinal = "Quarterfinal (1/4)", "Quarterfinal (1/4)"
+    semifinal = "Semi-Final (1/2)", "Semi-Final (1/2)"
+    final = "Final", "Final"
+    qualifying_final = "Qualifying Final", "Qualifying Final"
+    prelim_final = "Preliminary Final", "Preliminary Final"
+    grand_final = "Grand Final", "Grand Final"
+
+
 class PositionType(DeclEnum):
     """
     Enumerated categories of football player positions.

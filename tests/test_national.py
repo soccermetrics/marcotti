@@ -33,7 +33,7 @@ def test_natl_friendly_match_insert(session, national_data):
 @natl_only
 def test_natl_group_match_insert(session, national_data):
     group_match = mn.NationalGroupMatches(
-        group_round=mco.GroupRounds(name="First Round"),
+        group_round=enums.GroupRoundType.first_round,
         group='C',
         matchday=2,
         **national_data
@@ -55,18 +55,17 @@ def test_natl_group_match_insert(session, national_data):
 @natl_only
 def test_natl_knockout_match_insert(session, national_data):
     knockout_match = mn.NationalKnockoutMatches(
-        ko_round=mco.KnockoutRounds(name="Semifinal (1/2)"),
+        ko_round=enums.KnockoutRoundType.semifinal,
         **national_data
     )
     session.add(knockout_match)
 
-    match_from_db = session.query(mn.NationalKnockoutMatches).\
-        join(mco.KnockoutRounds).filter(mco.KnockoutRounds.name == u"Semifinal (1/2)")
+    match_from_db = session.query(mn.NationalKnockoutMatches).filter_by(ko_round=enums.KnockoutRoundType.semifinal)
 
     assert match_from_db.count() == 1
     assert unicode(match_from_db[0]) == u"<NationalKnockoutMatch(home=France, away=Mexico, " \
                                         u"competition=International Cup, " \
-                                        u"round=Semifinal (1/2), matchday=1, date=1997-11-12)>"
+                                        u"round=Semi-Final (1/2), matchday=1, date=1997-11-12)>"
     assert match_from_db[0].season.name == "1997-1998"
     assert match_from_db[0].competition.confederation.name == u"FIFA"
     assert match_from_db[0].venue.name == u"Emirates Stadium"
@@ -78,7 +77,7 @@ def test_natl_knockout_match_insert(session, national_data):
 @natl_only
 def test_natl_match_lineup_insert(session, national_data, person_data, position_data):
     match = mn.NationalGroupMatches(
-        group_round=mco.GroupRounds(name="First Round"),
+        group_round=enums.GroupRoundType.first_round,
         group='C',
         matchday=2,
         **national_data
@@ -114,7 +113,7 @@ def test_natl_match_lineup_insert(session, national_data, person_data, position_
 @natl_only
 def test_natl_goal_insert(session, national_data, person_data, position_data):
     match = mn.NationalKnockoutMatches(
-        ko_round=mco.KnockoutRounds(name="Semifinal (1/2)"),
+        ko_round=enums.KnockoutRoundType.round_16,
         **national_data
     )
     session.add(match)
@@ -161,7 +160,7 @@ def test_natl_goal_insert(session, national_data, person_data, position_data):
 @natl_only
 def test_natl_penalty_shootout_opener_insert(session, national_data):
     match = mn.NationalKnockoutMatches(
-        ko_round=mco.KnockoutRounds(name="Semifinal (1/2)"),
+        ko_round=enums.KnockoutRoundType.final,
         **national_data
     )
     session.add(match)

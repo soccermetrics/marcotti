@@ -1,6 +1,4 @@
 # coding=utf-8
-from datetime import date
-
 import pytest
 from sqlalchemy.exc import DataError
 
@@ -55,8 +53,6 @@ def test_club_friendly_match_insert(session, club_data):
     session.add(friendly_match)
 
     match_from_db = session.query(mc.ClubFriendlyMatches).one()
-
-    print session.query(mco.Confederations).count()
 
     assert match_from_db.season.name == "2014-2015"
     assert match_from_db.competition.name == u"Test Competition"

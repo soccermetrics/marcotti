@@ -155,32 +155,6 @@ class InternationalCompetitions(Competitions):
             self.name, self.confederation.name)
 
 
-class KnockoutRounds(BaseSchema):
-    """
-    Knockout Rounds data model.
-    """
-    __tablename__ = "knockout_rounds"
-
-    id = Column(Integer, Sequence('koround_id_seq', start=10), primary_key=True)
-    name = Column(Unicode(40))
-
-    def __repr__(self):
-        return "<KnockoutRound(name={0})>".format(self.name)
-
-
-class GroupRounds(BaseSchema):
-    """
-    Group Rounds data model.
-    """
-    __tablename__ = "group_rounds"
-
-    id = Column(Integer, Sequence('grpround_id_seq', start=10), primary_key=True)
-    name = Column(Unicode(40))
-
-    def __repr__(self):
-        return "<GroupRound(name={0})>".format(self.name)
-
-
 class Venues(BaseSchema):
     __tablename__ = 'venues'
 

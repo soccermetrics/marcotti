@@ -209,46 +209,6 @@ def test_season_singleyr_reference_date(session):
     assert record.reference_date == date(1994, 12, 31)
 
 
-def test_group_round_insert(session):
-    """Group Rounds 001: Insert a single record into Group Rounds table and verify data."""
-    grp_stage_name = u"Group Stage"
-    grp_stage = mco.GroupRounds(name=grp_stage_name)
-    session.add(grp_stage)
-
-    result = session.query(mco.GroupRounds).filter_by(name=grp_stage_name).one()
-    assert result.name == grp_stage_name
-    assert repr(result) == "<GroupRound(name={0})>".format(grp_stage_name)
-
-
-def test_group_round_name_overflow_error(session):
-    """Group Rounds 002: Verify error if group round name exceeds field length."""
-    too_long_name = "groupround" * 5
-    record = mco.GroupRounds(name=unicode(too_long_name))
-    with pytest.raises(DataError):
-        session.add(record)
-        session.commit()
-
-
-def test_knockout_round_insert(session):
-    """Knockout Rounds 001: Insert a single record into Knockout Rounds table and verify data."""
-    qfinal_name = u"Quarterfinal (1/4)"
-    qfinal = mco.KnockoutRounds(name=qfinal_name)
-    session.add(qfinal)
-
-    result = session.query(mco.KnockoutRounds).filter_by(name=qfinal_name).one()
-    assert result.name == qfinal_name
-    assert repr(result) == "<KnockoutRound(name={0})>".format(qfinal_name)
-
-
-def test_knockout_round_name_overflow_error(session):
-    """Knockout Rounds 002: Verify error if knockout round name exceeds field length."""
-    too_long_name = "knockoutround" * 5
-    record = mco.KnockoutRounds(name=unicode(too_long_name))
-    with pytest.raises(DataError):
-        session.add(record)
-        session.commit()
-
-
 def test_timezone_insert(session):
     """Timezone 001: Insert timezone records into Timezones table and verify data."""
     timezones = [

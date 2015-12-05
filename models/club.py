@@ -108,6 +108,16 @@ class ClubFriendlyMatches(FriendlyMixin, ClubMatchMixin, ClubSchema, mcm.Matches
 
     id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
 
+    def __repr__(self):
+        return u"<ClubFriendlyMatch(home={}, away={}, competition={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name, self.date.isoformat()
+        ).encode('utf-8')
+
+    def __unicode__(self):
+        return u"<ClubFriendlyMatch(home={}, away={}, competition={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name, self.date.isoformat()
+        )
+
 
 class ClubLeagueMatches(LeagueMixin, ClubMatchMixin, ClubSchema, mcm.LeagueMatches, mcm.Matches):
     __tablename__ = "club_league_matches"
@@ -184,13 +194,19 @@ class ClubMatchLineups(ClubMixin, ClubSchema, mcm.MatchLineups):
 
 
 class ClubGoals(ClubMixin, ClubSchema, mce.Goals):
+    __tablename__ = 'club_goals'
     __mapper_args__ = {'polymorphic_identity': 'club'}
+
+    id = Column(Integer, ForeignKey('goals.id'), primary_key=True)
 
     team = relationship('Clubs', foreign_keys="ClubGoals.team_id", backref=backref("goals"))
 
 
 class ClubPenaltyShootoutOpeners(ClubMixin, ClubSchema, mce.PenaltyShootoutOpeners):
+    __tablename__ = 'club_penalty_shootout_openers'
     __mapper_args__ = {'polymorphic_identity': 'club'}
+
+    match_id = Column(Integer, ForeignKey('penalty_shootout_openers.match_id'), primary_key=True)
 
     team = relationship('Clubs', foreign_keys="ClubPenaltyShootoutOpeners.team_id",
                         backref=backref("shootout_openers"))

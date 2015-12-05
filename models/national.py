@@ -76,21 +76,55 @@ class NationalFriendlyMatches(FriendlyMixin, NationalMatchMixin, NatlSchema, mcm
     __tablename__ = "natl_friendly_matches"
     __mapper_args__ = {'polymorphic_identity': 'friendly'}
 
-    id = Column(Integer, ForeignKey('friendly_matches.id'), primary_key=True)
+    id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
+
+    def __repr__(self):
+        return u"<NationalFriendlyMatch(home={}, away={}, competition={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name, self.date.isoformat()
+        ).encode('utf-8')
+
+    def __unicode__(self):
+        return u"<NationalFriendlyMatch(home={}, away={}, competition={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name, self.date.isoformat()
+        )
 
 
-class NationalGroupMatches(GroupMixin, NationalMatchMixin, NatlSchema, mcm.GroupMatches):
+class NationalGroupMatches(GroupMixin, NationalMatchMixin, NatlSchema, mcm.GroupMatches, mcm.Matches):
     __tablename__ = "natl_group_matches"
     __mapper_args__ = {'polymorphic_identity': 'group'}
 
-    id = Column(Integer, ForeignKey('group_matches.id'), primary_key=True)
+    id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
+
+    def __repr__(self):
+        return u"<NationalGroupMatch(home={}, away={}, competition={}, round={}, group={}, matchday={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name, self.group_round.name,
+            self.group, self.matchday, self.date.isoformat()
+        ).encode('utf-8')
+
+    def __unicode__(self):
+        return u"<NationalGroupMatch(home={}, away={}, competition={}, round={}, group={}, matchday={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name, self.group_round.name,
+            self.group, self.matchday, self.date.isoformat()
+        )
 
 
-class NationalKnockoutMatches(KnockoutMixin, NationalMatchMixin, NatlSchema, mcm.KnockoutMatches):
+class NationalKnockoutMatches(KnockoutMixin, NationalMatchMixin, NatlSchema, mcm.KnockoutMatches, mcm.Matches):
     __tablename__ = "natl_knockout_matches"
     __mapper_args__ = {'polymorphic_identity': 'knockout'}
 
-    id = Column(Integer, ForeignKey('knockout_matches.id'), primary_key=True)
+    id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
+
+    def __repr__(self):
+        return u"<NationalKnockoutMatch(home={}, away={}, competition={}, round={}, matchday={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name,
+            self.ko_round.name, self.matchday, self.date.isoformat()
+        ).encode('utf-8')
+
+    def __unicode__(self):
+        return u"<NationalKnockoutMatch(home={}, away={}, competition={}, round={}, matchday={}, date={})>".format(
+            self.home_team.name, self.away_team.name, self.competition.name,
+            self.ko_round.name, self.matchday, self.date.isoformat()
+        )
 
 
 class NationalMatchLineups(NationalMixin, NatlSchema, mcm.MatchLineups):
@@ -101,15 +135,39 @@ class NationalMatchLineups(NationalMixin, NatlSchema, mcm.MatchLineups):
 
     team = relationship('Countries', foreign_keys="NationalMatchLineups.team_id", backref=backref("lineups"))
 
+    def __repr__(self):
+        return u"<NationalMatchLineup(match={}, player={}, team={}, position={}, starter={}, captain={})>".format(
+            self.match_id, self.full_name, self.team.name, self.position.name, self.is_starting, self.is_captain
+        ).encode('utf-8')
+
+    def __unicode__(self):
+        return u"<NationalMatchLineup(match={}, player={}, team={}, position={}, starter={}, captain={})>".format(
+            self.match_id, self.full_name, self.team.name, self.position.name, self.is_starting, self.is_captain
+        )
+
 
 class NationalGoals(NationalMixin, NatlSchema, mce.Goals):
+    __tablename__ = 'natl_goals'
     __mapper_args__ = {'polymorphic_identity': 'national'}
+
+    id = Column(Integer, ForeignKey('goals.id'), primary_key=True)
 
     team = relationship('Countries', foreign_keys="NationalGoals.team_id", backref=backref("goals"))
 
 
 class NationalPenaltyShootoutOpeners(NationalMixin, NatlSchema, mce.PenaltyShootoutOpeners):
+    __tablename__ = 'natl_penalty_shootout_openers'
     __mapper_args__ = {'polymorphic_identity': 'national'}
+
+    match_id = Column(Integer, ForeignKey('penalty_shootout_openers.match_id'), primary_key=True)
 
     team = relationship('Countries', foreign_keys="NationalPenaltyShootoutOpeners.team_id",
                         backref=backref("shootout_openers"))
+
+    def __repr__(self):
+        return u"<NationalPenaltyShootoutOpener(match={}, team={})>".format(
+            self.match_id, self.team.name).decode('utf-8')
+
+    def __unicode__(self):
+        return u"<NationalPenaltyShootoutOpener(match={}, team={})>".format(
+            self.match_id, self.team.name)

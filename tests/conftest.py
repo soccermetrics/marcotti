@@ -212,3 +212,29 @@ def club_data():
         'referee': mcp.Referees(first_name=u"Mark", last_name=u"Clattenburg",
                                 birth_date=date(1975, 3, 13), country=england)
     }
+
+
+@pytest.fixture
+def national_data():
+    uefa = mco.Confederations(name=u"UEFA")
+    concacaf = mco.Confederations(name=u"CONCACAF")
+    fifa = mco.Confederations(name=u"FIFA")
+    mexico = mco.Countries(name=u"Mexico", confederation=concacaf)
+    england = mco.Countries(name=u"England", confederation=uefa)
+    france = mco.Countries(name=u"France", confederation=uefa)
+    italy = mco.Countries(name=u"Italy", confederation=uefa)
+    tz_london = mco.Timezones(name=u"Europe/London", offset=0.0, confederation=uefa)
+    return {
+        'date': date(1997, 11, 12),
+        'competition': mco.InternationalCompetitions(name="International Cup", level=1, confederation=fifa),
+        'season': mco.Seasons(start_year=mco.Years(yr=1997), end_year=mco.Years(yr=1998)),
+        'venue': mco.Venues(name=u"Emirates Stadium", city=u"London", country=england, timezone=tz_london),
+        'home_team': france,
+        'away_team': mexico,
+        'home_manager': mcp.Managers(first_name=u"Arsène", last_name=u"Wenger",
+                                     birth_date=date(1949, 10, 22), country=france),
+        'away_manager': mcp.Managers(first_name=u"Gary", last_name=u"Simpson",
+                                     birth_date=date(1961, 4, 11), country=england),
+        'referee': mcp.Referees(first_name=u"Pierluigi", last_name=u"Collina",
+                                birth_date=date(1960, 2, 13), country=italy)
+    }

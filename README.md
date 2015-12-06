@@ -54,18 +54,14 @@ Two data schemas are created - one for clubs, the other for national teams.  The
 #### Overview
 
 * Competitions
-* Confederations
 * Countries
 * DomesticCompetitions
-* GroupRounds
 * InternationalCompetitions
-* KnockoutRounds
 * Seasons
 * Surfaces
 * Timezones
 * VenueHistory
 * Venues
-* WeatherConditions
 * Years
 
 #### Personnel
@@ -73,15 +69,12 @@ Two data schemas are created - one for clubs, the other for national teams.  The
 * Managers
 * Persons
 * Players
+* PlayerHistory
 * Positions
 * Referees
 
 #### Match
 
-* FriendlyMatches
-* GroupMatches
-* KnockoutMatches
-* LeagueMatches
 * MatchConditions
 * Matches
 * MatchLineups
@@ -89,12 +82,10 @@ Two data schemas are created - one for clubs, the other for national teams.  The
 #### Events
 
 * Bookables
-* Fouls
 * Goals
 * Penalties
 * PenaltyShootoutOpeners
 * PenaltyShootouts
-* ShotEvents
 * Substitutions
 
 ### Club-Specific Data Models
@@ -105,14 +96,44 @@ Two data schemas are created - one for clubs, the other for national teams.  The
 * ClubKnockoutMatches
 * ClubLeagueMatches
 * ClubMatchLineups
+* ClubGoals
+* ClubPenaltyShootoutOpeners
 
 ### National Team-Specific Data Models
 
 * NationalFriendlyMatches
 * NationalGroupMatches
 * NationalKnockoutMatches
-* NationalLeagueMatches
 * NationalMatchLineups
+* NationalGoals
+* NationalPenaltyShootoutOpeners
+
+### Enumerated Types
+
+* BodypartType
+* CardType
+* ConfederationType
+* FoulEventType
+* GroupRoundType
+* KnockoutRoundType
+* NameOrderType
+* PositionType
+* ShotEventType
+* ShotOutcomeType
+* SurfaceType
+* WeatherConditionType
+
+## Validation Data
+
+Marcotti ships with data that is used to populate the remaining validation models that can't be converted to enumerated types.  The data is in CSV and JSON formats.
+
+Data File            | Data Model
+-------------------- | ----------
+countries.[csv,json] | Countries
+positions.[csv,json] | Positions
+surfaces.[csv,json]  | Surfaces
+timezones.[csv,json] | Timezones
+
 
 ## Testing
 

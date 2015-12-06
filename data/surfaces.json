@@ -1,0 +1,54 @@
+[
+  {
+    "description": "Celebration bermudagrass",
+    "type": "Natural"
+  },
+  {
+    "description": "Tifway 419 bermudagrass",
+    "type": "Natural"
+  },
+  {
+    "description": "Platinum TE Pasaplum",
+    "type": "Natural"
+  },
+  {
+    "description": "Tifdwarf bermudagrass",
+    "type": "Natural"
+  },
+  {
+    "description": "Discovery bermudagrass",
+    "type": "Natural"
+  },
+  {
+    "description": "Latitude 36 bermudagrass",
+    "type": "Natural"
+  },
+  {
+    "description": "TifGrand bermudagrass",
+    "type": "Natural"
+  },
+  {
+    "description": "AstroTurf Gen 1",
+    "type": "Artificial"
+  },
+  {
+    "description": "AstroTurf Gen 2",
+    "type": "Artificial"
+  },
+  {
+    "description": "FieldTurf",
+    "type": "Artificial"
+  },
+  {
+    "description": "Desso GrassMaster",
+    "type": "Hybrid"
+  },
+  {
+    "description": "EZ Hybrid Turf",
+    "type": "Hybrid"
+  },
+  {
+    "description": "XtraGrass",
+    "type": "Hybrid"
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Goalkeeper",
+    "type": "Goalkeeper"
+  },
+  {
+    "name": "Defender",
+    "type": "Defender"
+  },
+  {
+    "name": "Central Defender",
+    "type": "Defender"
+  },
+  {
+    "name": "Libero",
+    "type": "Defender"
+  },
+  {
+    "name": "Full-back",
+    "type": "Defender"
+  },
+  {
+    "name": "Left Full-back",
+    "type": "Defender"
+  },
+  {
+    "name": "Right Full-back",
+    "type": "Defender"
+  },
+  {
+    "name": "Wing-back",
+    "type": "Defender"
+  },
+  {
+    "name": "Left Wing-back",
+    "type": "Defender"
+  },
+  {
+    "name": "Right Wing-back",
+    "type": "Defender"
+  },
+  {
+    "name": "Midfielder",
+    "type": "Midfielder"
+  },
+  {
+    "name": "Central Midfielder",
+    "type": "Midfielder"
+  },
+  {
+    "name": "Holding Midfielder",
+    "type": "Midfielder"
+  },
+  {
+    "name": "Deep-lying playmaker",
+    "type": "Midfielder"
+  },
+  {
+    "name": "Playmaker",
+    "type": "Midfielder"
+  },
+  {
+    "name": "Trequartista",
+    "type": "Midfielder"
+  },
+  {
+    "name": "Left Winger",
+    "type": "Midfielder"
+  },
+  {
+    "name": "Right Winger",
+    "type": "Midfielder"
+  },
+  {
+    "name": "Left Forward",
+    "type": "Forward"
+  },
+  {
+    "name": "Central Forward",
+    "type": "Forward"
+  },
+  {
+    "name": "Right Forward",
+    "type": "Forward"
+  },
+  {
+    "name": "Striker",
+    "type": "Forward"
+  },
+  {
+    "name": "Second striker",
+    "type": "Forward"
+  },
+  {
+    "name": "False nine",
+    "type": "Forward"
+  }
+]

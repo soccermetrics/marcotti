@@ -1,0 +1,1912 @@
+[
+  {
+    "name": "Pacific/Pago_Pago",
+    "confederation": "OFC",
+    "offset": -11
+  },
+  {
+    "name": "Pacific/Niue",
+    "confederation": "OFC",
+    "offset": -11
+  },
+  {
+    "name": "Pacific/Midway",
+    "confederation": "OFC",
+    "offset": -11
+  },
+  {
+    "name": "Pacific/Apia",
+    "confederation": "OFC",
+    "offset": -11
+  },
+  {
+    "name": "America/Adak",
+    "confederation": "CONCACAF",
+    "offset": -10
+  },
+  {
+    "name": "Pacific/Honolulu",
+    "confederation": "CONCACAF",
+    "offset": -10
+  },
+  {
+    "name": "Pacific/Rarotonga",
+    "confederation": "OFC",
+    "offset": -10
+  },
+  {
+    "name": "Pacific/Tahiti",
+    "confederation": "OFC",
+    "offset": -10
+  },
+  {
+    "name": "Pacific/Fakaofo",
+    "confederation": "OFC",
+    "offset": -10
+  },
+  {
+    "name": "Pacific/Johnston",
+    "confederation": "OFC",
+    "offset": -10
+  },
+  {
+    "name": "Pacific/Marquesas",
+    "confederation": "OFC",
+    "offset": -9.5
+  },
+  {
+    "name": "America/Anchorage",
+    "confederation": "CONCACAF",
+    "offset": -9
+  },
+  {
+    "name": "America/Juneau",
+    "confederation": "CONCACAF",
+    "offset": -9
+  },
+  {
+    "name": "America/Yakutat",
+    "confederation": "CONCACAF",
+    "offset": -9
+  },
+  {
+    "name": "America/Nome",
+    "confederation": "CONCACAF",
+    "offset": -9
+  },
+  {
+    "name": "Pacific/Gambier",
+    "confederation": "OFC",
+    "offset": -9
+  },
+  {
+    "name": "America/Vancouver",
+    "confederation": "CONCACAF",
+    "offset": -8
+  },
+  {
+    "name": "America/Whitehorse",
+    "confederation": "CONCACAF",
+    "offset": -8
+  },
+  {
+    "name": "America/Dawson",
+    "confederation": "CONCACAF",
+    "offset": -8
+  },
+  {
+    "name": "America/Tijuana",
+    "confederation": "CONCACAF",
+    "offset": -8
+  },
+  {
+    "name": "America/Santa_Isabel",
+    "confederation": "CONCACAF",
+    "offset": -8
+  },
+  {
+    "name": "America/Los_Angeles",
+    "confederation": "CONCACAF",
+    "offset": -8
+  },
+  {
+    "name": "America/Edmonton",
+    "confederation": "CONCACAF",
+    "offset": -7
+  },
+  {
+    "name": "America/Cambridge_Bay",
+    "confederation": "CONCACAF",
+    "offset": -7
+  },
+  {
+    "name": "America/Yellowknife",
+    "confederation": "CONCACAF",
+    "offset": -7
+  },
+  {
+    "name": "America/Inuvik",
+    "confederation": "CONCACAF",
+    "offset": -7
+  },
+  {
+    "name": "America/Dawson_Creek",
+    "confederation": "CONCACAF",
+    "offset": -7
+  },
+  {
+    "name": "America/Mazatlan",
+    "confederation": "CONCACAF",
+    "offset": -7
+  },
+  {
+    "name": "America/Chihuahua",
+    "confederation": "CONCACAF",
+    "offset": -7
+  },
+  {
+    "name": "America/Ojinaga",
+    "confederation": "CONCACAF",
+    "offset": -7
+  },
+  {
+    "name": "America/Hermosillo",
+    "confederation": "CONCACAF",
+    "offset": -7
+  },
+  {
+    "name": "America/Denver",
+    "confederation": "CONCACAF",
+    "offset": -7
+  },
+  {
+    "name": "America/Boise",
+    "confederation": "CONCACAF",
+    "offset": -7
+  },
+  {
+    "name": "America/Shiprock",
+    "confederation": "CONCACAF",
+    "offset": -7
+  },
+  {
+    "name": "America/Phoenix",
+    "confederation": "CONCACAF",
+    "offset": -7
+  },
+  {
+    "name": "America/Belize",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Rankin_Inlet",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Winnipeg",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Rainy_River",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Regina",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Swift_Current",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Costa_Rica",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Guatemala",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Tegucigalpa",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Mexico_City",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Cancun",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Merida",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Monterrey",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Matamoros",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Managua",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/El_Salvador",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Chicago",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Indiana/Tell_City",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Indiana/Knox",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/Menominee",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/North_Dakota/Center",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "America/North_Dakota/New_Salem",
+    "confederation": "CONCACAF",
+    "offset": -6
+  },
+  {
+    "name": "Pacific/Easter",
+    "confederation": "CONMEBOL",
+    "offset": -6
+  },
+  {
+    "name": "Pacific/Galapagos",
+    "confederation": "CONMEBOL",
+    "offset": -6
+  },
+  {
+    "name": "America/Nassau",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Montreal",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Toronto",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Nipigon",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Thunder_Bay",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Iqaluit",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Pangnirtung",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Resolute",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Atikokan",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Havana",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Port-au-Prince",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Jamaica",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Cayman",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Panama",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Lima",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Grand_Turk",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/New_York",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Detroit",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Kentucky/Louisville",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Kentucky/Monticello",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Indiana/Indianapolis",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Indiana/Vincennes",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Indiana/Winamac",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Indiana/Marengo",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Indiana/Petersburg",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Indiana/Vevay",
+    "confederation": "CONCACAF",
+    "offset": -5
+  },
+  {
+    "name": "America/Bogota",
+    "confederation": "CONMEBOL",
+    "offset": -5
+  },
+  {
+    "name": "America/Guayaquil",
+    "confederation": "CONMEBOL",
+    "offset": -5
+  },
+  {
+    "name": "America/Caracas",
+    "confederation": "CONMEBOL",
+    "offset": -4.5
+  },
+  {
+    "name": "America/Antigua",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Anguilla",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Curacao",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Aruba",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Barbados",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/St_Barthelemy",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "Atlantic/Bermuda",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Halifax",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Glace_Bay",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Moncton",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Goose_Bay",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Blanc-Sablon",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Dominica",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Santo_Domingo",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Grenada",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Guadeloupe",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Guyana",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/St_Kitts",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/St_Lucia",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Marigot",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Martinique",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Montserrat",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Puerto_Rico",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Port_of_Spain",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/St_Vincent",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Tortola",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/St_Thomas",
+    "confederation": "CONCACAF",
+    "offset": -4
+  },
+  {
+    "name": "America/Argentina/San_Luis",
+    "confederation": "CONMEBOL",
+    "offset": -4
+  },
+  {
+    "name": "America/La_Paz",
+    "confederation": "CONMEBOL",
+    "offset": -4
+  },
+  {
+    "name": "America/Campo_Grande",
+    "confederation": "CONMEBOL",
+    "offset": -4
+  },
+  {
+    "name": "America/Cuiaba",
+    "confederation": "CONMEBOL",
+    "offset": -4
+  },
+  {
+    "name": "America/Porto_Velho",
+    "confederation": "CONMEBOL",
+    "offset": -4
+  },
+  {
+    "name": "America/Boa_Vista",
+    "confederation": "CONMEBOL",
+    "offset": -4
+  },
+  {
+    "name": "America/Manaus",
+    "confederation": "CONMEBOL",
+    "offset": -4
+  },
+  {
+    "name": "America/Eirunepe",
+    "confederation": "CONMEBOL",
+    "offset": -4
+  },
+  {
+    "name": "America/Rio_Branco",
+    "confederation": "CONMEBOL",
+    "offset": -4
+  },
+  {
+    "name": "America/Santiago",
+    "confederation": "CONMEBOL",
+    "offset": -4
+  },
+  {
+    "name": "America/Asuncion",
+    "confederation": "CONMEBOL",
+    "offset": -4
+  },
+  {
+    "name": "America/St_Johns",
+    "confederation": "CONCACAF",
+    "offset": -3.5
+  },
+  {
+    "name": "America/Cayenne",
+    "confederation": "CONCACAF",
+    "offset": -3
+  },
+  {
+    "name": "America/Miquelon",
+    "confederation": "CONCACAF",
+    "offset": -3
+  },
+  {
+    "name": "America/Paramaribo",
+    "confederation": "CONCACAF",
+    "offset": -3
+  },
+  {
+    "name": "America/Argentina/Buenos_Aires",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Argentina/Cordoba",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Argentina/Salta",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Argentina/Jujuy",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Argentina/Tucuman",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Argentina/Catamarca",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Argentina/La_Rioja",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Argentina/San_Juan",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Argentina/Mendoza",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Argentina/Rio_Gallegos",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Argentina/Ushuaia",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Belem",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Fortaleza",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Recife",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Araguaina",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Maceio",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Bahia",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Sao_Paulo",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Santarem",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Montevideo",
+    "confederation": "CONMEBOL",
+    "offset": -3
+  },
+  {
+    "name": "America/Noronha",
+    "confederation": "CONMEBOL",
+    "offset": -2
+  },
+  {
+    "name": "Atlantic/Cape_Verde",
+    "confederation": "CAF",
+    "offset": -1
+  },
+  {
+    "name": "Atlantic/Azores",
+    "confederation": "UEFA",
+    "offset": -1
+  },
+  {
+    "name": "Africa/Ouagadougou",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Abidjan",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/El_Aaiun",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Accra",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Banjul",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Conakry",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Bissau",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Monrovia",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Casablanca",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Bamako",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Nouakchott",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Freetown",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Dakar",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Sao_Tome",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Lome",
+    "confederation": "CAF",
+    "offset": 0
+  },
+  {
+    "name": "Atlantic/Canary",
+    "confederation": "UEFA",
+    "offset": 0
+  },
+  {
+    "name": "Atlantic/Faroe",
+    "confederation": "UEFA",
+    "offset": 0
+  },
+  {
+    "name": "Europe/London",
+    "confederation": "UEFA",
+    "offset": 0
+  },
+  {
+    "name": "Europe/Guernsey",
+    "confederation": "UEFA",
+    "offset": 0
+  },
+  {
+    "name": "Europe/Dublin",
+    "confederation": "UEFA",
+    "offset": 0
+  },
+  {
+    "name": "Atlantic/Reykjavik",
+    "confederation": "UEFA",
+    "offset": 0
+  },
+  {
+    "name": "Europe/Lisbon",
+    "confederation": "UEFA",
+    "offset": 0
+  },
+  {
+    "name": "Atlantic/Madeira",
+    "confederation": "UEFA",
+    "offset": 0
+  },
+  {
+    "name": "Africa/Luanda",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Porto-Novo",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Kinshasa",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Bangui",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Brazzaville",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Douala",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Algiers",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Ceuta",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Libreville",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Malabo",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Windhoek",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Niamey",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Lagos",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Ndjamena",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Africa/Tunis",
+    "confederation": "CAF",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Andorra",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Tirane",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Vienna",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Sarajevo",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Brussels",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Zurich",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Prague",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Berlin",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Copenhagen",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Madrid",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Paris",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Gibraltar",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Zagreb",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Budapest",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Rome",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Vaduz",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Luxembourg",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Monaco",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Podgorica",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Skopje",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Malta",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Amsterdam",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Oslo",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Warsaw",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Belgrade",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Stockholm",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Ljubljana",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/Bratislava",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Europe/San_Marino",
+    "confederation": "UEFA",
+    "offset": 1
+  },
+  {
+    "name": "Asia/Amman",
+    "confederation": "AFC",
+    "offset": 2
+  },
+  {
+    "name": "Asia/Beirut",
+    "confederation": "AFC",
+    "offset": 2
+  },
+  {
+    "name": "Asia/Gaza",
+    "confederation": "AFC",
+    "offset": 2
+  },
+  {
+    "name": "Asia/Damascus",
+    "confederation": "AFC",
+    "offset": 2
+  },
+  {
+    "name": "Africa/Bujumbura",
+    "confederation": "CAF",
+    "offset": 2
+  },
+  {
+    "name": "Africa/Gaborone",
+    "confederation": "CAF",
+    "offset": 2
+  },
+  {
+    "name": "Africa/Lubumbashi",
+    "confederation": "CAF",
+    "offset": 2
+  },
+  {
+    "name": "Africa/Cairo",
+    "confederation": "CAF",
+    "offset": 2
+  },
+  {
+    "name": "Africa/Maseru",
+    "confederation": "CAF",
+    "offset": 2
+  },
+  {
+    "name": "Africa/Tripoli",
+    "confederation": "CAF",
+    "offset": 2
+  },
+  {
+    "name": "Africa/Blantyre",
+    "confederation": "CAF",
+    "offset": 2
+  },
+  {
+    "name": "Africa/Maputo",
+    "confederation": "CAF",
+    "offset": 2
+  },
+  {
+    "name": "Africa/Kigali",
+    "confederation": "CAF",
+    "offset": 2
+  },
+  {
+    "name": "Africa/Mbabane",
+    "confederation": "CAF",
+    "offset": 2
+  },
+  {
+    "name": "Africa/Johannesburg",
+    "confederation": "CAF",
+    "offset": 2
+  },
+  {
+    "name": "Africa/Lusaka",
+    "confederation": "CAF",
+    "offset": 2
+  },
+  {
+    "name": "Africa/Harare",
+    "confederation": "CAF",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Mariehamn",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Sofia",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Minsk",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Asia/Nicosia",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Tallinn",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Helsinki",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Athens",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Asia/Jerusalem",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Vilnius",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Riga",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Chisinau",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Bucharest",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Istanbul",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Kiev",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Uzhgorod",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Zaporozhye",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Europe/Simferopol",
+    "confederation": "UEFA",
+    "offset": 2
+  },
+  {
+    "name": "Asia/Bahrain",
+    "confederation": "AFC",
+    "offset": 3
+  },
+  {
+    "name": "Asia/Baghdad",
+    "confederation": "AFC",
+    "offset": 3
+  },
+  {
+    "name": "Asia/Kuwait",
+    "confederation": "AFC",
+    "offset": 3
+  },
+  {
+    "name": "Asia/Qatar",
+    "confederation": "AFC",
+    "offset": 3
+  },
+  {
+    "name": "Asia/Riyadh",
+    "confederation": "AFC",
+    "offset": 3
+  },
+  {
+    "name": "Asia/Aden",
+    "confederation": "AFC",
+    "offset": 3
+  },
+  {
+    "name": "Indian/Mayotte",
+    "confederation": "AFC",
+    "offset": 3
+  },
+  {
+    "name": "Africa/Djibouti",
+    "confederation": "CAF",
+    "offset": 3
+  },
+  {
+    "name": "Africa/Asmara",
+    "confederation": "CAF",
+    "offset": 3
+  },
+  {
+    "name": "Africa/Addis_Ababa",
+    "confederation": "CAF",
+    "offset": 3
+  },
+  {
+    "name": "Africa/Nairobi",
+    "confederation": "CAF",
+    "offset": 3
+  },
+  {
+    "name": "Indian/Comoro",
+    "confederation": "CAF",
+    "offset": 3
+  },
+  {
+    "name": "Indian/Antananarivo",
+    "confederation": "CAF",
+    "offset": 3
+  },
+  {
+    "name": "Africa/Khartoum",
+    "confederation": "CAF",
+    "offset": 3
+  },
+  {
+    "name": "Africa/Mogadishu",
+    "confederation": "CAF",
+    "offset": 3
+  },
+  {
+    "name": "Africa/Dar_es_Salaam",
+    "confederation": "CAF",
+    "offset": 3
+  },
+  {
+    "name": "Africa/Kampala",
+    "confederation": "CAF",
+    "offset": 3
+  },
+  {
+    "name": "Europe/Kaliningrad",
+    "confederation": "UEFA",
+    "offset": 3
+  },
+  {
+    "name": "Asia/Tehran",
+    "confederation": "AFC",
+    "offset": 3.5
+  },
+  {
+    "name": "Asia/Dubai",
+    "confederation": "AFC",
+    "offset": 4
+  },
+  {
+    "name": "Asia/Muscat",
+    "confederation": "AFC",
+    "offset": 4
+  },
+  {
+    "name": "Indian/Reunion",
+    "confederation": "AFC",
+    "offset": 4
+  },
+  {
+    "name": "Indian/Mahe",
+    "confederation": "AFC",
+    "offset": 4
+  },
+  {
+    "name": "Indian/Mauritius",
+    "confederation": "CAF",
+    "offset": 4
+  },
+  {
+    "name": "Asia/Yerevan",
+    "confederation": "UEFA",
+    "offset": 4
+  },
+  {
+    "name": "Asia/Baku",
+    "confederation": "UEFA",
+    "offset": 4
+  },
+  {
+    "name": "Asia/Tbilisi",
+    "confederation": "UEFA",
+    "offset": 4
+  },
+  {
+    "name": "Europe/Moscow",
+    "confederation": "UEFA",
+    "offset": 4
+  },
+  {
+    "name": "Europe/Volgograd",
+    "confederation": "UEFA",
+    "offset": 4
+  },
+  {
+    "name": "Europe/Samara",
+    "confederation": "UEFA",
+    "offset": 4
+  },
+  {
+    "name": "Asia/Kabul",
+    "confederation": "AFC",
+    "offset": 4.5
+  },
+  {
+    "name": "Asia/Aqtobe",
+    "confederation": "AFC",
+    "offset": 5
+  },
+  {
+    "name": "Asia/Aqtau",
+    "confederation": "AFC",
+    "offset": 5
+  },
+  {
+    "name": "Asia/Oral",
+    "confederation": "AFC",
+    "offset": 5
+  },
+  {
+    "name": "Indian/Maldives",
+    "confederation": "AFC",
+    "offset": 5
+  },
+  {
+    "name": "Indian/Kerguelen",
+    "confederation": "AFC",
+    "offset": 5
+  },
+  {
+    "name": "Asia/Dushanbe",
+    "confederation": "AFC",
+    "offset": 5
+  },
+  {
+    "name": "Asia/Ashgabat",
+    "confederation": "AFC",
+    "offset": 5
+  },
+  {
+    "name": "Asia/Samarkand",
+    "confederation": "AFC",
+    "offset": 5
+  },
+  {
+    "name": "Asia/Tashkent",
+    "confederation": "AFC",
+    "offset": 5
+  },
+  {
+    "name": "Asia/Kolkata",
+    "confederation": "AFC",
+    "offset": 5.5
+  },
+  {
+    "name": "Asia/Colombo",
+    "confederation": "AFC",
+    "offset": 5.5
+  },
+  {
+    "name": "Asia/Kathmandu",
+    "confederation": "AFC",
+    "offset": 5.75
+  },
+  {
+    "name": "Asia/Dhaka",
+    "confederation": "AFC",
+    "offset": 6
+  },
+  {
+    "name": "Asia/Thimphu",
+    "confederation": "AFC",
+    "offset": 6
+  },
+  {
+    "name": "Indian/Chagos",
+    "confederation": "AFC",
+    "offset": 6
+  },
+  {
+    "name": "Asia/Bishkek",
+    "confederation": "AFC",
+    "offset": 6
+  },
+  {
+    "name": "Asia/Almaty",
+    "confederation": "AFC",
+    "offset": 6
+  },
+  {
+    "name": "Asia/Qyzylorda",
+    "confederation": "AFC",
+    "offset": 6
+  },
+  {
+    "name": "Asia/Karachi",
+    "confederation": "AFC",
+    "offset": 6
+  },
+  {
+    "name": "Asia/Yekaterinburg",
+    "confederation": "UEFA",
+    "offset": 6
+  },
+  {
+    "name": "Indian/Cocos",
+    "confederation": "AFC",
+    "offset": 6.5
+  },
+  {
+    "name": "Asia/Rangoon",
+    "confederation": "AFC",
+    "offset": 6.5
+  },
+  {
+    "name": "Indian/Christmas",
+    "confederation": "AFC",
+    "offset": 7
+  },
+  {
+    "name": "Asia/Jakarta",
+    "confederation": "AFC",
+    "offset": 7
+  },
+  {
+    "name": "Asia/Pontianak",
+    "confederation": "AFC",
+    "offset": 7
+  },
+  {
+    "name": "Asia/Phnom_Penh",
+    "confederation": "AFC",
+    "offset": 7
+  },
+  {
+    "name": "Asia/Vientiane",
+    "confederation": "AFC",
+    "offset": 7
+  },
+  {
+    "name": "Asia/Hovd",
+    "confederation": "AFC",
+    "offset": 7
+  },
+  {
+    "name": "Asia/Bangkok",
+    "confederation": "AFC",
+    "offset": 7
+  },
+  {
+    "name": "Asia/Ho_Chi_Minh",
+    "confederation": "AFC",
+    "offset": 7
+  },
+  {
+    "name": "Asia/Omsk",
+    "confederation": "UEFA",
+    "offset": 7
+  },
+  {
+    "name": "Asia/Novosibirsk",
+    "confederation": "UEFA",
+    "offset": 7
+  },
+  {
+    "name": "Asia/Novokuznetsk",
+    "confederation": "UEFA",
+    "offset": 7
+  },
+  {
+    "name": "Australia/Perth",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Brunei",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Shanghai",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Harbin",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Chongqing",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Urumqi",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Kashgar",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Hong_Kong",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Makassar",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Ulaanbaatar",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Choibalsan",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Macau",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Kuala_Lumpur",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Kuching",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Manila",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Singapore",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Taipei",
+    "confederation": "AFC",
+    "offset": 8
+  },
+  {
+    "name": "Asia/Krasnoyarsk",
+    "confederation": "UEFA",
+    "offset": 8
+  },
+  {
+    "name": "Australia/Eucla",
+    "confederation": "AFC",
+    "offset": 8.75
+  },
+  {
+    "name": "Asia/Jayapura",
+    "confederation": "AFC",
+    "offset": 9
+  },
+  {
+    "name": "Asia/Tokyo",
+    "confederation": "AFC",
+    "offset": 9
+  },
+  {
+    "name": "Asia/Pyongyang",
+    "confederation": "AFC",
+    "offset": 9
+  },
+  {
+    "name": "Asia/Seoul",
+    "confederation": "AFC",
+    "offset": 9
+  },
+  {
+    "name": "Asia/Dili",
+    "confederation": "AFC",
+    "offset": 9
+  },
+  {
+    "name": "Pacific/Palau",
+    "confederation": "OFC",
+    "offset": 9
+  },
+  {
+    "name": "Asia/Irkutsk",
+    "confederation": "UEFA",
+    "offset": 9
+  },
+  {
+    "name": "Australia/Broken_Hill",
+    "confederation": "AFC",
+    "offset": 9.5
+  },
+  {
+    "name": "Australia/Adelaide",
+    "confederation": "AFC",
+    "offset": 9.5
+  },
+  {
+    "name": "Australia/Darwin",
+    "confederation": "AFC",
+    "offset": 9.5
+  },
+  {
+    "name": "Australia/Hobart",
+    "confederation": "AFC",
+    "offset": 10
+  },
+  {
+    "name": "Australia/Currie",
+    "confederation": "AFC",
+    "offset": 10
+  },
+  {
+    "name": "Australia/Melbourne",
+    "confederation": "AFC",
+    "offset": 10
+  },
+  {
+    "name": "Australia/Sydney",
+    "confederation": "AFC",
+    "offset": 10
+  },
+  {
+    "name": "Australia/Brisbane",
+    "confederation": "AFC",
+    "offset": 10
+  },
+  {
+    "name": "Australia/Lindeman",
+    "confederation": "AFC",
+    "offset": 10
+  },
+  {
+    "name": "Pacific/Port_Moresby",
+    "confederation": "AFC",
+    "offset": 10
+  },
+  {
+    "name": "Pacific/Truk",
+    "confederation": "OFC",
+    "offset": 10
+  },
+  {
+    "name": "Pacific/Guam",
+    "confederation": "OFC",
+    "offset": 10
+  },
+  {
+    "name": "Pacific/Saipan",
+    "confederation": "OFC",
+    "offset": 10
+  },
+  {
+    "name": "Asia/Yakutsk",
+    "confederation": "UEFA",
+    "offset": 10
+  },
+  {
+    "name": "Australia/Lord_Howe",
+    "confederation": "AFC",
+    "offset": 10.5
+  },
+  {
+    "name": "Pacific/Ponape",
+    "confederation": "OFC",
+    "offset": 11
+  },
+  {
+    "name": "Pacific/Kosrae",
+    "confederation": "OFC",
+    "offset": 11
+  },
+  {
+    "name": "Pacific/Noumea",
+    "confederation": "OFC",
+    "offset": 11
+  },
+  {
+    "name": "Pacific/Guadalcanal",
+    "confederation": "OFC",
+    "offset": 11
+  },
+  {
+    "name": "Pacific/Efate",
+    "confederation": "OFC",
+    "offset": 11
+  },
+  {
+    "name": "Asia/Vladivostok",
+    "confederation": "UEFA",
+    "offset": 11
+  },
+  {
+    "name": "Asia/Sakhalin",
+    "confederation": "UEFA",
+    "offset": 11
+  },
+  {
+    "name": "Pacific/Fiji",
+    "confederation": "OFC",
+    "offset": 12
+  },
+  {
+    "name": "Pacific/Tarawa",
+    "confederation": "OFC",
+    "offset": 12
+  },
+  {
+    "name": "Pacific/Majuro",
+    "confederation": "OFC",
+    "offset": 12
+  },
+  {
+    "name": "Pacific/Kwajalein",
+    "confederation": "OFC",
+    "offset": 12
+  },
+  {
+    "name": "Pacific/Nauru",
+    "confederation": "OFC",
+    "offset": 12
+  },
+  {
+    "name": "Pacific/Auckland",
+    "confederation": "OFC",
+    "offset": 12
+  },
+  {
+    "name": "Pacific/Funafuti",
+    "confederation": "OFC",
+    "offset": 12
+  },
+  {
+    "name": "Pacific/Wake",
+    "confederation": "OFC",
+    "offset": 12
+  },
+  {
+    "name": "Pacific/Wallis",
+    "confederation": "OFC",
+    "offset": 12
+  },
+  {
+    "name": "Asia/Magadan",
+    "confederation": "UEFA",
+    "offset": 12
+  },
+  {
+    "name": "Asia/Kamchatka",
+    "confederation": "UEFA",
+    "offset": 12
+  },
+  {
+    "name": "Asia/Anadyr",
+    "confederation": "UEFA",
+    "offset": 12
+  },
+  {
+    "name": "Pacific/Chatham",
+    "confederation": "OFC",
+    "offset": 12.75
+  },
+  {
+    "name": "Pacific/Enderbury",
+    "confederation": "OFC",
+    "offset": 13
+  },
+  {
+    "name": "Pacific/Tongatapu",
+    "confederation": "OFC",
+    "offset": 13
+  },
+  {
+    "name": "Pacific/Kiritimati",
+    "confederation": "OFC",
+    "offset": 14
+  }
+]

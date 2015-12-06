@@ -1,0 +1,886 @@
+[
+  {
+    "name": "Afghanistan",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Australia",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Bahrain",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Bangladesh",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Bhutan",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Brunei Darussalam",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Cambodia",
+    "confederation": "AFC"
+  },
+  {
+    "name": "China PR",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Chinese Taipei",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Guam",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Hong Kong",
+    "confederation": "AFC"
+  },
+  {
+    "name": "India",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Indonesia",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Iran",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Iraq",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Japan",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Jordan",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Korea DPR",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Korea Republic",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Kuwait",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Kyrgyzstan",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Laos",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Lebanon",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Macau",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Malaysia",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Maldives",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Mongolia",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Myanmar",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Nepal",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Northern Mariana Islands",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Oman",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Pakistan",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Palestine",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Philippines",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Qatar",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Saudi Arabia",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Singapore",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Sri Lanka",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Syria",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Tajikistan",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Thailand",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Timor-Leste",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Turkmenistan",
+    "confederation": "AFC"
+  },
+  {
+    "name": "United Arab Emirates",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Uzbekistan",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Vietnam",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Yemen",
+    "confederation": "AFC"
+  },
+  {
+    "name": "Algeria",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Angola",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Benin",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Botswana",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Burkina Faso",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Burundi",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Cameroon",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Cape Verde",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Central African Republic",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Chad",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Comoros",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Côte d'Ivoire",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Congo",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Congo DR",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Djibouti",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Egypt",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Equatorial Guinea",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Eritrea",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Ethiopia",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Gabon",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Gambia",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Ghana",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Guinea",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Guinea-Bissau",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Kenya",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Lesotho",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Liberia",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Libya",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Madagascar",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Malawi",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Mali",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Mauritania",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Mauritius",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Morocco",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Mozambique",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Namibia",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Niger",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Nigeria",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Réunion",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Rwanda",
+    "confederation": "CAF"
+  },
+  {
+    "name": "São Tomé and Príncipe",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Senegal",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Seychelles",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Sierra Leone",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Somalia",
+    "confederation": "CAF"
+  },
+  {
+    "name": "South Africa",
+    "confederation": "CAF"
+  },
+  {
+    "name": "South Sudan",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Sudan",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Swaziland",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Tanzania",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Togo",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Tunisia",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Uganda",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Zambia",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Zimbabwe",
+    "confederation": "CAF"
+  },
+  {
+    "name": "Anguilla",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Antigua and Barbuda",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Aruba",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Bahamas",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Barbados",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Belize",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Bermuda",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "British Virgin Islands",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Canada",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Cayman Islands",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Costa Rica",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Cuba",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Dominica",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Dominican Republic",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "El Salvador",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "French Guiana",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Grenada",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Guadeloupe",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Guatemala",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Guyana",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Haiti",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Honduras",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Jamaica",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Martinique",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Mexico",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Montserrat",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Netherlands Antilles",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Nicaragua",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Panama",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Puerto Rico",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Saint Kitts and Nevis",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Saint Lucia",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Saint-Martin",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Saint Vincent and the Grenadines",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Sint Maarten",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Suriname",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Trinidad and Tobago",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Turks and Caicos Islands",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "USA",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "U.S. Virgin Islands",
+    "confederation": "CONCACAF"
+  },
+  {
+    "name": "Argentina",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "name": "Bolivia",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "name": "Brazil",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "name": "Chile",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "name": "Colombia",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "name": "Ecuador",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "name": "Paraguay",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "name": "Peru",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "name": "Uruguay",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "name": "Venezuela",
+    "confederation": "CONMEBOL"
+  },
+  {
+    "name": "American Samoa",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Cook Islands",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Fiji",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Kiribati",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Federated States of Micronesia",
+    "confederation": "OFC"
+  },
+  {
+    "name": "New Caledonia",
+    "confederation": "OFC"
+  },
+  {
+    "name": "New Zealand",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Niue",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Palau",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Papua New Guinea",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Samoa",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Solomon Islands",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Tahiti",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Tonga",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Tuvalu",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Vanuatu",
+    "confederation": "OFC"
+  },
+  {
+    "name": "Albania",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Andorra",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Armenia",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Austria",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Azerbaijan",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Belarus",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Belgium",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Bosnia and Herzegovina",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Bulgaria",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Croatia",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Cyprus",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Czech Republic",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Denmark",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "England",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Estonia",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Faroe Islands",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Finland",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "France",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Georgia",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Germany",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Greece",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Hungary",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Iceland",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Republic of Ireland",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Israel",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Italy",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Kazakhstan",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Latvia",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Liechtenstein",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Lithuania",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Luxembourg",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "FYR Macedonia",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Malta",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Moldova",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Montenegro",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Netherlands",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Northern Ireland",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Norway",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Poland",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Portugal",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Romania",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Russia",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "San Marino",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Scotland",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Serbia",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Slovakia",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Slovenia",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Spain",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Sweden",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Switzerland",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Turkey",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Ukraine",
+    "confederation": "UEFA"
+  },
+  {
+    "name": "Wales",
+    "confederation": "UEFA"
+  }
+]

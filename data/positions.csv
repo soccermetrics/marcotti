@@ -1,0 +1,25 @@
+name,type
+Goalkeeper,Goalkeeper
+Defender,Defender
+Central Defender,Defender
+Libero,Defender
+Full-back,Defender
+Left Full-back,Defender
+Right Full-back,Defender
+Wing-back,Defender
+Left Wing-back,Defender
+Right Wing-back,Defender
+Midfielder,Midfielder
+Central Midfielder,Midfielder
+Holding Midfielder,Midfielder
+Deep-lying playmaker,Midfielder
+Playmaker,Midfielder
+Trequartista,Midfielder
+Left Winger,Midfielder
+Right Winger,Midfielder
+Left Forward,Forward
+Central Forward,Forward
+Right Forward,Forward
+Striker,Forward
+Second striker,Forward
+False nine,Forward

@@ -118,6 +118,14 @@ Two data schemas are created - one for clubs, the other for national teams.  The
 
 The test suite uses [py.test](http://www.pytest.org) and a PostgreSQL database.  A blank database named `test-marcotti-db` must be created before the tests are run.
 
+Use the following command from the top-level directory of the repository to run the tests:
+
+        $ py.test [--schema club|natl]
+
+If the `schema` option is not passed, only the tests on common data models are run.  The `club` parameter will run the common and club-specific models, while the `natl` parameter will run tests on the common and national-team-specific models.
+
+The tests should work for other server-based RMDBSs such as MySQL or SQL Server.  There _may_ be issues with SQLite backends, but this hasn't been confirmed.
+
 ## License
 
 (c) 2015 Soccermetrics Research, LLC. Created under MIT license.  See `LICENSE` file for details.

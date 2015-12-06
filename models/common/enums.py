@@ -47,6 +47,19 @@ class KnockoutRoundType(DeclEnum):
     grand_final = "Grand Final", "Grand Final"
 
 
+class ConfederationType(DeclEnum):
+    """
+    Enumerated names of the international football confederations.
+    """
+    africa = "CAF", "Confederation of African Football"
+    asia = "AFC", "Asian Football Confederation"
+    europe = "UEFA", "Union of European Football Associations"
+    north_america = "CONCACAF", "Confederation of North, Central American, and Caribbean Association Football"
+    oceania = "OFC", "Oceania Football Confederation"
+    south_america = "CONMEBOL", "South American Football Confederation"
+    fifa = "FIFA", "International Federation of Association Football"
+
+
 class PositionType(DeclEnum):
     """
     Enumerated categories of football player positions.

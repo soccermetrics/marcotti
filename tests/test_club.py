@@ -17,7 +17,7 @@ club_only = pytest.mark.skipif(
 @club_only
 def test_club_insert(session):
     club = mc.Clubs(name=u"Arsenal",
-                    country=mco.Countries(name=u"England", confederation=mco.Confederations(name=u"UEFA")))
+                    country=mco.Countries(name=u"England", confederation=enums.ConfederationType.europe))
     session.add(club)
 
     result = session.query(mc.Clubs).one()
@@ -28,7 +28,7 @@ def test_club_insert(session):
 @club_only
 def test_club_unicode_insert(session):
     club = mc.Clubs(name=u"Фк Спартак Москва",
-                    country=mco.Countries(name=u"Russia", confederation=mco.Confederations(name=u"UEFA")))
+                    country=mco.Countries(name=u"Russia", confederation=enums.ConfederationType.europe))
     session.add(club)
 
     result = session.query(mc.Clubs).join(mco.Countries).filter(mco.Countries.name == u"Russia").one()
@@ -41,7 +41,7 @@ def test_club_unicode_insert(session):
 def test_club_name_overflow(session):
     too_long_name = "blahblah" * 8
     too_long_club = mc.Clubs(name=too_long_name,
-                             country=mco.Countries(name=u"foo", confederation=mco.Confederations(name=u"bar")))
+                             country=mco.Countries(name=u"foo", confederation=enums.ConfederationType.fifa))
     with pytest.raises(DataError):
         session.add(too_long_club)
         session.commit()

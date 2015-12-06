@@ -17,12 +17,12 @@ def comp_data():
         'domestic': {
             'name': u"English Premier League",
             'level': 1,
-            'country': mco.Countries(name=u"England", confederation=mco.Confederations(name=u"UEFA"))
+            'country': mco.Countries(name=u"England", confederation=enums.ConfederationType.europe)
         },
         'international': {
             'name': u"FIFA Club World Cup",
             'level': 1,
-            'confederation': mco.Confederations(name=u"UEFA")
+            'confederation': enums.ConfederationType.europe
         }
     }
 
@@ -41,9 +41,8 @@ def season_data():
 
 @pytest.fixture
 def venue_data():
-    uefa = mco.Confederations(name=u"UEFA")
-    england = mco.Countries(name=u"England", confederation=uefa)
-    tz_london = mco.Timezones(name=u"Europe/London", offset=0.0, confederation=uefa)
+    england = mco.Countries(name=u"England", confederation=enums.ConfederationType.europe)
+    tz_london = mco.Timezones(name=u"Europe/London", offset=0.0, confederation=enums.ConfederationType.europe)
     return {
         "name": "Emirates Stadium",
         "city": "London",
@@ -74,14 +73,14 @@ def person_data():
             'first_name': u"John",
             'last_name': u"Doe",
             'birth_date': date(1980, 1, 1),
-            'country': mco.Countries(name=u"Portlandia", confederation=mco.Confederations(name=u'CCF'))
+            'country': mco.Countries(name=u"Portlandia", confederation=enums.ConfederationType.north_america)
         },
         'manager': [
             {
                 'first_name': u"Arsène",
                 'last_name': u"Wenger",
                 'birth_date': date(1949, 10, 22),
-                'country': mco.Countries(name=u"France", confederation=mco.Confederations(name=u"UEFA"))
+                'country': mco.Countries(name=u"France", confederation=enums.ConfederationType.europe)
             },
             {
                 'first_name': u"Arthur",
@@ -89,7 +88,7 @@ def person_data():
                 'last_name': u"Coimbra",
                 'nick_name': u"Zico",
                 'birth_date': date(1953, 3, 3),
-                'country': mco.Countries(name=u"Brazil", confederation=mco.Confederations(name=u"CONMEBOL"))
+                'country': mco.Countries(name=u"Brazil", confederation=enums.ConfederationType.south_america)
             }
         ],
         'player': [
@@ -99,7 +98,7 @@ def person_data():
                 'last_name': u'Ponce',
                 'second_last_name': u'Briseño',
                 'birth_date': date(1989, 4, 12),
-                'country': mco.Countries(name=u"Mexico", confederation=mco.Confederations(name=u"CONCACAF")),
+                'country': mco.Countries(name=u"Mexico", confederation=enums.ConfederationType.north_america),
                 'order': enums.NameOrderType.middle
             },
             {
@@ -109,14 +108,14 @@ def person_data():
                 'second_last_name': u"dos Santos",
                 'nick_name': u"Cristiano Ronaldo",
                 'birth_date': date(1985, 2, 5),
-                'country': mco.Countries(name=u"Portugal", confederation=mco.Confederations(name=u"UEFA")),
+                'country': mco.Countries(name=u"Portugal", confederation=enums.ConfederationType.europe),
                 'order': enums.NameOrderType.western
             },
             {
                 'first_name': u'Heung-Min',
                 'last_name': u'Son',
                 'birth_date': date(1992, 7, 8),
-                'country': mco.Countries(name=u"Korea Republic", confederation=mco.Confederations(name=u"AFC")),
+                'country': mco.Countries(name=u"Korea Republic", confederation=enums.ConfederationType.asia),
                 'order': enums.NameOrderType.eastern
             }
         ],
@@ -126,13 +125,13 @@ def person_data():
                 'middle_name': u"J",
                 'last_name': u"Foy",
                 'birth_date': date(1962, 11, 20),
-                'country': mco.Countries(name=u"England", confederation=mco.Confederations(name=u"UEFA"))
+                'country': mco.Countries(name=u"England", confederation=enums.ConfederationType.europe)
             },
             {
                 'first_name': u"Cüneyt",
                 'last_name': u"Çakır",
                 'birth_date': date(1976, 11, 23),
-                'country': mco.Countries(name=u"Turkey", confederation=mco.Confederations(name=u"UEFA"))
+                'country': mco.Countries(name=u"Turkey", confederation=enums.ConfederationType.europe)
             }
         ]
     }
@@ -194,10 +193,9 @@ def match_data(comp_data, season_data, venue_data, person_data):
 
 @pytest.fixture
 def club_data():
-    uefa = mco.Confederations(name=u"UEFA")
-    england = mco.Countries(name=u"England", confederation=uefa)
-    france = mco.Countries(name=u"France", confederation=uefa)
-    tz_london = mco.Timezones(name=u"Europe/London", offset=0.0, confederation=uefa)
+    england = mco.Countries(name=u"England", confederation=enums.ConfederationType.europe)
+    france = mco.Countries(name=u"France", confederation=enums.ConfederationType.europe)
+    tz_london = mco.Timezones(name=u"Europe/London", offset=0.0, confederation=enums.ConfederationType.europe)
     return {
         'date': date(2015, 1, 1),
         'competition': mco.DomesticCompetitions(name=u'Test Competition', level=1, country=england),
@@ -216,17 +214,15 @@ def club_data():
 
 @pytest.fixture
 def national_data():
-    uefa = mco.Confederations(name=u"UEFA")
-    concacaf = mco.Confederations(name=u"CONCACAF")
-    fifa = mco.Confederations(name=u"FIFA")
-    mexico = mco.Countries(name=u"Mexico", confederation=concacaf)
-    england = mco.Countries(name=u"England", confederation=uefa)
-    france = mco.Countries(name=u"France", confederation=uefa)
-    italy = mco.Countries(name=u"Italy", confederation=uefa)
-    tz_london = mco.Timezones(name=u"Europe/London", offset=0.0, confederation=uefa)
+    mexico = mco.Countries(name=u"Mexico", confederation=enums.ConfederationType.north_america)
+    england = mco.Countries(name=u"England", confederation=enums.ConfederationType.europe)
+    france = mco.Countries(name=u"France", confederation=enums.ConfederationType.europe)
+    italy = mco.Countries(name=u"Italy", confederation=enums.ConfederationType.europe)
+    tz_london = mco.Timezones(name=u"Europe/London", offset=0.0, confederation=enums.ConfederationType.europe)
     return {
         'date': date(1997, 11, 12),
-        'competition': mco.InternationalCompetitions(name="International Cup", level=1, confederation=fifa),
+        'competition': mco.InternationalCompetitions(name=u"International Cup", level=1,
+                                                     confederation=enums.ConfederationType.fifa),
         'season': mco.Seasons(start_year=mco.Years(yr=1997), end_year=mco.Years(yr=1998)),
         'venue': mco.Venues(name=u"Emirates Stadium", city=u"London", country=england, timezone=tz_london),
         'home_team': france,

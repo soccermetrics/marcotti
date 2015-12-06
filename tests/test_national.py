@@ -23,7 +23,7 @@ def test_natl_friendly_match_insert(session, national_data):
     assert unicode(match_from_db) == u"<NationalFriendlyMatch(home=France, away=Mexico, " \
                                      u"competition=International Cup, date=1997-11-12)>"
     assert match_from_db.season.name == "1997-1998"
-    assert match_from_db.competition.confederation.name == u"FIFA"
+    assert match_from_db.competition.confederation.value == u"FIFA"
     assert match_from_db.venue.name == u"Emirates Stadium"
     assert match_from_db.home_manager.full_name == u"Arsène Wenger"
     assert match_from_db.away_manager.full_name == u"Gary Simpson"
@@ -45,7 +45,7 @@ def test_natl_group_match_insert(session, national_data):
     assert unicode(match_from_db) == u"<NationalGroupMatch(home=France, away=Mexico, competition=International Cup, " \
                                      u"round=First Round, group=C, matchday=2, date=1997-11-12)>"
     assert match_from_db.season.name == "1997-1998"
-    assert match_from_db.competition.confederation.name == u"FIFA"
+    assert match_from_db.competition.confederation.value == u"FIFA"
     assert match_from_db.venue.name == u"Emirates Stadium"
     assert match_from_db.home_manager.full_name == u"Arsène Wenger"
     assert match_from_db.away_manager.full_name == u"Gary Simpson"
@@ -67,7 +67,7 @@ def test_natl_knockout_match_insert(session, national_data):
                                         u"competition=International Cup, " \
                                         u"round=Semi-Final (1/2), matchday=1, date=1997-11-12)>"
     assert match_from_db[0].season.name == "1997-1998"
-    assert match_from_db[0].competition.confederation.name == u"FIFA"
+    assert match_from_db[0].competition.confederation.value == u"FIFA"
     assert match_from_db[0].venue.name == u"Emirates Stadium"
     assert match_from_db[0].home_manager.full_name == u"Arsène Wenger"
     assert match_from_db[0].away_manager.full_name == u"Gary Simpson"

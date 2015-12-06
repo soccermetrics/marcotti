@@ -34,10 +34,10 @@ class Countries(BaseSchema):
 
     id = Column(Integer, Sequence('country_id_seq', start=100), primary_key=True)
     name = Column(Unicode(60))
-    confederation_id = Column(Integer, ForeignKey('confederations.id'))
+    confederation = Column(enums.ConfederationType.db_type())
 
     def __repr__(self):
-        return "<Country(id={0}, name={1}, confed={2})>".format(self.id, self.name, self.confederation.name)
+        return "<Country(id={0}, name={1}, confed={2})>".format(self.id, self.name, self.confederation.value)
 
 
 class Years(BaseSchema):
@@ -147,12 +147,12 @@ class InternationalCompetitions(Competitions):
     International Competitions data model, inherited from Competitions model.
     """
     __mapper_args__ = {'polymorphic_identity': 'international'}
-    confederation_id = Column(Integer, ForeignKey('confederations.id'))
-    confederation = relationship('Confederations', backref=backref('competitions'))
+
+    confederation = Column(enums.ConfederationType.db_type())
 
     def __repr__(self):
         return "<InternationalCompetition(name={0}, confederation={1})>".format(
-            self.name, self.confederation.name)
+            self.name, self.confederation.value)
 
 
 class Venues(BaseSchema):
@@ -213,13 +213,11 @@ class Timezones(BaseSchema):
 
     name = Column(Unicode(80), doc="Name of the time zone geographic region", nullable=False)
     offset = Column(Numeric(4, 2), doc="Offset of the time zone region from UTC, in decimal hours", nullable=False)
-
-    confederation_id = Column(Integer, ForeignKey('confederations.id'))
-    confederation = relationship('Confederations', backref=backref('timezones'))
+    confederation = Column(enums.ConfederationType.db_type())
 
     def __repr__(self):
         return "<Timezone(name={0}, offset={1:+1.2f}, confederation={2})>".format(
-           self.name, self.offset, self.confederation.name)
+           self.name, self.offset, self.confederation.value)
 
 
 class Surfaces(BaseSchema):

@@ -29,31 +29,31 @@ def test_confederation_overflow_error(session):
 
 def test_country_insert(session):
         """Country 001: Insert a single record into Countries table and verify data."""
-        england = mco.Countries(name=u'England', confederation=mco.Confederations(name=u'UEFA'))
+        england = mco.Countries(name=u'England', confederation=enums.ConfederationType.europe)
         session.add(england)
 
         country = session.query(mco.Countries).all()
 
         assert country[0].name == u'England'
-        assert country[0].confederation.name == u'UEFA'
+        assert country[0].confederation.value == 'UEFA'
         assert repr(country[0]) == "<Country(id={0}, name=England, confed=UEFA)>".format(country[0].id)
 
 
 def test_country_unicode_insert(session):
     """Country 002: Insert a single record with Unicode characters into Countries table and verify data."""
-    ivory_coast = mco.Countries(name=u"Côte d'Ivoire", confederation=mco.Confederations(name=u'CAF'))
+    ivory_coast = mco.Countries(name=u"Côte d'Ivoire", confederation=enums.ConfederationType.africa)
     session.add(ivory_coast)
 
-    country = session.query(mco.Countries).join(mco.Confederations).filter(mco.Confederations.name == u'CAF').one()
+    country = session.query(mco.Countries).filter_by(confederation=enums.ConfederationType.africa).one()
 
     assert country.name == u"Côte d'Ivoire"
-    assert country.confederation.name == u'CAF'
+    assert country.confederation.value == 'CAF'
 
 
 def test_country_name_overflow_error(session):
     """Country 003: Verify error if country name exceeds field length."""
     too_long_name = "blahblah" * 8
-    too_long_country = mco.Countries(name=unicode(too_long_name), confederation=mco.Confederations(name=u'CONCACAF'))
+    too_long_country = mco.Countries(name=unicode(too_long_name), confederation=enums.ConfederationType.north_america)
     with pytest.raises(DataError):
         session.add(too_long_country)
         session.commit()
@@ -93,10 +93,9 @@ def test_domestic_competition_insert(session):
     """Domestic Competition 001: Insert domestic competition record and verify data."""
     comp_name = u"English Premier League"
     comp_country = u"England"
-    comp_confed = u"UEFA"
     comp_level = 1
     record = mco.DomesticCompetitions(name=comp_name, level=comp_level, country=mco.Countries(
-        name=comp_country, confederation=mco.Confederations(name=comp_confed)))
+        name=comp_country, confederation=enums.ConfederationType.europe))
     session.add(record)
 
     competition = session.query(mco.DomesticCompetitions).one()
@@ -111,19 +110,16 @@ def test_domestic_competition_insert(session):
 def test_international_competition_insert(session):
     """International Competition 001: Insert international competition record and verify data."""
     comp_name = u"UEFA Champions League"
-    comp_confed = u"UEFA"
-    record = mco.InternationalCompetitions(name=comp_name, level=1,
-                                           confederation=mco.Confederations(name=comp_confed))
+    comp_confed = enums.ConfederationType.europe
+    record = mco.InternationalCompetitions(name=comp_name, level=1, confederation=comp_confed)
     session.add(record)
 
     competition = session.query(mco.InternationalCompetitions).one()
 
     assert repr(competition) == "<InternationalCompetition(name={0}, confederation={1})>".format(
-        comp_name, comp_confed
+        comp_name, comp_confed.value
     )
-    assert competition.name == comp_name
     assert competition.level == 1
-    assert competition.confederation.name == comp_confed
 
 
 def test_year_insert(session):
@@ -212,13 +208,13 @@ def test_season_singleyr_reference_date(session):
 def test_timezone_insert(session):
     """Timezone 001: Insert timezone records into Timezones table and verify data."""
     timezones = [
-        mco.Timezones(name=u"Europe/Paris", offset=1, confederation=mco.Confederations(name=u"UEFA")),
-        mco.Timezones(name=u"America/New_York", offset=-5.0, confederation=mco.Confederations(name=u"CONCACAF")),
-        mco.Timezones(name=u"Asia/Kathmandu", offset=+5.75, confederation=mco.Confederations(name=u"AFC"))
+        mco.Timezones(name=u"Europe/Paris", offset=1, confederation=enums.ConfederationType.europe),
+        mco.Timezones(name=u"America/New_York", offset=-5.0, confederation=enums.ConfederationType.north_america),
+        mco.Timezones(name=u"Asia/Kathmandu", offset=+5.75, confederation=enums.ConfederationType.asia)
     ]
     session.add_all(timezones)
 
-    tz_uefa = session.query(mco.Timezones).join(mco.Confederations).filter(mco.Confederations.name == u"UEFA").one()
+    tz_uefa = session.query(mco.Timezones).filter_by(confederation=enums.ConfederationType.europe).one()
     assert repr(tz_uefa) == "<Timezone(name=Europe/Paris, offset=+1.00, confederation=UEFA)>"
 
     stmt = session.query(func.min(mco.Timezones.offset).label('far_west')).subquery()
@@ -359,7 +355,7 @@ def test_surface_generic_insert(session):
     ]
     session.add_all(surfaces)
 
-    natural = session.query(mco.Surfaces).filter(mco.Surfaces.type == enums.SurfaceType.natural).one()
+    natural = session.query(mco.Surfaces).filter_by(type=enums.SurfaceType.natural).one()
 
     assert repr(natural) == u"<Surface(description=Perennial ryegrass, type=Natural)>"
 

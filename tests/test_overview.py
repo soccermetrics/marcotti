@@ -9,24 +9,6 @@ import models.common.enums as enums
 import models.common.overview as mco
 
 
-def test_confederation_insert(session):
-    """Confederation 001: Insert a single record into Confederation table and verify data."""
-    uefa = mco.Confederations(name=u"UEFA")
-    session.add(uefa)
-
-    result = session.query(mco.Confederations).filter_by(name=u"UEFA").one()
-    assert result.name == u"UEFA"
-    assert repr(result) == "<Confederation(id={0}, name=UEFA)>".format(result.id)
-
-
-def test_confederation_overflow_error(session):
-    """Confederation 002: Verify error if confederation name exceeds field length."""
-    too_long_confederation = mco.Confederations(name=u'ABCDEFGHIJKL')
-    with pytest.raises(DataError):
-        session.add(too_long_confederation)
-        session.commit()
-
-
 def test_country_insert(session):
         """Country 001: Insert a single record into Countries table and verify data."""
         england = mco.Countries(name=u'England', confederation=enums.ConfederationType.europe)

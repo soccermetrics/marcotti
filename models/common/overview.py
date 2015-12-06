@@ -10,20 +10,6 @@ from models.common import BaseSchema
 import models.common.enums as enums
 
 
-class Confederations(BaseSchema):
-    """
-    Football Confederations data model.
-    """
-    __tablename__ = "confederations"
-
-    id = Column(Integer, Sequence('confed_id_seq', start=10, increment=1), primary_key=True)
-    name = Column(Unicode(10))
-    countries = relationship('Countries', backref=backref('confederation'))
-
-    def __repr__(self):
-        return "<Confederation(id={0}, name={1})>".format(self.id, self.name)
-
-
 class Countries(BaseSchema):
     """
     Countries data model.

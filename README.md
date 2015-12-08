@@ -1,10 +1,23 @@
 Marcotti
 ========
 
-This is the implementation of the Marcotti database models (formerly named the Football Match Result Database).  The models are implemented as backend-independent SQLAlchemy objects, and club and national team databases are 
+Marcotti (formerly named the Football Match Result Database) is a data schema that captures match result data in 
+order to support football research activities.  Match result data is defined as historical and publicly-available 
+data that includes the following:
+
+* Friendly matches and matches that make up league, knockout or hybrid (group + knockout) football competitions, and 
+involve either clubs or national team selections.
+* Complete data on participating personnel such as players, managers, and match officials.
+* Complete top-level data on the football match, including match date, competition name, participating teams, venues, 
+and environmental conditions.
+* Complete data on macro-events that occur during a match, including goals, penalties, disciplinary events, 
+substitutions, and penalty shootouts.
+* Summary in-match statistics on participating players, including crossing, passing, shooting, defensive, 
+disciplinary, and goalkeeping categories.
+
+The Marcotti data schema is made up of backend-independent SQLAlchemy objects, and club and national team databases are 
 built from these objects.
 
-This data model captures major events for teams, whether clubs or national teams, participating in league, knockout, or hybrid (league+knockout) competitions.  
 
 ## Installation
 
@@ -40,14 +53,16 @@ Installation instructions:
     
 ## Data Models
 
-There are four categories under which the tables are classified:
+Two data schemas are created - one for clubs, the other for national teams.  There is a collection of common data 
+models upon which both schemas are based, and data models specific to either schema.
+
+The common data models are classified into five categories:
 
 * **Overview**: High-level data about the football competition
 * **Personnel**: Participants and officials in the football match
 * **Match**: High-level data about the match
 * **Match Events**: The main events of the football match
-
-Two data schemas are created - one for clubs, the other for national teams.  There is a collection of common data models that are shared by both schemas.
+* **Statistics**: Summary statistics of participating players in the football match
 
 ### Common Data Models
 
@@ -87,6 +102,68 @@ Two data schemas are created - one for clubs, the other for national teams.  The
 * PenaltyShootoutOpeners
 * PenaltyShootouts
 * Substitutions
+
+#### Statistics
+
+##### Crosses
+
+* Crosses
+* CornerCrosses
+
+##### Defense
+
+* Clearances
+* Defensives
+* GoalLineClearances
+* ShotBlocks
+* Tackles
+
+##### Fouls
+
+* Discipline
+* FoulWins
+
+##### Goals
+
+* Assists
+* GoalBodyparts
+* GoalLocations
+* GoalTotals
+* PenaltyActions
+
+##### Goalkeeper
+
+* GoalkeeperActions
+* GoalkeeperAllowedShots
+* GoalkeeperAllowedGoals
+* GoalkeeperSaves
+
+##### Passes
+
+* Passes
+* PassDirections
+* PassLengths
+* PassLocations
+
+##### Set-Pieces
+
+* Freekicks
+* Throwins
+* Corners
+* ImportantPlays
+
+##### Shots
+
+* ShotBodyparts
+* ShotLocations
+* ShotPlays
+* ShotTotals
+
+##### Touches
+
+* Duels
+* Touches
+* TouchLocations
 
 ### Club-Specific Data Models
 

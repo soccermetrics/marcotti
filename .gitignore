@@ -3,5 +3,5 @@
 __pycache__
 
 *.pyc
-local.skel
+local.py
 sandbox.py

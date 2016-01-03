@@ -1,3 +1,10 @@
+"""
+This is a skeleton of a local configuration file that
+sets database variables.
+
+This file must be copied to local.py so that the configuration
+class can find the settings.
+"""
 from models.config import Config
 
 
@@ -10,11 +17,11 @@ class LocalConfig(Config):
     """
     # At a minimum, these variables must be defined.
     # Dialects are as defined by SQLAlchemy: firebird, mssql, mysql, oracle, postgresql, sqlite, sybase
-    DIALECT = 'postgresql'
-    DBNAME = 'marcotti-db'
+    DIALECT = ''
+    DBNAME = ''
 
     # For all other non-SQLite databases, these variables must be set.
-    DBUSER = 'howard'
-    DBPASSWD = '1234'
-    HOSTNAME = 'localhost'
+    DBUSER = ''
+    DBPASSWD = ''
+    HOSTNAME = ''
     PORT = 5432

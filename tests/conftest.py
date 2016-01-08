@@ -172,6 +172,7 @@ def match_condition_data():
     return {
         'kickoff_time': time(19, 30),
         'kickoff_temp': 15.0,
+        'kickoff_humidity': 68.0,
         'kickoff_weather': enums.WeatherConditionType.partly_cloudy,
         'halftime_weather': enums.WeatherConditionType.clear,
         'fulltime_weather': enums.WeatherConditionType.windy_clear

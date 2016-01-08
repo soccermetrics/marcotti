@@ -48,14 +48,25 @@ def test_match_conditions_insert(session, match_data, match_condition_data):
     match_from_db = session.query(mcm.Matches).one()
     conditions_from_db = session.query(mcm.MatchConditions).one()
 
-    assert repr(conditions_from_db) == "<MatchCondition(id={}, kickoff=19:30, " \
-                                       "temp=15.0, kickoff_weather=Partly Cloudy)>".format(match_from_db.id)
+    assert repr(conditions_from_db) == "<MatchCondition(id={}, kickoff=19:30, temp=15.0, " \
+                                       "humid=68.0, kickoff_weather=Partly Cloudy)>".format(match_from_db.id)
 
 
 def test_match_conditions_temp_error(session, match_data, match_condition_data):
     match_condition_data['match'] = mcm.Matches(**match_data)
     for out_of_range in [-20.0, 55.0]:
         match_condition_data['kickoff_temp'] = out_of_range
+        match_conditions = mcm.MatchConditions(**match_condition_data)
+        with pytest.raises(IntegrityError):
+            session.add(match_conditions)
+            session.commit()
+        session.rollback()
+
+
+def test_match_conditions_humid_error(session, match_data, match_condition_data):
+    match_condition_data['match'] = mcm.Matches(**match_data)
+    for out_of_range in [-1.0, 102.0]:
+        match_condition_data['kickoff_humidity'] = out_of_range
         match_conditions = mcm.MatchConditions(**match_condition_data)
         with pytest.raises(IntegrityError):
             session.add(match_conditions)

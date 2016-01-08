@@ -52,6 +52,7 @@ class MatchConditions(BaseSchema):
 
     kickoff_time = Column(Time)
     kickoff_temp = Column(Numeric(3, 1), CheckConstraint('kickoff_temp >= -15.0 AND kickoff_temp <= 50.0'))
+    kickoff_humidity = Column(Numeric(4, 1), CheckConstraint('kickoff_humidity >= 0.0 AND kickoff_humidity <= 100.0'))
     kickoff_weather = Column(enums.WeatherConditionType.db_type())
     halftime_weather = Column(enums.WeatherConditionType.db_type())
     fulltime_weather = Column(enums.WeatherConditionType.db_type())
@@ -59,8 +60,9 @@ class MatchConditions(BaseSchema):
     match = relationship('Matches', backref=backref('conditions'))
 
     def __repr__(self):
-        return "<MatchCondition(id={}, kickoff={}, temp={}, kickoff_weather={})>".format(
-            self.id, self.kickoff_time.strftime("%H:%M"), self.kickoff_temp, self.kickoff_weather.value
+        return "<MatchCondition(id={}, kickoff={}, temp={}, humid={}, kickoff_weather={})>".format(
+            self.id, self.kickoff_time.strftime("%H:%M"), self.kickoff_temp, self.kickoff_humidity,
+            self.kickoff_weather.value
         )
 
 

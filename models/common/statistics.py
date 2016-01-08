@@ -303,8 +303,8 @@ class PassDirections(BaseSchema):
 
     forward = Column(Integer, CheckConstraint('forward >= 0'), default=0)
     backward = Column(Integer, CheckConstraint('backward >= 0'), default=0)
-    left = Column(Integer, CheckConstraint('left >= 0'), default=0)
-    right = Column(Integer, CheckConstraint('right >= 0'), default=0)
+    left_side = Column(Integer, CheckConstraint('left_side >= 0'), default=0)
+    right_side = Column(Integer, CheckConstraint('right_side >= 0'), default=0)
 
     lineup_id = Column(Integer, ForeignKey('lineups.id'))
     lineup = relationship('MatchLineups', backref=backref('st_pass_directions'))

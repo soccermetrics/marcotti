@@ -69,8 +69,6 @@ class MatchConditions(BaseSchema):
 class LeagueMatches(BaseSchema):
     """
     League Matches data model.
-
-    Inherited from Matches model.
     """
     __abstract__ = True
 
@@ -80,8 +78,6 @@ class LeagueMatches(BaseSchema):
 class GroupMatches(BaseSchema):
     """
     Group Matches data model.
-
-    Inherited from Matches model.
     """
     __abstract__ = True
 
@@ -93,8 +89,6 @@ class GroupMatches(BaseSchema):
 class KnockoutMatches(BaseSchema):
     """
     Knockout Matches data model.
-
-    Inherited from Matches model.
     """
     __abstract__ = True
 

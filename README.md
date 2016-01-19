@@ -18,7 +18,6 @@ disciplinary, and goalkeeping categories.
 The Marcotti data schema is made up of backend-independent SQLAlchemy objects, and club and national team databases are 
 built from these objects.
 
-
 ## Installation
 
 Marcotti is written in Python and uses the SQLAlchemy package heavily.
@@ -64,165 +63,10 @@ The common data models are classified into five categories:
 * **Match Events**: The main events of the football match
 * **Statistics**: Summary statistics of participating players in the football match
 
-### Common Data Models
+## Documentation
 
-#### Overview
-
-* Competitions
-* Countries
-* DomesticCompetitions
-* InternationalCompetitions
-* Seasons
-* Surfaces
-* Timezones
-* VenueHistory
-* Venues
-* Years
-
-#### Personnel
-
-* Managers
-* Persons
-* Players
-* PlayerHistory
-* Positions
-* Referees
-
-#### Match
-
-* MatchConditions
-* Matches
-* MatchLineups
-
-#### Events
-
-* Bookables
-* Goals
-* Penalties
-* PenaltyShootoutOpeners
-* PenaltyShootouts
-* Substitutions
-
-#### Statistics
-
-##### Crosses
-
-* Crosses
-* CornerCrosses
-
-##### Defense
-
-* Clearances
-* Defensives
-* GoalLineClearances
-* ShotBlocks
-* Tackles
-
-##### Fouls
-
-* Discipline
-* FoulWins
-
-##### Goals
-
-* Assists
-* GoalBodyparts
-* GoalLocations
-* GoalTotals
-* PenaltyActions
-
-##### Goalkeeper
-
-* GoalkeeperActions
-* GoalkeeperAllowedShots
-* GoalkeeperAllowedGoals
-* GoalkeeperSaves
-
-##### Passes
-
-* Passes
-* PassDirections
-* PassLengths
-* PassLocations
-
-##### Set-Pieces
-
-* Freekicks
-* Throwins
-* Corners
-* ImportantPlays
-
-##### Shots
-
-* ShotBodyparts
-* ShotLocations
-* ShotPlays
-* ShotTotals
-
-##### Touches
-
-* Duels
-* Touches
-* TouchLocations
-
-### Club-Specific Data Models
-
-* Clubs
-* ClubFriendlyMatches
-* ClubGroupMatches
-* ClubKnockoutMatches
-* ClubLeagueMatches
-* ClubMatchLineups
-* ClubGoals
-* ClubPenaltyShootoutOpeners
-
-### National Team-Specific Data Models
-
-* NationalFriendlyMatches
-* NationalGroupMatches
-* NationalKnockoutMatches
-* NationalMatchLineups
-* NationalGoals
-* NationalPenaltyShootoutOpeners
-
-### Enumerated Types
-
-* BodypartType
-* CardType
-* ConfederationType
-* FoulEventType
-* GroupRoundType
-* KnockoutRoundType
-* NameOrderType
-* PositionType
-* ShotEventType
-* ShotOutcomeType
-* SurfaceType
-* WeatherConditionType
-
-## Validation Data
-
-Marcotti ships with data that is used to populate the remaining validation models that can't be converted to enumerated types.  The data is in CSV and JSON formats.
-
-Data File            | Data Model
--------------------- | ----------
-countries.[csv,json] | Countries
-positions.[csv,json] | Positions
-surfaces.[csv,json]  | Surfaces
-timezones.[csv,json] | Timezones
-
-
-## Testing
-
-The test suite uses [py.test](http://www.pytest.org) and a PostgreSQL database.  A blank database named `test-marcotti-db` must be created before the tests are run.
-
-Use the following command from the top-level directory of the repository to run the tests:
-
-        $ py.test [--schema club|natl]
-
-If the `schema` option is not passed, only the tests on common data models are run.  The `club` parameter will run the common and club-specific models, while the `natl` parameter will run tests on the common and national-team-specific models.
-
-The tests should work for other server-based RMDBSs such as MySQL or SQL Server.  There _may_ be issues with SQLite backends, but this hasn't been confirmed.
+The [Marcotti wiki](https://github.com/soccermetrics/marcotti/wiki) contains extensive user documentation of the 
+package.
 
 ## License
 

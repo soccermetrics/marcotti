@@ -3,6 +3,8 @@ from contextlib import contextmanager
 from sqlalchemy.orm.session import Session
 from sqlalchemy.engine import create_engine
 
+from ingestion import get_local_handles, ingest_feeds, validation
+
 
 class Marcotti(object):
 
@@ -11,10 +13,29 @@ class Marcotti(object):
         self.connection = self.engine.connect()
 
     def create_db(self, base):
+        """
+        Create database tables from models defined in schema and populate validation tables.
+
+        :param base: One of the declarative class objects (ClubSchema, NatlSchema).
+        """
+        print "Creating schemas..."
         base.metadata.create_all(self.connection)
+        print "Ingesting validation files..."
+        with self.create_session() as sess:
+            ingest_feeds(get_local_handles, 'data/', 'countries.csv', validation.CountryIngest(sess))
+            ingest_feeds(get_local_handles, 'data/', 'timezones.csv', validation.TimezoneIngest(sess))
+            ingest_feeds(get_local_handles, 'data/', 'surfaces.csv', validation.SurfaceIngest(sess))
+            ingest_feeds(get_local_handles, 'data/', 'positions.csv', validation.PositionIngest(sess))
+        print "Ingestion complete."
 
     @contextmanager
     def create_session(self):
+        """
+        Create a session context that communicates with the database.
+
+        Commits all changes to the database before closing the session, and if an exception is raised,
+        rollback the session.
+        """
         session = Session(self.connection)
         try:
             yield session

@@ -25,3 +25,7 @@ class LocalConfig(Config):
     DBPASSWD = ''
     HOSTNAME = ''
     PORT = 5432
+
+    # Define initial start and end years in database.
+    START_YEAR = 2000
+    END_YEAR = 2018

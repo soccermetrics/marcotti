@@ -1,9 +1,10 @@
 from contextlib import contextmanager
 
-from sqlalchemy.orm.session import Session
 from sqlalchemy.engine import create_engine
+from sqlalchemy.orm.session import Session
 
-from ingestion import get_local_handles, ingest_feeds, validation
+from ingestion import get_local_handles, ingest_feeds, create_seasons
+from ingestion.csv import validation
 
 
 class Marcotti(object):
@@ -11,6 +12,8 @@ class Marcotti(object):
     def __init__(self, config):
         self.engine = create_engine(config.DATABASE_URI)
         self.connection = self.engine.connect()
+        self.start_year = config.START_YEAR
+        self.end_year = config.END_YEAR
 
     def create_db(self, base):
         """
@@ -22,10 +25,11 @@ class Marcotti(object):
         base.metadata.create_all(self.connection)
         print "Ingesting validation files..."
         with self.create_session() as sess:
-            ingest_feeds(get_local_handles, 'data/', 'countries.csv', validation.CountryIngest(sess))
-            ingest_feeds(get_local_handles, 'data/', 'timezones.csv', validation.TimezoneIngest(sess))
-            ingest_feeds(get_local_handles, 'data/', 'surfaces.csv', validation.SurfaceIngest(sess))
-            ingest_feeds(get_local_handles, 'data/', 'positions.csv', validation.PositionIngest(sess))
+            create_seasons(sess, self.START_YEAR, self.END_YEAR)
+            ingest_feeds(get_local_handles, 'data', 'countries.csv', validation.CountryIngest(sess))
+            ingest_feeds(get_local_handles, 'data', 'timezones.csv', validation.TimezoneIngest(sess))
+            ingest_feeds(get_local_handles, 'data', 'surfaces.csv', validation.SurfaceIngest(sess))
+            ingest_feeds(get_local_handles, 'data', 'positions.csv', validation.PositionIngest(sess))
         print "Ingestion complete."
 
     @contextmanager

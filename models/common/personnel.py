@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, Numeric, String, Sequence, Date, Foreign
 from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.schema import CheckConstraint
-from sqlalchemy.sql.expression import cast
+from sqlalchemy.sql.expression import cast, case
 
 from models.common import BaseSchema
 import models.common.enums as enums
@@ -64,6 +64,25 @@ class Persons(BaseSchema):
                 return u"{} {} {}".format(self.first_name, self.middle_name, self.last_name)
             elif self.order == enums.NameOrderType.eastern:
                 return u"{} {}".format(self.last_name, self.first_name)
+
+    @full_name.expression
+    def full_name(cls):
+        """
+        The person's commonly known full name, following naming order conventions.
+
+        If a person has a nickname, that name becomes the person's full name.
+
+        :return: Person's full name.
+        """
+        return case(
+                [(cls.nick_name != None, cls.nick_name)],
+                else_=case(
+                    [(cls.order == enums.NameOrderType.middle,
+                      cls.first_name + ' ' + cls.middle_name + ' ' + cls.last_name),
+                     (cls.order == enums.NameOrderType.eastern,
+                      cls.last_name + ' ' + cls.first_name)],
+                    else_=cls.first_name + ' ' + cls.last_name
+                ))
 
     @hybrid_property
     def official_name(self):

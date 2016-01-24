@@ -97,7 +97,7 @@ def test_natl_match_lineup_insert(session, national_data, person_data, position_
     lineup = mn.NationalMatchLineups(
         match_id=match.id,
         team_id=nation_from_db.id,
-        player_id=player.player_id,
+        player_id=player.id,
         position_id=player.position_id
     )
     session.add(lineup)
@@ -131,7 +131,7 @@ def test_natl_goal_insert(session, national_data, person_data, position_data):
     lineup = mn.NationalMatchLineups(
         match_id=match.id,
         team_id=nation_from_db.id,
-        player_id=player.player_id,
+        player_id=player.id,
         position_id=player.position_id
     )
     session.add(lineup)

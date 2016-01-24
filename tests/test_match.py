@@ -89,7 +89,7 @@ def test_match_lineup_generic_insert(session, match_data, person_data, position_
     assert lineup_from_db.is_starting is False
     assert lineup_from_db.is_captain is False
     assert lineup_from_db.match_id == match_from_db.id
-    assert lineup_from_db.player_id == player_from_db.player_id
+    assert lineup_from_db.player_id == player_from_db.id
 
 
 def test_lineup_designate_captain(session, match_data, person_data, position_data):

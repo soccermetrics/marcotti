@@ -150,7 +150,7 @@ def test_club_match_lineup_insert(session, club_data, person_data, position_data
     lineup = mc.ClubMatchLineups(
         match_id=match.id,
         team_id=club_from_db.id,
-        player_id=player.player_id,
+        player_id=player.id,
         position_id=player.position_id
     )
     session.add(lineup)
@@ -176,7 +176,7 @@ def test_club_goal_insert(session, club_data, person_data, position_data):
     lineup = mc.ClubMatchLineups(
         match_id=match.id,
         team_id=club_from_db.id,
-        player_id=player.player_id,
+        player_id=player.id,
         position_id=player.position_id
     )
     session.add(lineup)

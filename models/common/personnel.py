@@ -146,7 +146,7 @@ class Players(Persons):
     __tablename__ = 'players'
     __mapper_args__ = {'polymorphic_identity': 'players'}
 
-    player_id = Column(Integer, Sequence('player_id_seq', start=100000), primary_key=True)
+    id = Column(Integer, Sequence('player_id_seq', start=100000), primary_key=True)
     person_id = Column(Integer, ForeignKey('persons.id'))
 
     position_id = Column(Integer, ForeignKey('positions.id'))
@@ -167,8 +167,8 @@ class PlayerHistory(BaseSchema):
     """
     __tablename__ = 'player_histories'
 
-    id = Column(Integer, Sequence('player_id_seq', start=1000000), primary_key=True)
-    player_id = Column(Integer, ForeignKey('players.player_id'))
+    id = Column(Integer, Sequence('player_hist_id_seq', start=1000000), primary_key=True)
+    player_id = Column(Integer, ForeignKey('players.id'))
     date = Column(Date, doc="Effective date of player physical record")
     height = Column(Numeric(3, 2), CheckConstraint('height >= 0 AND height <= 2.50'), nullable=False,
                     doc="Height of player in meters")
@@ -195,7 +195,7 @@ class Managers(Persons):
     __tablename__ = 'managers'
     __mapper_args__ = {'polymorphic_identity': 'managers'}
 
-    manager_id = Column(Integer, Sequence('manager_id_seq', start=10000), primary_key=True)
+    id = Column(Integer, Sequence('manager_id_seq', start=10000), primary_key=True)
     person_id = Column(Integer, ForeignKey('persons.id'))
 
     def __repr__(self):
@@ -216,7 +216,7 @@ class Referees(Persons):
     __tablename__ = 'referees'
     __mapper_args__ = {'polymorphic_identity': 'referees'}
 
-    referee_id = Column(Integer, Sequence('referee_id_seq', start=10000), primary_key=True)
+    id = Column(Integer, Sequence('referee_id_seq', start=10000), primary_key=True)
     person_id = Column(Integer, ForeignKey('persons.id'))
 
     def __repr__(self):

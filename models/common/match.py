@@ -28,9 +28,9 @@ class Matches(BaseSchema):
     competition_id = Column(Integer, ForeignKey('competitions.id'))
     season_id = Column(Integer, ForeignKey('seasons.id'))
     venue_id = Column(Integer, ForeignKey('venues.id'))
-    referee_id = Column(Integer, ForeignKey('referees.referee_id'))
-    home_manager_id = Column(Integer, ForeignKey('managers.manager_id'))
-    away_manager_id = Column(Integer, ForeignKey('managers.manager_id'))
+    referee_id = Column(Integer, ForeignKey('referees.id'))
+    home_manager_id = Column(Integer, ForeignKey('managers.id'))
+    away_manager_id = Column(Integer, ForeignKey('managers.id'))
 
     competition = relationship('Competitions', backref=backref('matches', lazy='dynamic'))
     season = relationship('Seasons', backref=backref('matches'))
@@ -110,7 +110,7 @@ class MatchLineups(BaseSchema):
     type = Column(String)
 
     match_id = Column(Integer, ForeignKey('matches.id'))
-    player_id = Column(Integer, ForeignKey('players.player_id'))
+    player_id = Column(Integer, ForeignKey('players.id'))
     position_id = Column(Integer, ForeignKey('positions.id'))
 
     match = relationship('Matches', backref=backref('lineups'))

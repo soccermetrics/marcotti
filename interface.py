@@ -25,7 +25,7 @@ class Marcotti(object):
         base.metadata.create_all(self.connection)
         print "Ingesting validation files..."
         with self.create_session() as sess:
-            create_seasons(sess, self.START_YEAR, self.END_YEAR)
+            create_seasons(sess, self.start_year, self.end_year)
             ingest_feeds(get_local_handles, 'data', 'countries.csv', validation.CountryIngest(sess))
             ingest_feeds(get_local_handles, 'data', 'timezones.csv', validation.TimezoneIngest(sess))
             ingest_feeds(get_local_handles, 'data', 'surfaces.csv', validation.SurfaceIngest(sess))

@@ -115,9 +115,9 @@ class MatchLineupIngest(BaseCSV):
                 continue
 
             if self.record_exists(ClubMatchLineups, match_id=match_id, team_id=player_team_id, player_id=player_id):
-                insertion_list.append(ClubMatchLineups, match_id=match_id, team_id=player_team_id,
+                insertion_list.append(ClubMatchLineups(match_id=match_id, team_id=player_team_id,
                                       player_id=player_id, position_id=position_id, is_starting=start_flag,
-                                      is_captain=capt_flag)
+                                      is_captain=capt_flag))
                 if len(insertion_list) == 50:
                     self.session.add_all(insertion_list)
                     self.session.commit()

@@ -21,6 +21,20 @@ class Assists(BaseSchema):
     lineup = relationship('MatchLineups', backref=backref('st_assists'))
 
 
+class Clearances(BaseSchema):
+    __tablename__ = "clearances"
+
+    id = Column(Integer, Sequence('clearance_id_seq', start=1000000), primary_key=True)
+
+    total = Column(Integer, CheckConstraint('total >= 0'), default=0)
+    headed = Column(Integer, CheckConstraint('headed >= 0'), default=0)
+    other = Column(Integer, CheckConstraint('other >= 0'), default=0)
+    goalline = Column(Integer, CheckConstraint('goalline >= 0'), default=0)
+
+    lineup_id = Column(Integer, ForeignKey('lineups.id'))
+    lineup = relationship('MatchLineups', backref=backref('st_clearances'))
+
+
 class Corners(BaseSchema):
     __tablename__ = 'corners'
 

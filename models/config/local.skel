@@ -29,3 +29,40 @@ class LocalConfig(Config):
     # Define initial start and end years in database.
     START_YEAR = 2000
     END_YEAR = 2018
+
+    # Define CSV data files
+    CSV_DATA_DIR = ''
+    CSV_DATA = {
+        'Overview': {
+            'Competitions': None,
+            'Clubs': None,
+            'Venues': None
+        },
+        'Personnel': {
+            'Players': None,
+            'Managers': None,
+            'Referees': None
+        },
+        'Match': {
+            'Matches': None,
+            'Lineups': None,
+            'Goals': None,
+            'Penalties': None,
+            'Bookables': None,
+            'Substitutions': None,
+            'PlayerStats': None
+        }
+    }
+
+    # Define JSON data files
+    JSON_DATA_DIR = ''
+    JSON_DATA = {
+        'Overview': {},
+        'Personnel': {},
+        'Match': {}
+    }
+
+    # ETL variables
+    VENUE_EFF_DATE = ''
+    COMPETITION_NAME = u''
+    SEASON_NAME = ''

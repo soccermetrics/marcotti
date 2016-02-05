@@ -120,6 +120,7 @@ class BodypartType(DeclEnum):
     foot = "Foot", "Foot"
     head = "Head", "Head"
     chest = "Chest", "Chest"
+    other = "Other", "Other body part"
     unknown = "Unknown", "Unknown"
 
 

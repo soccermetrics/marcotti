@@ -1,4 +1,5 @@
 description,type
+Natural Grass,Natural
 Celebration bermudagrass,Natural
 Tifway 419 bermudagrass,Natural
 Platinum TE Pasaplum,Natural
@@ -6,9 +7,11 @@ Tifdwarf bermudagrass,Natural
 Discovery bermudagrass,Natural
 Latitude 36 bermudagrass,Natural
 TifGrand bermudagrass,Natural
+Artificial Grass,Artificial
 AstroTurf Gen 1,Artificial
 AstroTurf Gen 2,Artificial
 FieldTurf,Artificial
+Hybrid Grass,Hybrid
 Desso GrassMaster,Hybrid
 EZ Hybrid Turf,Hybrid
 XtraGrass,Hybrid

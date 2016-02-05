@@ -38,8 +38,11 @@ class BaseCSV(BaseIngest):
 
     @staticmethod
     def column(field, **kwargs):
-        value = kwargs[field].strip()
-        return value if value != "" else None
+        try:
+            value = kwargs[field].strip()
+            return value if value != "" else None
+        except (AttributeError, TypeError) as ex:
+            raise ex
 
     def column_unicode(self, field, **kwargs):
         try:

@@ -7,10 +7,10 @@ from models.common.personnel import Players
 from ..base import BaseCSV
 
 
-class MatchStat(BaseCSV):
+class MatchStatIngest(BaseCSV):
 
     def __init__(self, session, competition, season):
-        super(MatchStat, self).__init__(session)
+        super(MatchStatIngest, self).__init__(session)
         self.competition = competition
         self.season = season
         self.competition_id = self.get_id(Competitions, name=self.competition)
@@ -53,7 +53,7 @@ class MatchStat(BaseCSV):
         raise NotImplementedError
 
 
-class Assists(MatchStat):
+class AssistsIngest(MatchStatIngest):
 
     model = stats.Assists
 
@@ -84,7 +84,7 @@ class Assists(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class Clearances(MatchStat):
+class ClearancesIngest(MatchStatIngest):
 
     model = stats.Clearances
 
@@ -112,7 +112,7 @@ class Clearances(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class Corners(MatchStat):
+class CornersIngest(MatchStatIngest):
 
     model = stats.Corners
 
@@ -147,7 +147,7 @@ class Corners(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class CornerCrosses(MatchStat):
+class CornerCrossesIngest(MatchStatIngest):
 
     model = stats.CornerCrosses
 
@@ -183,7 +183,7 @@ class CornerCrosses(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class Crosses(MatchStat):
+class CrossesIngest(MatchStatIngest):
 
     model = stats.Crosses
 
@@ -225,7 +225,7 @@ class Crosses(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class Defensives(MatchStat):
+class DefensivesIngest(MatchStatIngest):
 
     model = stats.Defensives
 
@@ -270,7 +270,7 @@ class Defensives(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class Discipline(MatchStat):
+class DisciplineIngest(MatchStatIngest):
 
     model = stats.Discipline
 
@@ -298,7 +298,7 @@ class Discipline(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class Duels(MatchStat):
+class DuelsIngest(MatchStatIngest):
 
     model = stats.Duels
 
@@ -333,7 +333,7 @@ class Duels(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class FoulWins(MatchStat):
+class FoulWinsIngest(MatchStatIngest):
 
     model = stats.FoulWins
 
@@ -364,7 +364,7 @@ class FoulWins(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class FreeKicks(MatchStat):
+class FreeKicksIngest(MatchStatIngest):
 
     model = stats.Freekicks
 
@@ -391,7 +391,7 @@ class FreeKicks(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class GKAllowedGoals(MatchStat):
+class GKAllowedGoalsIngest(MatchStatIngest):
 
     model = stats.GoalkeeperAllowedGoals
 
@@ -421,7 +421,7 @@ class GKAllowedGoals(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class GKSaves(MatchStat):
+class GKSavesIngest(MatchStatIngest):
 
     model = stats.GoalkeeperSaves
 
@@ -451,7 +451,7 @@ class GKSaves(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class GKAllowedShots(MatchStat):
+class GKAllowedShotsIngest(MatchStatIngest):
 
     model = stats.GoalkeeperAllowedShots
 
@@ -480,7 +480,7 @@ class GKAllowedShots(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class GKActions(MatchStat):
+class GKActionsIngest(MatchStatIngest):
 
     model = stats.GoalkeeperActions
 
@@ -517,7 +517,7 @@ class GKActions(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class GoalBodyParts(MatchStat):
+class GoalBodyPartsIngest(MatchStatIngest):
 
     model = stats.GoalBodyparts
 
@@ -548,7 +548,7 @@ class GoalBodyParts(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class GoalLocations(MatchStat):
+class GoalLocationsIngest(MatchStatIngest):
 
     model = stats.GoalLocations
 
@@ -576,7 +576,7 @@ class GoalLocations(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class GoalTotals(MatchStat):
+class GoalTotalsIngest(MatchStatIngest):
 
     model = stats.GoalTotals
 
@@ -621,7 +621,7 @@ class GoalTotals(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class GoalLineClearances(MatchStat):
+class GoalLineClearancesIngest(MatchStatIngest):
 
     model = stats.GoalLineClearances
 
@@ -650,7 +650,7 @@ class GoalLineClearances(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class KeyPlays(MatchStat):
+class ImportantPlaysIngest(MatchStatIngest):
 
     model = stats.ImportantPlays
 
@@ -682,7 +682,7 @@ class KeyPlays(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class PassDirections(MatchStat):
+class PassDirectionsIngest(MatchStatIngest):
 
     model = stats.PassDirections
 
@@ -714,7 +714,7 @@ class PassDirections(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class PassLengths(MatchStat):
+class PassLengthsIngest(MatchStatIngest):
 
     model = stats.PassLengths
 
@@ -750,7 +750,7 @@ class PassLengths(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class PassLocations(MatchStat):
+class PassLocationsIngest(MatchStatIngest):
 
     model = stats.PassLocations
 
@@ -796,7 +796,7 @@ class PassLocations(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class PassTotals(MatchStat):
+class PassTotalsIngest(MatchStatIngest):
 
     model = stats.Passes
 
@@ -843,7 +843,7 @@ class PassTotals(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class PenaltyActions(MatchStat):
+class PenaltyActionsIngest(MatchStatIngest):
 
     model = stats.PenaltyActions
 
@@ -874,7 +874,7 @@ class PenaltyActions(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class ShotBodyParts(MatchStat):
+class ShotBodyPartsIngest(MatchStatIngest):
 
     model = stats.ShotBodyparts
 
@@ -911,7 +911,7 @@ class ShotBodyParts(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class ShotBlocks(MatchStat):
+class ShotBlocksIngest(MatchStatIngest):
 
     model = stats.ShotBlocks
 
@@ -951,7 +951,7 @@ class ShotBlocks(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class ShotLocations(MatchStat):
+class ShotLocationsIngest(MatchStatIngest):
 
     model = stats.ShotLocations
 
@@ -983,7 +983,7 @@ class ShotLocations(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class ShotPlays(MatchStat):
+class ShotPlaysIngest(MatchStatIngest):
 
     model = stats.ShotPlays
 
@@ -1034,7 +1034,7 @@ class ShotPlays(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class ShotTotals(MatchStat):
+class ShotTotalsIngest(MatchStatIngest):
 
     model = stats.ShotTotals
 
@@ -1063,7 +1063,7 @@ class ShotTotals(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class Tackles(MatchStat):
+class TacklesIngest(MatchStatIngest):
 
     model = stats.Tackles
 
@@ -1093,7 +1093,7 @@ class Tackles(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class Throwins(MatchStat):
+class ThrowinsIngest(MatchStatIngest):
 
     model = stats.Throwins
 
@@ -1120,7 +1120,7 @@ class Throwins(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class Touches(MatchStat):
+class TouchesIngest(MatchStatIngest):
 
     model = stats.Touches
 
@@ -1160,7 +1160,7 @@ class Touches(MatchStat):
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
 
 
-class TouchLocations(MatchStat):
+class TouchLocationsIngest(MatchStatIngest):
 
     model = stats.TouchLocations
 

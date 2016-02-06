@@ -216,3 +216,17 @@ class ClubPenaltyShootoutOpeners(ClubMixin, ClubSchema, mce.PenaltyShootoutOpene
 
     def __unicode__(self):
         return u"<ClubPenaltyShootoutOpener(match={}, team={})>".format(self.match_id, self.team.name)
+
+
+class ClubMap(ClubSchema):
+    __tablename__ = "club_mapper"
+
+    local_id = Column(Integer, ForeignKey('clubs.id'), primary_key=True)
+    remote_id = Column(Integer, nullable=False, primary_key=True)
+    supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
+
+    supplier = relationship('Suppliers', backref=backref('clubs'))
+
+    def __repr__(self):
+        return "<ClubMap(local={}, remote={}, supplier={})>".format(
+            self.local_id, self.remote_id, self.supplier.name)

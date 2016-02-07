@@ -15,10 +15,10 @@ class BaseIngest(object):
 
         try:
             record_id = self.session.query(model).filter_by(**conditions).one().id
-        except NoResultFound as ex:
+        except NoResultFound:
             print "{} has no records in Marcotti database for: {}".format(model.__name__, conditions)
             return None
-        except MultipleResultsFound as ex:
+        except MultipleResultsFound:
             print "{} has multiple records in Marcotti database for: {}".format(model.__name__, conditions)
             return None
         return record_id
@@ -112,5 +112,3 @@ def get_local_handles(prefix, pattern):
     for filename in glob.glob(glob_pattern):
         with open(filename) as fh:
             yield fh
-
-

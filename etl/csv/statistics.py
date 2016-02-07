@@ -1,20 +1,19 @@
 from models.common import statistics as stats
-from models.club import Clubs, ClubLeagueMatches
+from models.club import ClubLeagueMatches, ClubMap
+from models.common.suppliers import Suppliers, PlayerMap
 from models.common.match import MatchLineups
 from models.common.overview import Competitions, Seasons
-from models.common.personnel import Players
 
 from ..base import BaseCSV
 
 
 class MatchStatIngest(BaseCSV):
 
-    def __init__(self, session, competition, season):
+    def __init__(self, session, competition, season, supplier):
         super(MatchStatIngest, self).__init__(session)
-        self.competition = competition
-        self.season = season
-        self.competition_id = self.get_id(Competitions, name=self.competition)
-        self.season_id = self.get_id(Seasons, name=self.season)
+        self.competition_id = self.get_id(Competitions, name=competition)
+        self.season_id = self.get_id(Seasons, name=season)
+        self.supplier_id = self.get_id(Suppliers, name=supplier)
         if any(var is None for var in [self.competition_id, self.season_id]):
             raise Exception("Fatal Error: Competition and/or Season not in Marcotti database!")
 
@@ -30,19 +29,19 @@ class MatchStatIngest(BaseCSV):
 
     def identify_player(self, **keys):
         """Identify lineup player corresponding to row of stat data."""
-        first_name = self.column_unicode("First Name", **keys) or u''
-        last_name = self.column_unicode("Last Name", **keys)
+        player_id_remote = self.column_int("Player ID", **keys)
         match_date = self.column("Date", **keys)
         locale = self.column("Venue", **keys)
-        player_team = self.column_unicode("Team", **keys)
-        opposing_team = self.column_unicode("Opposition", **keys)
+        player_team_id_remote = self.column_int("Team Id", **keys)
+        opposing_team_id_remote = self.column_int("Opposition Id", **keys)
 
-        player_name = ' '.join([first_name, last_name]).strip()
-        home_team, away_team = (player_team, opposing_team) if locale == "Home" else (opposing_team, player_team)
+        player_id = self.get_id(PlayerMap, remote_id=player_id_remote, supplier_id=self.supplier_id)
+        player_team_id = self.get_id(ClubMap, remote_id=player_team_id_remote, supplier_id=self.supplier_id)
+        opposing_team_id = self.get_id(ClubMap, remote_id=opposing_team_id_remote, supplier_id=self.supplier_id)
 
-        home_team_id = self.get_id(Clubs, name=home_team)
-        away_team_id = self.get_id(Clubs, name=away_team)
-        player_id = self.get_id(Players, full_name=player_name)
+        home_team_id, away_team_id = (player_team_id, opposing_team_id) \
+            if locale == "Home" else (opposing_team_id, player_team_id)
+
         match_id = self.get_id(ClubLeagueMatches, home_team_id=home_team_id,
                                away_team_id=away_team_id, date=match_date)
         lineup_id = self.get_id(MatchLineups, match_id=match_id, player_id=player_id)

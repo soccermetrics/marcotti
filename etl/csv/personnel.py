@@ -2,6 +2,7 @@ from datetime import date
 
 from sqlalchemy.orm.exc import NoResultFound
 
+from models.common.suppliers import Suppliers, PlayerMap, PositionMap
 from models.common.overview import Countries
 from models.common.personnel import Persons, Managers, Referees, Players, Positions, PlayerHistory
 from models.common.enums import NameOrderType
@@ -31,11 +32,15 @@ class PersonIngest(BaseCSV):
 
 class PlayerIngest(PersonIngest):
 
+    def __init__(self, session, supplier):
+        super(PlayerIngest, self).__init__(session)
+        self.supplier_id = self.get_id(Suppliers, name=supplier)
+
     def parse_file(self, rows):
-        insertion_list = []
         print "Ingesting Players..."
         for keys in rows:
             person_tuple = self.get_person_data(**keys)
+            remote_id = self.column_int("ID", **keys)
             position = self.column_unicode("Position", **keys)
             country_name = self.column_unicode("Country", **keys)
 
@@ -54,16 +59,13 @@ class PlayerIngest(PersonIngest):
             if not self.record_exists(Players, **person_tuple):
                 try:
                     person_id = self.session.query(Persons).filter_by(**person_tuple).first().id
-                    insertion_list.append(Players(person_id=person_id, position_id=position_id))
+                    player_record = Players(person_id=person_id, position_id=position_id)
                 except NoResultFound:
-                    insertion_list.append(Players(country_id=country_id, position_id=position_id,
-                                                  **person_tuple))
-            if len(insertion_list) == 100:
-                self.session.add_all(insertion_list)
+                    player_record = Players(country_id=country_id, position_id=position_id, **person_tuple)
+                self.session.add(player_record)
                 self.session.commit()
-                insertion_list = []
-        if len(insertion_list) != 0:
-            self.session.add_all(insertion_list)
+                self.session.add(PlayerMap(id=player_record.id, remote_id=remote_id,
+                                           supplier_id=self.supplier_id))
         print "Player Ingestion complete."
 
 
@@ -90,6 +92,7 @@ class PlayerHistoryIngest(BaseCSV):
                     self.session.commit()
                     insertion_list = []
         self.session.add_all(insertion_list)
+        print "Player History Ingestion complete."
 
 
 class ManagerIngest(PersonIngest):
@@ -115,7 +118,7 @@ class ManagerIngest(PersonIngest):
                     insertion_list.append(Managers(country_id=country_id, **person_tuple))
         if len(insertion_list) != 0:
             self.session.add_all(insertion_list)
-        print "Player Ingestion complete."
+        print "Manager Ingestion complete."
 
 
 class RefereeIngest(PersonIngest):
@@ -141,7 +144,9 @@ class RefereeIngest(PersonIngest):
                     insertion_list.append(Referees(country_id=country_id, **person_tuple))
         if len(insertion_list) != 0:
             self.session.add_all(insertion_list)
-        print "Player Ingestion complete."
+        print "Referee Ingestion complete."
+
+
 class PositionMapIngest(BaseCSV):
 
     def __init__(self, session, supplier):

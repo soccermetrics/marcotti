@@ -142,3 +142,20 @@ class RefereeIngest(PersonIngest):
         if len(insertion_list) != 0:
             self.session.add_all(insertion_list)
         print "Player Ingestion complete."
+class PositionMapIngest(BaseCSV):
+
+    def __init__(self, session, supplier):
+        super(PositionMapIngest, self).__init__(session)
+        self.supplier_id = self.get_id(Suppliers, name=supplier)
+
+    def parse_file(self, rows):
+        for keys in rows:
+            remote_id = self.column_int("ID", **keys)
+            position = self.column_unicode("Position", **keys)
+
+            local_id = self.get_id(Positions, name=position)
+
+            mapper_dict = dict(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
+            if not self.record_exists(PositionMap, **mapper_dict):
+                self.session.add(PositionMap(**mapper_dict))
+        print "Position Mapper Ingest complete."

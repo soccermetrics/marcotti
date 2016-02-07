@@ -4,7 +4,7 @@ from sqlalchemy.engine import create_engine
 from sqlalchemy.orm.session import Session
 
 from etl import get_local_handles, ingest_feeds, create_seasons
-from etl.csv import validation
+from etl.ecsv import validation
 
 
 class Marcotti(object):

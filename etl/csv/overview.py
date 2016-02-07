@@ -1,17 +1,33 @@
 from datetime import date
 
-from models.club import Clubs
+from models.club import Clubs, ClubMap
+from models.common.suppliers import Suppliers, CompetitionMap
 from models.common.overview import (DomesticCompetitions, InternationalCompetitions,
                                     Venues, VenueHistory, Surfaces, Countries, Timezones)
 from models.common.enums import ConfederationType
 from ..base import BaseCSV
 
 
-class CompetitionIngest(BaseCSV):
+class SupplierIngest(BaseCSV):
 
     def parse_file(self, rows):
-        insertion_list = []
         for keys in rows:
+            vendor_name = self.column("Name", **keys)
+
+            supplier_tuple = dict(name=vendor_name)
+            if vendor_name is not None and not self.record_exists(Suppliers, **supplier_tuple):
+                self.session.add(Suppliers(**supplier_tuple))
+
+
+class CompetitionIngest(BaseCSV):
+
+    def __init__(self, session, supplier):
+        super(CompetitionIngest, self).__init__(session)
+        self.supplier_id = self.get_id(Suppliers, name=supplier)
+
+    def parse_file(self, rows):
+        for keys in rows:
+            remote_id = self.column_int("ID", **keys)
             name = self.column_unicode("Name", **keys)
             level = self.column_int("Level", **keys)
             country_name = self.column_unicode("Country", **keys)
@@ -24,30 +40,32 @@ class CompetitionIngest(BaseCSV):
                 if country_name is not None:
                     country_id = self.get_id(Countries, name=country_name)
                     if country_id is not None:
-                        insertion_list.append(DomesticCompetitions(name=name, level=level, country_id=country_id))
+                        comp_record = DomesticCompetitions(name=name, level=level, country_id=country_id)
                     else:
                         print "Cannot insert Competition record: Country not found"
                         continue
                 elif confederation_name is not None:
                     confederation = ConfederationType.from_string(confederation_name)
-                    insertion_list.append(InternationalCompetitions(name=name, level=level,
-                                                                    confederation=confederation))
+                    comp_record = InternationalCompetitions(name=name, level=level, confederation=confederation)
                 else:
                     print "Cannot insert Competition record: Neither Country nor Confederation defined"
                     continue
-                if len(insertion_list) == 50:
-                    self.session.add_all(insertion_list)
-                    self.session.commit()
-                    insertion_list = []
-        if len(insertion_list) != 0:
-            self.session.add_all(insertion_list)
+                self.session.add(comp_record)
+                self.session.commit()
+                self.session.add(CompetitionMap(local_id=comp_record.id, remote_id=remote_id,
+                                                supplier_id=self.supplier_id))
+        print "Competition Ingestion complete."
 
 
 class ClubIngest(BaseCSV):
 
+    def __init__(self, session, supplier):
+        super(ClubIngest, self).__init__(session)
+        self.supplier_id = self.get_id(Suppliers, name=supplier)
+
     def parse_file(self, rows):
-        insertion_list = []
         for keys in rows:
+            remote_id = self.column_int("ID", **keys)
             name = self.column_unicode("Name", **keys)
             country_name = self.column_unicode("Country", **keys)
 
@@ -58,13 +76,12 @@ class ClubIngest(BaseCSV):
                 country_id = self.get_id(Countries, name=country_name)
                 club_dict = dict(name=name, country_id=country_id)
                 if country_id is not None and not self.record_exists(Clubs, **club_dict):
-                    insertion_list.append(Clubs(**club_dict))
-                    if len(insertion_list) == 50:
-                        self.session.add_all(insertion_list)
-                        self.session.commit()
-                        insertion_list = []
-        if len(insertion_list) != 0:
-            self.session.add_all(insertion_list)
+                    club_record = Clubs(**club_dict)
+                    self.session.add(club_record)
+                    self.session.commit()
+                    self.session.add(ClubMap(id=club_record.id, remote_id=remote_id,
+                                             supplier_id=self.supplier_id))
+        print "Club Ingestion complete."
 
 
 class VenueIngest(BaseCSV):

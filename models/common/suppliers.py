@@ -17,7 +17,7 @@ class Suppliers(BaseSchema):
 class CompetitionMap(BaseSchema):
     __tablename__ = "competition_mapper"
 
-    local_id = Column(Integer, ForeignKey('competition.id'), primary_key=True)
+    id = Column(Integer, ForeignKey('competition.id'), primary_key=True)
     remote_id = Column(Integer, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
@@ -25,13 +25,13 @@ class CompetitionMap(BaseSchema):
 
     def __repr__(self):
         return "<CompetitionMap(local={}, remote={}, supplier={})>".format(
-            self.local_id, self.remote_id, self.supplier.name)
+            self.id, self.remote_id, self.supplier.name)
 
 
 class PlayerMap(BaseSchema):
     __tablename__ = "player_mapper"
 
-    local_id = Column(Integer, ForeignKey('players.id'), primary_key=True)
+    id = Column(Integer, ForeignKey('players.id'), primary_key=True)
     remote_id = Column(Integer, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
@@ -39,13 +39,13 @@ class PlayerMap(BaseSchema):
 
     def __repr__(self):
         return "<PlayerMap(local={}, remote={}, supplier={})>".format(
-            self.local_id, self.remote_id, self.supplier.name)
+            self.id, self.remote_id, self.supplier.name)
 
 
 class PositionMap(BaseSchema):
     __tablename__ = "position_mapper"
 
-    local_id = Column(Integer, ForeignKey('positions.id'), primary_key=True)
+    id = Column(Integer, ForeignKey('positions.id'), primary_key=True)
     remote_id = Column(Integer, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
@@ -53,4 +53,4 @@ class PositionMap(BaseSchema):
 
     def __repr__(self):
         return "<PositionMap(local={}, remote={}, supplier={})>".format(
-            self.local_id, self.remote_id, self.supplier.name)
+            self.id, self.remote_id, self.supplier.name)

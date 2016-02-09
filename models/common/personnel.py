@@ -28,7 +28,7 @@ class Persons(BaseSchema):
     """
     __tablename__ = 'persons'
 
-    id = Column(Integer, Sequence('person_id_seq', start=100000), primary_key=True)
+    person_id = Column(Integer, Sequence('person_id_seq', start=100000), primary_key=True)
     first_name = Column(Unicode(40), nullable=False)
     middle_name = Column(Unicode(40))
     last_name = Column(Unicode(40), nullable=False)
@@ -147,7 +147,7 @@ class Players(Persons):
     __mapper_args__ = {'polymorphic_identity': 'players'}
 
     id = Column(Integer, Sequence('player_id_seq', start=100000), primary_key=True)
-    person_id = Column(Integer, ForeignKey('persons.id'))
+    person_id = Column(Integer, ForeignKey('persons.person_id'))
 
     position_id = Column(Integer, ForeignKey('positions.id'))
     position = relationship('Positions', backref=backref('players'))
@@ -196,7 +196,7 @@ class Managers(Persons):
     __mapper_args__ = {'polymorphic_identity': 'managers'}
 
     id = Column(Integer, Sequence('manager_id_seq', start=10000), primary_key=True)
-    person_id = Column(Integer, ForeignKey('persons.id'))
+    person_id = Column(Integer, ForeignKey('persons.person_id'))
 
     def __repr__(self):
         return u"<Manager(name={}, DOB={}, country={})>".format(
@@ -217,7 +217,7 @@ class Referees(Persons):
     __mapper_args__ = {'polymorphic_identity': 'referees'}
 
     id = Column(Integer, Sequence('referee_id_seq', start=10000), primary_key=True)
-    person_id = Column(Integer, ForeignKey('persons.id'))
+    person_id = Column(Integer, ForeignKey('persons.person_id'))
 
     def __repr__(self):
         return u"<Referee(name={}, DOB={}, country={})>".format(

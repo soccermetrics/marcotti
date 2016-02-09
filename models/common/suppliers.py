@@ -17,7 +17,7 @@ class Suppliers(BaseSchema):
 class CompetitionMap(BaseSchema):
     __tablename__ = "competition_mapper"
 
-    id = Column(Integer, ForeignKey('competition.id'), primary_key=True)
+    id = Column(Integer, ForeignKey('competitions.id'), primary_key=True)
     remote_id = Column(Integer, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 

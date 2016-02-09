@@ -1,7 +1,7 @@
-from interface import Marcotti
-from models.config.local import LocalConfig
 from etl import get_local_handles, ingest_feeds
 from etl.ecsv import CSV_ETL_CLASSES
+from local import LocalConfig
+from interface import Marcotti
 
 
 if __name__ == "__main__":

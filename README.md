@@ -34,7 +34,7 @@ Installation instructions:
         $ mkvirtualenv marcotti
         (marcotti) $ pip install -r requirements.txt
     
-2. Copy `models\config\local.skel` to `models\config\local.py` and populate it.  Alternative configuration
+2. Copy `local.skel` to `local.py` and populate it.  Alternative configuration
    settings can be created by subclassing `LocalConfig` and overwriting the attributes.
     
    ```python
@@ -62,6 +62,7 @@ The common data models are classified into five categories:
 * **Match**: High-level data about the match
 * **Match Events**: The main events of the football match
 * **Statistics**: Summary statistics of participating players in the football match
+* **Suppliers**: Mapping data records from outside sources to Marcotti database
 
 ## Documentation
 

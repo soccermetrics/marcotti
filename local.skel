@@ -5,7 +5,7 @@ sets database variables.
 This file must be copied to local.py so that the configuration
 class can find the settings.
 """
-from models.config import Config
+from config import Config
 
 
 class LocalConfig(Config):

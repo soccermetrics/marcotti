@@ -53,7 +53,7 @@ class Marcotti(object):
 
 if __name__ == "__main__":
     from models.club import ClubSchema
-    from models.config.local import LocalConfig
+    from local import LocalConfig
 
     marcotti = Marcotti(LocalConfig())
     marcotti.create_db(ClubSchema)

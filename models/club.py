@@ -5,6 +5,7 @@ from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declared_attr, declarative_base
 
 from models.common import BaseSchema
+import models.common.suppliers as mcs
 import models.common.overview as mco
 import models.common.personnel as mcp
 import models.common.match as mcm

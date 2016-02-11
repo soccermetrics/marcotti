@@ -108,7 +108,7 @@ def get_local_handles(prefix, pattern):
     :param pattern: Text pattern common to group of files.
     :type pattern: string
     """
-    glob_pattern = os.path.join(prefix, "*%s".format(pattern))
+    glob_pattern = os.path.join(prefix, "{}".format(pattern))
     for filename in glob.glob(glob_pattern):
-        with open(filename) as fh:
+        with open(filename, 'r') as fh:
             yield fh

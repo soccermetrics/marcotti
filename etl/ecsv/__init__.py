@@ -6,12 +6,16 @@ import statistics
 
 
 CSV_ETL_CLASSES = {
+    'Supplier': {
+        'Supplier': overview.SupplierIngest,
+    },
     'Overview': {
         'Competitions': overview.CompetitionIngest,
         'Clubs': overview.ClubIngest,
         'Venues': overview.VenueIngest
     },
     'Personnel': {
+        'Positions': personnel.PositionMapIngest,
         'Players': personnel.PlayerIngest,
         'Managers': personnel.ManagerIngest,
         'Referees': personnel.RefereeIngest

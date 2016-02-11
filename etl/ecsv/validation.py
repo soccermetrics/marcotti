@@ -69,7 +69,7 @@ class SurfaceIngest(BaseCSV):
         for keys in rows:
             surface_name = "{description}".format(**keys).strip().decode('utf-8')
             surface_type = "{type}".format(**keys).strip()
-            if self.record_exists(Surfaces, description=surface_name):
+            if not self.record_exists(Surfaces, description=surface_name):
                 insertion_list.append(Surfaces(description=surface_name, type=SurfaceType.from_string(surface_type)))
         if len(insertion_list) != 0:
             self.session.add_all(insertion_list)

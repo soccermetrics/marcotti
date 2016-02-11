@@ -47,7 +47,6 @@ CSV_ETL_CLASSES = {
             statistics.GoalLocationsIngest,
             statistics.GoalTotalsIngest,
             statistics.ImportantPlaysIngest,
-            statistics.MatchStatIngest,
             statistics.PassDirectionsIngest,
             statistics.PassLengthsIngest,
             statistics.PassLocationsIngest,

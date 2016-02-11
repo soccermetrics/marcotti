@@ -24,7 +24,7 @@ class BaseIngest(object):
         return record_id
 
     def record_exists(self, model, **conditions):
-        return self.session.query(model).filter_by(**conditions).count() == 0
+        return self.session.query(model).filter_by(**conditions).count() != 0
 
     def load_feed(self, handle):
         raise NotImplementedError

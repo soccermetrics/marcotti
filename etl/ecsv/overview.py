@@ -11,12 +11,14 @@ from ..base import BaseCSV
 class SupplierIngest(BaseCSV):
 
     def parse_file(self, rows):
+        print "Ingesting Suppliers..."
         for keys in rows:
-            vendor_name = self.column("Name", **keys)
+            vendor_name = self.column_unicode("Name", **keys)
 
             supplier_tuple = dict(name=vendor_name)
             if vendor_name is not None and not self.record_exists(Suppliers, **supplier_tuple):
                 self.session.add(Suppliers(**supplier_tuple))
+        self.session.commit()
 
 
 class CompetitionIngest(BaseCSV):
@@ -26,6 +28,7 @@ class CompetitionIngest(BaseCSV):
         self.supplier_id = self.get_id(Suppliers, name=supplier)
 
     def parse_file(self, rows):
+        print "Ingesting Competitions..."
         for keys in rows:
             remote_id = self.column_int("ID", **keys)
             name = self.column_unicode("Name", **keys)
@@ -39,21 +42,29 @@ class CompetitionIngest(BaseCSV):
             else:
                 if country_name is not None:
                     country_id = self.get_id(Countries, name=country_name)
-                    if country_id is not None:
-                        comp_record = DomesticCompetitions(name=name, level=level, country_id=country_id)
+                    comp_dict = dict(name=name, level=level, country_id=country_id)
+                    if country_id is not None and not self.record_exists(DomesticCompetitions, **comp_dict):
+                        comp_record = DomesticCompetitions(**comp_dict)
                     else:
-                        print "Cannot insert Competition record: Country not found"
+                        print "Cannot insert Competition record: Country not found or Record exists"
                         continue
                 elif confederation_name is not None:
-                    confederation = ConfederationType.from_string(confederation_name)
-                    comp_record = InternationalCompetitions(name=name, level=level, confederation=confederation)
+                    try:
+                        confederation = ConfederationType.from_string(confederation_name)
+                        comp_dict = dict(name=name, level=level, confederation=confederation)
+                        if not self.record_exists(InternationalCompetitions, **comp_dict):
+                            comp_record = InternationalCompetitions(**comp_dict)
+                    except ValueError:
+                        print "Cannot insert Competition record: Confederation not found or Record exists"
+                        continue
                 else:
                     print "Cannot insert Competition record: Neither Country nor Confederation defined"
                     continue
                 self.session.add(comp_record)
                 self.session.commit()
-                self.session.add(CompetitionMap(local_id=comp_record.id, remote_id=remote_id,
+                self.session.add(CompetitionMap(id=comp_record.id, remote_id=remote_id,
                                                 supplier_id=self.supplier_id))
+        self.session.commit()
         print "Competition Ingestion complete."
 
 
@@ -64,6 +75,7 @@ class ClubIngest(BaseCSV):
         self.supplier_id = self.get_id(Suppliers, name=supplier)
 
     def parse_file(self, rows):
+        print "Ingesting Clubs..."
         for keys in rows:
             remote_id = self.column_int("ID", **keys)
             name = self.column_unicode("Name", **keys)
@@ -81,13 +93,14 @@ class ClubIngest(BaseCSV):
                     self.session.commit()
                     self.session.add(ClubMap(id=club_record.id, remote_id=remote_id,
                                              supplier_id=self.supplier_id))
+        self.session.commit()
         print "Club Ingestion complete."
 
 
 class VenueIngest(BaseCSV):
 
     def __init__(self, session, eff_date):
-        super(VenueIngest).__init__(session)
+        super(VenueIngest, self).__init__(session)
         self.effective_date = date(*tuple(int(x) for x in eff_date.split('-')))
 
     def parse_file(self, rows):
@@ -102,7 +115,7 @@ class VenueIngest(BaseCSV):
             longitude = self.column_float("Longitude", **keys)
             altitude = self.column_int("Altitude", **keys)
             config_date = self.column("Config Date", **keys)
-            surface_name = self.column("Surface", **keys)
+            surface_name = self.column_unicode("Surface", **keys)
             length = self.column_int("Length", **keys)
             width = self.column_int("Width", **keys)
             capacity = self.column_int("Capacity", **keys)
@@ -132,4 +145,5 @@ class VenueIngest(BaseCSV):
                             [length, width, capacity, seats, surface_id])
                             if value is not None}
                     self.session.add(VenueHistory(venue_id=venue_record.id, date=effective_date, **history_dict))
+        self.session.commit()
         print "Venue Ingestion complete."

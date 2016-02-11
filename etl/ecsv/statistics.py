@@ -81,6 +81,7 @@ class AssistsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class ClearancesIngest(MatchStatIngest):
@@ -109,6 +110,7 @@ class ClearancesIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class CornersIngest(MatchStatIngest):
@@ -144,6 +146,7 @@ class CornersIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class CornerCrossesIngest(MatchStatIngest):
@@ -180,6 +183,7 @@ class CornerCrossesIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class CrossesIngest(MatchStatIngest):
@@ -222,6 +226,7 @@ class CrossesIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class DefensivesIngest(MatchStatIngest):
@@ -267,6 +272,7 @@ class DefensivesIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class DisciplineIngest(MatchStatIngest):
@@ -295,6 +301,7 @@ class DisciplineIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class DuelsIngest(MatchStatIngest):
@@ -330,6 +337,7 @@ class DuelsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class FoulWinsIngest(MatchStatIngest):
@@ -361,6 +369,7 @@ class FoulWinsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class FreeKicksIngest(MatchStatIngest):
@@ -388,6 +397,7 @@ class FreeKicksIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class GKAllowedGoalsIngest(MatchStatIngest):
@@ -418,6 +428,7 @@ class GKAllowedGoalsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class GKSavesIngest(MatchStatIngest):
@@ -448,6 +459,7 @@ class GKSavesIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class GKAllowedShotsIngest(MatchStatIngest):
@@ -470,13 +482,14 @@ class GKAllowedShotsIngest(MatchStatIngest):
                         "lineup_id": lineup_id,
                         "insidebox": insidebox,
                         "outsidebox": outsidebox,
-                        "bigchances": bigchances})
+                        "dangerous": bigchances})
                     self.session.add(stat_record)
                     dcounter += 1
             counter += 1
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class GKActionsIngest(MatchStatIngest):
@@ -505,15 +518,16 @@ class GKActionsIngest(MatchStatIngest):
                         "catches": catches,
                         "punches": punches,
                         "drops": drops,
-                        "crosses_noclaim": crosses_noclaim,
-                        "distrib_success": distrib_success,
-                        "distrib_failure": distrib_failure})
+                        "crosses_unclaimed": crosses_noclaim,
+                        "distribution_success": distrib_success,
+                        "distribution_failure": distrib_failure})
                     self.session.add(stat_record)
                     dcounter += 1
             counter += 1
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class GoalBodyPartsIngest(MatchStatIngest):
@@ -545,6 +559,7 @@ class GoalBodyPartsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class GoalLocationsIngest(MatchStatIngest):
@@ -573,6 +588,7 @@ class GoalLocationsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class GoalTotalsIngest(MatchStatIngest):
@@ -618,6 +634,7 @@ class GoalTotalsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class GoalLineClearancesIngest(MatchStatIngest):
@@ -647,6 +664,7 @@ class GoalLineClearancesIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class ImportantPlaysIngest(MatchStatIngest):
@@ -679,6 +697,7 @@ class ImportantPlaysIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class PassDirectionsIngest(MatchStatIngest):
@@ -701,16 +720,17 @@ class PassDirectionsIngest(MatchStatIngest):
                 if not self.record_exists(self.model, lineup_id=lineup_id):
                     stat_record = self.model(**{
                         "lineup_id": lineup_id,
-                        "pass_forward": pass_forward,
-                        "pass_backward": pass_backward,
-                        "pass_left": pass_left,
-                        "pass_right": pass_right})
+                        "forward": pass_forward,
+                        "backward": pass_backward,
+                        "left_side": pass_left,
+                        "right_side": pass_right})
                     self.session.add(stat_record)
                     dcounter += 1
             counter += 1
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class PassLengthsIngest(MatchStatIngest):
@@ -747,6 +767,7 @@ class PassLengthsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class PassLocationsIngest(MatchStatIngest):
@@ -793,6 +814,7 @@ class PassLocationsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class PassTotalsIngest(MatchStatIngest):
@@ -832,7 +854,7 @@ class PassTotalsIngest(MatchStatIngest):
                         "layoffs_success": layoffs_success,
                         "layoffs_failure": layoffs_failure,
                         "throughballs": throughballs,
-                        "keypasses": keypasses})
+                        "important_passes": keypasses})
                     self.session.add(stat_record)
                     dcounter += 1
 
@@ -840,6 +862,7 @@ class PassTotalsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class PenaltyActionsIngest(MatchStatIngest):
@@ -871,6 +894,7 @@ class PenaltyActionsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class ShotBodyPartsIngest(MatchStatIngest):
@@ -908,6 +932,7 @@ class ShotBodyPartsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class ShotBlocksIngest(MatchStatIngest):
@@ -948,6 +973,7 @@ class ShotBlocksIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class ShotLocationsIngest(MatchStatIngest):
@@ -980,6 +1006,7 @@ class ShotLocationsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class ShotPlaysIngest(MatchStatIngest):
@@ -1031,6 +1058,7 @@ class ShotPlaysIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class ShotTotalsIngest(MatchStatIngest):
@@ -1053,13 +1081,14 @@ class ShotTotalsIngest(MatchStatIngest):
                         "lineup_id": lineup_id,
                         "ontarget": ontarget,
                         "offtarget": offtarget,
-                        "bigchances": bigchances})
+                        "dangerous": bigchances})
                     self.session.add(stat_record)
                     dcounter += 1
             counter += 1
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class TacklesIngest(MatchStatIngest):
@@ -1090,6 +1119,7 @@ class TacklesIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class ThrowinsIngest(MatchStatIngest):
@@ -1109,14 +1139,15 @@ class ThrowinsIngest(MatchStatIngest):
                 if not self.record_exists(self.model, lineup_id=lineup_id):
                     stat_record = self.model(**{
                         "lineup_id": lineup_id,
-                        "teamplayer": teamplayer,
-                        "oppplayer": oppplayer})
+                        "to_teamplayer": teamplayer,
+                        "to_oppplayer": oppplayer})
                     self.session.add(stat_record)
                     dcounter += 1
             counter += 1
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class TouchesIngest(MatchStatIngest):
@@ -1157,6 +1188,7 @@ class TouchesIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()
 
 
 class TouchLocationsIngest(MatchStatIngest):
@@ -1177,7 +1209,7 @@ class TouchLocationsIngest(MatchStatIngest):
                 if not self.record_exists(self.model, lineup_id=lineup_id):
                     stat_record = self.model(**{
                         "lineup_id": lineup_id,
-                        "finalthird": finalthird,
+                        "final_third": finalthird,
                         "oppbox": oppbox,
                         "oppsix": oppsix})
                     self.session.add(stat_record)
@@ -1186,3 +1218,4 @@ class TouchLocationsIngest(MatchStatIngest):
             if not counter % 500:
                 print "{} records".format(counter)
         print "{} {} records from {} lineup records".format(dcounter, self.model.__name__, counter)
+        self.session.commit()

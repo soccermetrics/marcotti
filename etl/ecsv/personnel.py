@@ -37,6 +37,7 @@ class PlayerIngest(PersonIngest):
         self.supplier_id = self.get_id(Suppliers, name=supplier)
 
     def parse_file(self, rows):
+        inserts = 0
         print "Ingesting Players..."
         for keys in rows:
             person_tuple = self.get_person_data(**keys)
@@ -58,12 +59,15 @@ class PlayerIngest(PersonIngest):
 
             if not self.record_exists(Players, **person_tuple):
                 try:
-                    person_id = self.session.query(Persons).filter_by(**person_tuple).first().id
+                    person_id = self.session.query(Persons).filter_by(**person_tuple).first().person_id
                     player_record = Players(person_id=person_id, position_id=position_id)
-                except NoResultFound:
+                except AttributeError:
                     player_record = Players(country_id=country_id, position_id=position_id, **person_tuple)
                 self.session.add(player_record)
                 self.session.commit()
+                inserts += 1
+                if inserts % 50 == 0:
+                    print "{} players inserted".format(inserts)
                 self.session.add(PlayerMap(id=player_record.id, remote_id=remote_id,
                                            supplier_id=self.supplier_id))
         print "Player Ingestion complete."
@@ -112,9 +116,9 @@ class ManagerIngest(PersonIngest):
 
             if not self.record_exists(Managers, **person_tuple):
                 try:
-                    person_id = self.session.query(Persons).filter_by(**person_tuple).first().id
+                    person_id = self.session.query(Persons).filter_by(**person_tuple).first().person_id
                     insertion_list.append(Managers(person_id=person_id))
-                except NoResultFound:
+                except AttributeError:
                     insertion_list.append(Managers(country_id=country_id, **person_tuple))
         if len(insertion_list) != 0:
             self.session.add_all(insertion_list)
@@ -125,7 +129,7 @@ class RefereeIngest(PersonIngest):
 
     def parse_file(self, rows):
         insertion_list = []
-        print "Ingesting Managers..."
+        print "Ingesting Referees..."
         for keys in rows:
             person_tuple = self.get_person_data(**keys)
             country_name = self.column_unicode("Country", **keys)
@@ -138,9 +142,9 @@ class RefereeIngest(PersonIngest):
 
             if not self.record_exists(Referees, **person_tuple):
                 try:
-                    person_id = self.session.query(Persons).filter_by(**person_tuple).first().id
+                    person_id = self.session.query(Persons).filter_by(**person_tuple).first().person_id
                     insertion_list.append(Referees(person_id=person_id))
-                except NoResultFound:
+                except AttributeError:
                     insertion_list.append(Referees(country_id=country_id, **person_tuple))
         if len(insertion_list) != 0:
             self.session.add_all(insertion_list)
@@ -154,6 +158,7 @@ class PositionMapIngest(BaseCSV):
         self.supplier_id = self.get_id(Suppliers, name=supplier)
 
     def parse_file(self, rows):
+        print "Ingesting Positions..."
         for keys in rows:
             remote_id = self.column_int("ID", **keys)
             position = self.column_unicode("Position", **keys)
@@ -163,4 +168,5 @@ class PositionMapIngest(BaseCSV):
             mapper_dict = dict(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
             if not self.record_exists(PositionMap, **mapper_dict):
                 self.session.add(PositionMap(**mapper_dict))
+        self.session.commit()
         print "Position Mapper Ingest complete."

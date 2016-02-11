@@ -19,6 +19,7 @@ class MatchIngest(BaseCSV):
         self.season = season
 
     def parse_file(self, rows):
+        inserts = 0
         insertion_list = []
         print "Ingesting Matches..."
         for keys in rows:
@@ -72,8 +73,12 @@ class MatchIngest(BaseCSV):
                 if len(insertion_list) == 50:
                     self.session.add_all(insertion_list)
                     self.session.commit()
+                    inserts += 50
+                    print "{} matches inserted".format(inserts)
+                    insertion_list = []
         if len(insertion_list) != 0:
             self.session.add_all(insertion_list)
+            self.session.commit()
         print "Match Ingestion complete."
 
 
@@ -86,16 +91,17 @@ class MatchLineupIngest(BaseCSV):
         self.season = season
 
     def parse_file(self, rows):
+        inserts = 0
         insertion_list = []
         print "Ingesting Match Lineups..."
         for keys in rows:
             matchday = self.column_int("Matchday", **keys)
-            home_team = self.column_unicode("Home Team")
-            away_team = self.column_unicode("Away Team")
-            player_team = self.column_unicode("Player's Team")
-            player_name = self.column_unicode("Player")
-            start_flag = self.column_bool("Starting")
-            capt_flag = self.column_bool("Captain")
+            home_team = self.column_unicode("Home Team", **keys)
+            away_team = self.column_unicode("Away Team", **keys)
+            player_team = self.column_unicode("Player's Team", **keys)
+            player_name = self.column_unicode("Player", **keys)
+            start_flag = self.column_bool("Starting", **keys)
+            capt_flag = self.column_bool("Captain", **keys)
 
             try:
                 competition_id = self.get_id(Competitions, name=self.competition)
@@ -108,20 +114,25 @@ class MatchLineupIngest(BaseCSV):
                     player_id = self.get_id(Players, full_name=player_name, birth_date=birth_date)
                 else:
                     player_id = self.get_id(Players, full_name=player_name)
-                position_id = self.session.query(Players).get(player_id).position_id
                 match_id = self.get_id(ClubLeagueMatches, competition_id=competition_id, season_id=season_id,
                                        matchday=matchday, home_team_id=home_team_id, away_team_id=away_team_id)
             except (NoResultFound, MultipleResultsFound):
                 continue
 
-            if self.record_exists(ClubMatchLineups, match_id=match_id, team_id=player_team_id, player_id=player_id):
-                insertion_list.append(ClubMatchLineups(match_id=match_id, team_id=player_team_id,
-                                      player_id=player_id, position_id=position_id, is_starting=start_flag,
-                                      is_captain=capt_flag))
+            position_id = self.session.query(Players).get(player_id).position_id
+
+            lineup_dict = dict(match_id=match_id, team_id=player_team_id, player_id=player_id)
+            if not self.record_exists(ClubMatchLineups, **lineup_dict):
+                lineup_dict = dict(lineup_dict, **dict(position_id=position_id, is_starting=start_flag,
+                                                       is_captain=capt_flag))
+                insertion_list.append(ClubMatchLineups(**lineup_dict))
                 if len(insertion_list) == 50:
                     self.session.add_all(insertion_list)
                     self.session.commit()
+                    inserts += 50
+                    print "{} lineup records inserted".format(inserts)
                     insertion_list = []
         if len(insertion_list) != 0:
             self.session.add_all(insertion_list)
-        print "Match Ingestion complete."
+            self.session.commit()
+        print "Match Lineup Ingestion complete."

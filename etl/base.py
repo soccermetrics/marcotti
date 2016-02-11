@@ -15,12 +15,12 @@ class BaseIngest(object):
 
         try:
             record_id = self.session.query(model).filter_by(**conditions).one().id
-        except NoResultFound:
+        except NoResultFound as ex:
             print "{} has no records in Marcotti database for: {}".format(model.__name__, conditions)
-            return None
-        except MultipleResultsFound:
+            raise ex
+        except MultipleResultsFound as ex:
             print "{} has multiple records in Marcotti database for: {}".format(model.__name__, conditions)
-            return None
+            raise ex
         return record_id
 
     def record_exists(self, model, **conditions):

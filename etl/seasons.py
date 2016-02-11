@@ -16,15 +16,15 @@ def create_seasons(session, start_yr, end_yr):
 
     print "Creating Seasons..."
 
-    YearRange = xrange(start_yr, end_yr+1)
+    year_range = range(start_yr, end_yr+1)
 
-    for yr in YearRange:
+    for yr in year_range:
         if not exists(Years, yr=yr):
             session.add(Years(yr=yr))
     session.commit()
     session.flush()
 
-    for start, end in zip(YearRange[:-1], YearRange[1:]):
+    for start, end in zip(year_range[:-1], year_range[1:]):
         try:
             start_yr_obj = session.query(Years).filter_by(yr=start).one()
             end_yr_obj = session.query(Years).filter_by(yr=end).one()

@@ -172,6 +172,7 @@ class GoalkeeperActions(BaseSchema):
 
     catches = Column(Integer, CheckConstraint('catches >= 0'), default=0)
     punches = Column(Integer, CheckConstraint('punches >= 0'), default=0)
+    drops = Column(Integer, CheckConstraint('drops >= 0'), default=0)
     crosses_unclaimed = Column(Integer, CheckConstraint('crosses_unclaimed >= 0'), default=0)
     distribution_success = Column(Integer, CheckConstraint('distribution_success >= 0'), default=0)
     distribution_failure = Column(Integer, CheckConstraint('distribution_failure >= 0'), default=0)

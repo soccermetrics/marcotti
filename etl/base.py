@@ -41,31 +41,31 @@ class BaseCSV(BaseIngest):
         try:
             value = kwargs[field].strip()
             return value if value != "" else None
-        except (AttributeError, TypeError) as ex:
+        except (AttributeError, KeyError, TypeError) as ex:
             raise ex
 
     def column_unicode(self, field, **kwargs):
         try:
             return self.column(field, **kwargs).decode('utf-8')
-        except AttributeError:
+        except (KeyError, AttributeError):
             return None
 
     def column_int(self, field, **kwargs):
         try:
             return int(self.column(field, **kwargs))
-        except TypeError:
+        except (KeyError, TypeError):
             return None
 
     def column_bool(self, field, **kwargs):
         try:
             return bool(self.column_int(field, **kwargs))
-        except TypeError:
+        except (KeyError, TypeError):
             return None
 
     def column_float(self, field, **kwargs):
         try:
             return float(self.column(field, **kwargs))
-        except TypeError:
+        except (KeyError, TypeError):
             return None
 
     def parse_file(self, rows):

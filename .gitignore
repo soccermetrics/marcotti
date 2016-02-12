@@ -4,4 +4,4 @@ __pycache__
 
 *.pyc
 local.py
-sandbox.py
+sandbox/

@@ -74,7 +74,7 @@ class KnockoutMixin(object):
 
 class NationalFriendlyMatches(FriendlyMixin, NationalMatchMixin, NatlSchema, mcm.Matches):
     __tablename__ = "natl_friendly_matches"
-    __mapper_args__ = {'polymorphic_identity': 'friendly'}
+    __mapper_args__ = {'polymorphic_identity': 'natl_friendly'}
 
     id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
 
@@ -91,7 +91,7 @@ class NationalFriendlyMatches(FriendlyMixin, NationalMatchMixin, NatlSchema, mcm
 
 class NationalGroupMatches(GroupMixin, NationalMatchMixin, NatlSchema, mcm.GroupMatches, mcm.Matches):
     __tablename__ = "natl_group_matches"
-    __mapper_args__ = {'polymorphic_identity': 'group'}
+    __mapper_args__ = {'polymorphic_identity': 'natl_group'}
 
     id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
 
@@ -110,7 +110,7 @@ class NationalGroupMatches(GroupMixin, NationalMatchMixin, NatlSchema, mcm.Group
 
 class NationalKnockoutMatches(KnockoutMixin, NationalMatchMixin, NatlSchema, mcm.KnockoutMatches, mcm.Matches):
     __tablename__ = "natl_knockout_matches"
-    __mapper_args__ = {'polymorphic_identity': 'knockout'}
+    __mapper_args__ = {'polymorphic_identity': 'natl_knockout'}
 
     id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
 

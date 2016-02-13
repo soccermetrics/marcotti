@@ -44,8 +44,8 @@ def venue_data():
     england = mco.Countries(name=u"England", confederation=enums.ConfederationType.europe)
     tz_london = mco.Timezones(name=u"Europe/London", offset=0.0, confederation=enums.ConfederationType.europe)
     return {
-        "name": "Emirates Stadium",
-        "city": "London",
+        "name": u"Emirates Stadium",
+        "city": u"London",
         "country": england,
         "timezone": tz_london,
         "latitude": 51.555000,
@@ -62,7 +62,7 @@ def venue_config():
         "width": 68,
         "capacity": 60361,
         "seats": 60361,
-        "surface": mco.Surfaces(description="Desso GrassMaster", type=enums.SurfaceType.hybrid)
+        "surface": mco.Surfaces(description=u"Desso GrassMaster", type=enums.SurfaceType.hybrid)
     }
 
 

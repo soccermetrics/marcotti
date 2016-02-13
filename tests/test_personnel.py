@@ -99,7 +99,7 @@ def test_person_age_query(session, person_data):
 
 def test_position_insert(session):
     """Positions 001: Insert generic data into Positions model and verify data."""
-    left_fb = mcp.Positions(name="Left full-back", type=enums.PositionType.defender)
+    left_fb = mcp.Positions(name=u"Left full-back", type=enums.PositionType.defender)
     session.add(left_fb)
 
     position_from_db = session.query(mcp.Positions).one()
@@ -195,7 +195,7 @@ def test_referee_representation(session, person_data):
 
 
 def test_player_history_insert(session, person_data, player_history_data):
-    player_data = dict(position=mcp.Positions(name='Central Midfielder', type=enums.PositionType.midfielder),
+    player_data = dict(position=mcp.Positions(name=u'Central Midfielder', type=enums.PositionType.midfielder),
                        **person_data['generic'])
     generic_player = mcp.Players(**player_data)
     player_history = [mcp.PlayerHistory(**dict(player=generic_player, **data)) for data in player_history_data]
@@ -208,7 +208,7 @@ def test_player_history_insert(session, person_data, player_history_data):
 
 
 def test_player_history_representation(session, person_data, player_history_data):
-    player_data = dict(position=mcp.Positions(name='Central Midfielder', type=enums.PositionType.midfielder),
+    player_data = dict(position=mcp.Positions(name=u'Central Midfielder', type=enums.PositionType.midfielder),
                        **person_data['generic'])
     generic_player = mcp.Players(**player_data)
     player_history = [mcp.PlayerHistory(**dict(player=generic_player, **data)) for data in player_history_data]

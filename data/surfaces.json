@@ -1,5 +1,9 @@
 [
   {
+    "description": "Natural Grass",
+    "type": "Natural"
+  },
+  {
     "description": "Celebration bermudagrass",
     "type": "Natural"
   },
@@ -28,6 +32,10 @@
     "type": "Natural"
   },
   {
+    "description": "Artificial Grass",
+    "type": "Artificial"
+  },
+  {
     "description": "AstroTurf Gen 1",
     "type": "Artificial"
   },
@@ -38,6 +46,10 @@
   {
     "description": "FieldTurf",
     "type": "Artificial"
+  },
+  {
+    "description": "Hybrid Grass",
+    "type": "Hybrid"
   },
   {
     "description": "Desso GrassMaster",

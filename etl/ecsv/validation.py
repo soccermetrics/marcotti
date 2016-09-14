@@ -10,11 +10,13 @@ class CountryIngest(BaseCSV):
         insertion_list = []
         print "Ingesting Countries..."
         for keys in rows:
-            country_name = "{name}".format(**keys).strip().decode('utf-8')
-            confederation = "{confederation}".format(**keys).strip()
+            country_name = self.column_unicode("name", **keys)
+            country_code = self.column("code", **keys)
+            confederation = self.column("confederation", **keys)
             if not self.record_exists(Countries, name=country_name):
                 insertion_list.append(Countries(
-                        name=country_name, confederation=ConfederationType.from_string(confederation)))
+                    name=country_name, code=country_code,
+                    confederation=ConfederationType.from_string(confederation)))
                 if len(insertion_list) == 50:
                     self.session.add_all(insertion_list)
                     self.session.commit()
@@ -30,9 +32,9 @@ class TimezoneIngest(BaseCSV):
         insertion_list = []
         print "Ingesting Timezones..."
         for keys in rows:
-            timezone_region = "{name}".format(**keys).strip().decode('utf-8')
-            confederation = "{confederation}".format(**keys).strip()
-            offset = float("{offset}".format(**keys).strip())
+            timezone_region = self.column_unicode("name", **keys)
+            confederation = self.column("confederation", **keys)
+            offset = self.column_float("offset", **keys)
             if not self.record_exists(Timezones, name=timezone_region):
                 insertion_list.append(Timezones(
                         name=timezone_region, offset=offset,
@@ -52,8 +54,8 @@ class PositionIngest(BaseCSV):
         insertion_list = []
         print "Ingesting Positions..."
         for keys in rows:
-            position_name = "{name}".format(**keys).strip().decode('utf-8')
-            position_type = "{type}".format(**keys).strip()
+            position_name = self.column_unicode("name", **keys)
+            position_type = self.column("type", **keys)
             if not self.record_exists(Positions, name=position_name):
                 insertion_list.append(Positions(name=position_name, type=PositionType.from_string(position_type)))
         if len(insertion_list) != 0:
@@ -67,8 +69,8 @@ class SurfaceIngest(BaseCSV):
         insertion_list = []
         print "Ingesting Surfaces..."
         for keys in rows:
-            surface_name = "{description}".format(**keys).strip().decode('utf-8')
-            surface_type = "{type}".format(**keys).strip()
+            surface_name = self.column_unicode("description", **keys)
+            surface_type = self.column("type", **keys)
             if not self.record_exists(Surfaces, description=surface_name):
                 insertion_list.append(Surfaces(description=surface_name, type=SurfaceType.from_string(surface_type)))
         if len(insertion_list) != 0:

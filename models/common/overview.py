@@ -20,10 +20,12 @@ class Countries(BaseSchema):
 
     id = Column(Integer, Sequence('country_id_seq', start=100), primary_key=True)
     name = Column(Unicode(60))
+    code = Column(String(3))
     confederation = Column(enums.ConfederationType.db_type())
 
     def __repr__(self):
-        return "<Country(id={0}, name={1}, confed={2})>".format(self.id, self.name, self.confederation.value)
+        return u"<Country(id={0}, name={1}, trigram={2}, confed={3})>".format(
+            self.id, self.name, self.code, self.confederation.value).encode('utf-8')
 
 
 class Years(BaseSchema):
@@ -34,6 +36,9 @@ class Years(BaseSchema):
 
     id = Column(Integer, Sequence('year_id_seq', start=100), primary_key=True)
     yr = Column(Integer, unique=True)
+
+    def __repr__(self):
+        return "<Year(yr={0})>".format(self.yr)
 
 
 class Seasons(BaseSchema):
@@ -124,8 +129,8 @@ class DomesticCompetitions(Competitions):
     country = relationship('Countries', backref=backref('competitions'))
 
     def __repr__(self):
-        return "<DomesticCompetition(name={0}, country={1}, level={2})>".format(
-            self.name, self.country.name, self.level)
+        return u"<DomesticCompetition(name={0}, country={1}, level={2})>".format(
+            self.name, self.country.name, self.level).encode('utf-8')
 
 
 class InternationalCompetitions(Competitions):
@@ -137,8 +142,8 @@ class InternationalCompetitions(Competitions):
     confederation = Column(enums.ConfederationType.db_type())
 
     def __repr__(self):
-        return "<InternationalCompetition(name={0}, confederation={1})>".format(
-            self.name, self.confederation.value)
+        return u"<InternationalCompetition(name={0}, confederation={1})>".format(
+            self.name, self.confederation.value).encode('utf-8')
 
 
 class Venues(BaseSchema):
@@ -188,8 +193,7 @@ class VenueHistory(BaseSchema):
 
     def __repr__(self):
         return u"<VenueHistory(name={0}, date={1}, length={2}, width={3}, capacity={4})>".format(
-            self.venue.name, self.date.isoformat(), self.length, self.width, self.capacity
-        ).encode('utf-8')
+            self.venue.name, self.date.isoformat(), self.length, self.width, self.capacity).encode('utf-8')
 
 
 class Timezones(BaseSchema):
@@ -202,8 +206,8 @@ class Timezones(BaseSchema):
     confederation = Column(enums.ConfederationType.db_type())
 
     def __repr__(self):
-        return "<Timezone(name={0}, offset={1:+1.2f}, confederation={2})>".format(
-           self.name, self.offset, self.confederation.value)
+        return u"<Timezone(name={0}, offset={1:+1.2f}, confederation={2})>".format(
+           self.name, self.offset, self.confederation.value).encode('utf-8')
 
 
 class Surfaces(BaseSchema):
@@ -215,4 +219,5 @@ class Surfaces(BaseSchema):
     type = Column(enums.SurfaceType.db_type())
 
     def __repr__(self):
-        return u"<Surface(description={0}, type={1})>".format(self.description, self.type.description)
+        return u"<Surface(description={0}, type={1})>".format(
+            self.description, self.type.description).encode('utf-8')

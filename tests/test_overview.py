@@ -11,14 +11,15 @@ import models.common.overview as mco
 
 def test_country_insert(session):
         """Country 001: Insert a single record into Countries table and verify data."""
-        england = mco.Countries(name=u'England', confederation=enums.ConfederationType.europe)
+        england = mco.Countries(name=u'England', code="ENG", confederation=enums.ConfederationType.europe)
         session.add(england)
 
         country = session.query(mco.Countries).all()
 
         assert country[0].name == u'England'
+        assert country[0].code == "ENG"
         assert country[0].confederation.value == 'UEFA'
-        assert repr(country[0]) == "<Country(id={0}, name=England, confed=UEFA)>".format(country[0].id)
+        assert repr(country[0]) == "<Country(id={0}, name=England, trigram=ENG, confed=UEFA)>".format(country[0].id)
 
 
 def test_country_unicode_insert(session):
@@ -38,6 +39,15 @@ def test_country_name_overflow_error(session):
     too_long_country = mco.Countries(name=unicode(too_long_name), confederation=enums.ConfederationType.north_america)
     with pytest.raises(DataError):
         session.add(too_long_country)
+        session.commit()
+
+
+def test_country_code_error(session):
+    too_long_code = "BOGUS"
+    country = mco.Countries(name=unicode("Fredonia"), code=too_long_code,
+                            confederation=enums.ConfederationType.south_america)
+    with pytest.raises(DataError):
+        session.add(country)
         session.commit()
 
 

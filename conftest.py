@@ -28,13 +28,13 @@ def db_connection(request, config, cmdopt):
     engine = create_engine(config.DATABASE_URI)
     connection = engine.connect()
     if cmdopt == 'club':
-        from models.club import ClubSchema
+        from marcotti.models.club import ClubSchema
         schema = ClubSchema
     elif cmdopt == 'natl':
-        from models.national import NatlSchema
+        from marcotti.models.national import NatlSchema
         schema = NatlSchema
     else:
-        import models.common as common
+        import marcotti.models.common as common
         schema = common.BaseSchema
     schema.metadata.create_all(connection)
 

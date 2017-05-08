@@ -4,10 +4,10 @@ import pytest
 from sqlalchemy.orm import aliased
 from sqlalchemy.exc import IntegrityError
 
-import models.common.enums as enums
-import models.common.personnel as mcp
-import models.common.match as mcm
-import models.common.events as mce
+import marcotti.models.common.enums as enums
+import marcotti.models.common.personnel as mcp
+import marcotti.models.common.match as mcm
+import marcotti.models.common.events as mce
 
 
 @pytest.fixture

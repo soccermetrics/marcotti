@@ -2,10 +2,10 @@
 import pytest
 from sqlalchemy.exc import DataError
 
-import models.club as mc
-import models.common.overview as mco
-import models.common.personnel as mcp
-import models.common.enums as enums
+import marcotti.models.club as mc
+import marcotti.models.common.overview as mco
+import marcotti.models.common.personnel as mcp
+import marcotti.models.common.enums as enums
 
 
 club_only = pytest.mark.skipif(

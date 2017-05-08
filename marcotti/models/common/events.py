@@ -2,8 +2,8 @@ from sqlalchemy import Column, Integer, String, Sequence, ForeignKey
 from sqlalchemy.schema import CheckConstraint
 from sqlalchemy.orm import relationship, backref
 
-from models.common import BaseSchema
-import models.common.enums as enums
+from marcotti.models.common import BaseSchema
+import marcotti.models.common.enums as enums
 
 
 class MatchTimeMixin(object):
@@ -71,19 +71,8 @@ class PenaltyShootouts(BaseSchema):
     id = Column(Integer, Sequence('shootout_id_seq', start=100000), primary_key=True)
 
     round = Column(Integer)
+    num = Column(Integer)
     outcome = Column(enums.ShotOutcomeType.db_type())
 
     lineup_id = Column(Integer, ForeignKey('lineups.id'))
     lineup = relationship('MatchLineups', backref=backref('shootouts'))
-
-
-class PenaltyShootoutOpeners(BaseSchema):
-    __tablename__ = "penalty_shootout_openers"
-
-    match_id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
-    domain = Column(String)
-
-    __mapper_args__ = {
-        'polymorphic_identity': 'penalty_shootout_openers',
-        'polymorphic_on': domain
-    }

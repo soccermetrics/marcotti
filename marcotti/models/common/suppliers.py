@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, Unicode, ForeignKey, Sequence
 from sqlalchemy.orm import relationship, backref
 
-from models.common import BaseSchema
+from marcotti.models.common import BaseSchema
 
 
 class Suppliers(BaseSchema):
@@ -25,6 +25,20 @@ class CompetitionMap(BaseSchema):
 
     def __repr__(self):
         return "<CompetitionMap(local={}, remote={}, supplier={})>".format(
+            self.id, self.remote_id, self.supplier.name)
+
+
+class MatchMap(BaseSchema):
+    __tablename__ = "match_mapper"
+
+    id = Column(Integer, ForeignKey('matches.id'), primary_key=True)
+    remote_id = Column(Integer, nullable=False, primary_key=True)
+    supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
+
+    supplier = relationship('Suppliers', backref=backref('matches'))
+
+    def __repr__(self):
+        return "<MatchMap(local={}, remote={}, supplier={})>".format(
             self.id, self.remote_id, self.supplier.name)
 
 
@@ -53,4 +67,18 @@ class PositionMap(BaseSchema):
 
     def __repr__(self):
         return "<PositionMap(local={}, remote={}, supplier={})>".format(
+            self.id, self.remote_id, self.supplier.name)
+
+
+class SeasonMap(BaseSchema):
+    __tablename__ = "season_mapper"
+
+    id = Column(Integer, ForeignKey('seasons.id'), primary_key=True)
+    remote_id = Column(Integer, nullable=False, primary_key=True)
+    supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
+
+    supplier = relationship('Suppliers', backref=backref('seasons'))
+
+    def __repr__(self):
+        return "<SeasonMap(local={}, remote={}, supplier={})>".format(
             self.id, self.remote_id, self.supplier.name)

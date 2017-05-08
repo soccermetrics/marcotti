@@ -203,22 +203,6 @@ class ClubGoals(ClubMixin, ClubSchema, mce.Goals):
     team = relationship('Clubs', foreign_keys="ClubGoals.team_id", backref=backref("goals"))
 
 
-class ClubPenaltyShootoutOpeners(ClubMixin, ClubSchema, mce.PenaltyShootoutOpeners):
-    __tablename__ = 'club_penalty_shootout_openers'
-    __mapper_args__ = {'polymorphic_identity': 'club'}
-
-    match_id = Column(Integer, ForeignKey('penalty_shootout_openers.match_id'), primary_key=True)
-
-    team = relationship('Clubs', foreign_keys="ClubPenaltyShootoutOpeners.team_id",
-                        backref=backref("shootout_openers"))
-
-    def __repr__(self):
-        return u"<ClubPenaltyShootoutOpener(match={}, team={})>".format(self.match_id, self.team.name).decode('utf-8')
-
-    def __unicode__(self):
-        return u"<ClubPenaltyShootoutOpener(match={}, team={})>".format(self.match_id, self.team.name)
-
-
 class ClubMap(ClubSchema):
     __tablename__ = "club_mapper"
 

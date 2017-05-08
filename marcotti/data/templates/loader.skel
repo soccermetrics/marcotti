@@ -1,0 +1,36 @@
+import os
+import logging
+
+from {{ config_file }} import {{ config_class }}
+from marcotti import Marcotti
+from marcotti.etl.ecsv import CSVExtractor
+{% if club_db %}
+from marcotti.models.club import ClubSchema
+{% else %}
+from marcotti.models.national import NatlSchema
+{% endif %}
+from marcotti.tools.logsetup import setup_logging
+from marcotti.etl import ETL, MarcottiTransform, MarcottiEventTransform, MarcottiLoad
+
+
+setup_logging()
+logger = logging.getLogger(__name__)
+
+
+if __name__ == "__main__":
+    settings = {{ config_class }}()
+    marcotti = Marcotti(settings)
+    with marcotti.create_session() as session:
+        marcotti.create_db({% if club_db %}ClubSchema{% else %}NatlSchema{% endif %})
+        marcotti.initial_load({{ country_prefix }})
+
+        # Add supplier information to database
+
+        csv = CSVExtractor(settings.CSV_DATA_DIR)
+        supp_etl = ETL(transform=MarcottiTransform, load=MarcottiLoad, session=session)
+        supp_etl.workflow('suppliers', csv.suppliers(settings.CSV_DATA['suppliers']))
+
+        # Load CSV data
+
+        etl = ETL(transform=MarcottiTransform, load=MarcottiLoad, session=session,
+                  supplier=u'{{ supplier }}')

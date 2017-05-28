@@ -28,6 +28,34 @@ class CompetitionMap(BaseSchema):
             self.id, self.remote_id, self.supplier.name)
 
 
+class CountryMap(BaseSchema):
+    __tablename__ = "country_mapper"
+
+    id = Column(Integer, ForeignKey('countries.id'), primary_key=True)
+    remote_id = Column(Integer, nullable=False, primary_key=True)
+    supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
+
+    supplier = relationship('Suppliers', backref=backref('countries'))
+
+    def __repr__(self):
+        return "<CountryMap(local={}, remote={}, supplier={})>".format(
+            self.id, self.remote_id, self.supplier.name)
+
+
+class ManagerMap(BaseSchema):
+    __tablename__ = "manager_mapper"
+
+    id = Column(Integer, ForeignKey('managers.id'), primary_key=True)
+    remote_id = Column(Integer, nullable=False, primary_key=True)
+    supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
+
+    supplier = relationship('Suppliers', backref=backref('managers'))
+
+    def __repr__(self):
+        return "<ManagerMap(local={}, remote={}, supplier={})>".format(
+            self.id, self.remote_id, self.supplier.name)
+
+
 class MatchMap(BaseSchema):
     __tablename__ = "match_mapper"
 
@@ -70,6 +98,20 @@ class PositionMap(BaseSchema):
             self.id, self.remote_id, self.supplier.name)
 
 
+class RefereeMap(BaseSchema):
+    __tablename__ = "referee_mapper"
+
+    id = Column(Integer, ForeignKey('referees.id'), primary_key=True)
+    remote_id = Column(Integer, nullable=False, primary_key=True)
+    supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
+
+    supplier = relationship('Suppliers', backref=backref('referees'))
+
+    def __repr__(self):
+        return "<RefereeMap(local={}, remote={}, supplier={})>".format(
+            self.id, self.remote_id, self.supplier.name)
+
+
 class SeasonMap(BaseSchema):
     __tablename__ = "season_mapper"
 
@@ -81,4 +123,18 @@ class SeasonMap(BaseSchema):
 
     def __repr__(self):
         return "<SeasonMap(local={}, remote={}, supplier={})>".format(
+            self.id, self.remote_id, self.supplier.name)
+
+
+class VenueMap(BaseSchema):
+    __tablename__ = "venue_mapper"
+
+    id = Column(Integer, ForeignKey('venues.id'), primary_key=True)
+    remote_id = Column(Integer, nullable=False, primary_key=True)
+    supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
+
+    supplier = relationship('Suppliers', backref=backref('venues'))
+
+    def __repr__(self):
+        return "<VenueMap(local={}, remote={}, supplier={})>".format(
             self.id, self.remote_id, self.supplier.name)

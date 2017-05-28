@@ -2,10 +2,11 @@ from sqlalchemy import Column, Integer, Boolean, Sequence, ForeignKey
 from sqlalchemy.schema import CheckConstraint
 from sqlalchemy.orm import relationship, backref
 
-from models.common import BaseSchema
+from marcotti.models.common import BaseSchema
 
 
 class Assists(BaseSchema):
+    __name__ = "Assists"
     __tablename__ = "assists"
 
     id = Column(Integer, Sequence('assist_id_seq', start=1000000), primary_key=True)
@@ -22,6 +23,7 @@ class Assists(BaseSchema):
 
 
 class Clearances(BaseSchema):
+    __name__ = "Clearances"
     __tablename__ = "clearances"
 
     id = Column(Integer, Sequence('clearance_id_seq', start=1000000), primary_key=True)
@@ -36,6 +38,7 @@ class Clearances(BaseSchema):
 
 
 class Corners(BaseSchema):
+    __name__ = "Corners"
     __tablename__ = 'corners'
 
     id = Column(Integer, Sequence('corner_id_seq', start=1000000), primary_key=True)
@@ -54,6 +57,7 @@ class Corners(BaseSchema):
 
 
 class CornerCrosses(BaseSchema):
+    __name__ = "CornerCrosses"
     __tablename__ = 'cornercrosses'
 
     id = Column(Integer, Sequence('ccross_id_seq', start=1000000), primary_key=True)
@@ -72,6 +76,7 @@ class CornerCrosses(BaseSchema):
 
 
 class Crosses(BaseSchema):
+    __name__ = "Crosses"
     __tablename__ = 'crosses'
 
     id = Column(Integer, Sequence('cross_id_seq', start=1000000), primary_key=True)
@@ -92,6 +97,7 @@ class Crosses(BaseSchema):
 
 
 class Defensives(BaseSchema):
+    __name__ = "Defensives"
     __tablename__ = 'defensives'
 
     id = Column(Integer, Sequence('defensive_id_seq', start=1000000), primary_key=True)
@@ -112,6 +118,7 @@ class Defensives(BaseSchema):
 
 
 class Discipline(BaseSchema):
+    __name__ = "Discipline"
     __tablename__ = 'discipline'
 
     id = Column(Integer, Sequence('discipline_id_seq', start=1000000), primary_key=True)
@@ -124,6 +131,7 @@ class Discipline(BaseSchema):
 
 
 class Duels(BaseSchema):
+    __name__ = "Duels"
     __tablename__ = 'duels'
 
     id = Column(Integer, Sequence('duel_id_seq', start=1000000), primary_key=True)
@@ -140,6 +148,7 @@ class Duels(BaseSchema):
 
 
 class FoulWins(BaseSchema):
+    __name__ = "FoulWins"
     __tablename__ = 'foulwins'
 
     id = Column(Integer, Sequence('foulwin_id_seq', start=1000000), primary_key=True)
@@ -154,6 +163,7 @@ class FoulWins(BaseSchema):
 
 
 class Freekicks(BaseSchema):
+    __name__ = "Freekicks"
     __tablename__ = 'freekicks'
 
     id = Column(Integer, Sequence('freekick_id_seq', start=1000000), primary_key=True)
@@ -166,6 +176,7 @@ class Freekicks(BaseSchema):
 
 
 class GoalkeeperActions(BaseSchema):
+    __name__ = "GoalkeeperActions"
     __tablename__ = 'gk_actions'
 
     id = Column(Integer, Sequence('gkaction_id_seq', start=1000000), primary_key=True)
@@ -182,6 +193,7 @@ class GoalkeeperActions(BaseSchema):
 
 
 class GoalkeeperAllowedGoals(BaseSchema):
+    __name__ = "GoalkeeperAllowedGoals"
     __tablename__ = 'gk_allowedgoals'
 
     id = Column(Integer, Sequence('gkag_id_seq', start=1000000), primary_key=True)
@@ -195,6 +207,7 @@ class GoalkeeperAllowedGoals(BaseSchema):
 
 
 class GoalkeeperAllowedShots(BaseSchema):
+    __name__ = "GoalkeeperAllowedShots"
     __tablename__ = 'gk_allowedshots'
 
     id = Column(Integer, Sequence('gkshot_id_seq', start=1000000), primary_key=True)
@@ -208,6 +221,7 @@ class GoalkeeperAllowedShots(BaseSchema):
 
 
 class GoalkeeperSaves(BaseSchema):
+    __name__ = "GoalkeeperSaves"
     __tablename__ = 'gk_saves'
 
     id = Column(Integer, Sequence('gksave_id_seq', start=1000000), primary_key=True)
@@ -221,6 +235,7 @@ class GoalkeeperSaves(BaseSchema):
 
 
 class GoalBodyparts(BaseSchema):
+    __name__ = "GoalBodyparts"
     __tablename__ = 'goalbodyparts'
 
     id = Column(Integer, Sequence('goalbody_id_seq', start=1000000), primary_key=True)
@@ -234,6 +249,7 @@ class GoalBodyparts(BaseSchema):
 
 
 class GoalLocations(BaseSchema):
+    __name__ = "GoalLocations"
     __tablename__ = 'goallocations'
 
     id = Column(Integer, Sequence('goallocation_id_seq', start=1000000), primary_key=True)
@@ -246,6 +262,7 @@ class GoalLocations(BaseSchema):
 
 
 class GoalTotals(BaseSchema):
+    __name__ = "GoalTotals"
     __tablename__ = 'goaltotals'
 
     id = Column(Integer, Sequence('goaltotal_id_seq', start=1000000), primary_key=True)
@@ -265,6 +282,7 @@ class GoalTotals(BaseSchema):
 
 
 class GoalLineClearances(BaseSchema):
+    __name__ = "GoalLineClearances"
     __tablename__ = 'goallineclearances'
 
     id = Column(Integer, Sequence('glclears_id_seq', start=1000000), primary_key=True)
@@ -278,6 +296,7 @@ class GoalLineClearances(BaseSchema):
 
 
 class ImportantPlays(BaseSchema):
+    __name__ = "ImportantPlays"
     __tablename__ = 'importantplays'
 
     id = Column(Integer, Sequence('keyplay_id_seq', start=1000000), primary_key=True)
@@ -292,6 +311,7 @@ class ImportantPlays(BaseSchema):
 
 
 class Passes(BaseSchema):
+    __name__ = "Passes"
     __tablename__ = 'passes'
 
     id = Column(Integer, Sequence('pass_id_seq', start=1000000), primary_key=True)
@@ -312,6 +332,7 @@ class Passes(BaseSchema):
 
 
 class PassDirections(BaseSchema):
+    __name__ = "PassDirections"
     __tablename__ = 'passdirections'
 
     id = Column(Integer, Sequence('passdir_id_seq', start=1000000), primary_key=True)
@@ -326,6 +347,7 @@ class PassDirections(BaseSchema):
 
 
 class PassLengths(BaseSchema):
+    __name__ = "PassLengths"
     __tablename__ = 'passlengths'
 
     id = Column(Integer, Sequence('passlen_id_seq', start=1000000), primary_key=True)
@@ -342,6 +364,7 @@ class PassLengths(BaseSchema):
 
 
 class PassLocations(BaseSchema):
+    __name__ = "PassLocations"
     __tablename__ = 'passlocations'
 
     id = Column(Integer, Sequence('passloc_id_seq', start=1000000), primary_key=True)
@@ -362,6 +385,7 @@ class PassLocations(BaseSchema):
 
 
 class PenaltyActions(BaseSchema):
+    __name__ = "PenaltyActions"
     __tablename__ = 'penaltyactions'
 
     id = Column(Integer, Sequence('penact_id_seq', start=1000000), primary_key=True)
@@ -376,6 +400,7 @@ class PenaltyActions(BaseSchema):
 
 
 class ShotBodyparts(BaseSchema):
+    __name__ = "ShotBodyparts"
     __tablename__ = 'shotbodyparts'
 
     id = Column(Integer, Sequence('shotbody_id_seq', start=1000000), primary_key=True)
@@ -392,6 +417,7 @@ class ShotBodyparts(BaseSchema):
 
 
 class ShotBlocks(BaseSchema):
+    __name__ = "ShotBlocks"
     __tablename__ = 'shotblocks'
 
     id = Column(Integer, Sequence('shotblock_id_seq', start=1000000), primary_key=True)
@@ -410,6 +436,7 @@ class ShotBlocks(BaseSchema):
 
 
 class ShotLocations(BaseSchema):
+    __name__ = "ShotLocations"
     __tablename__ = 'shotlocations'
 
     id = Column(Integer, Sequence('shotloc_id_seq', start=1000000), primary_key=True)
@@ -424,6 +451,7 @@ class ShotLocations(BaseSchema):
 
 
 class ShotTotals(BaseSchema):
+    __name__ = "ShotTotals"
     __tablename__ = 'shottotals'
 
     id = Column(Integer, Sequence('shottotals_id_seq', start=1000000), primary_key=True)
@@ -437,6 +465,7 @@ class ShotTotals(BaseSchema):
 
 
 class ShotPlays(BaseSchema):
+    __name__ = "ShotPlays"
     __tablename__ = 'shotplays'
 
     id = Column(Integer, Sequence('shotplay_id_seq', start=1000000), primary_key=True)
@@ -459,6 +488,7 @@ class ShotPlays(BaseSchema):
 
 
 class Tackles(BaseSchema):
+    __name__ = "Tackles"
     __tablename__ = 'tackles'
 
     id = Column(Integer, Sequence('tackle_id_seq', start=1000000), primary_key=True)
@@ -472,6 +502,7 @@ class Tackles(BaseSchema):
 
 
 class Throwins(BaseSchema):
+    __name__ = "Throwins"
     __tablename__ = 'throwins'
 
     id = Column(Integer, Sequence('throwin_id_seq', start=1000000), primary_key=True)
@@ -484,6 +515,7 @@ class Throwins(BaseSchema):
 
 
 class Touches(BaseSchema):
+    __name__ = "Touches"
     __tablename__ = 'touches'
 
     id = Column(Integer, Sequence('touch_id_seq', start=1000000), primary_key=True)
@@ -501,6 +533,7 @@ class Touches(BaseSchema):
 
 
 class TouchLocations(BaseSchema):
+    __name__ = "TouchLocations"
     __tablename__ = 'touchlocations'
 
     id = Column(Integer, Sequence('touchloc_id_seq', start=1000000), primary_key=True)

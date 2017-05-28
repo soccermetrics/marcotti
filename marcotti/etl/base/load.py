@@ -1,4 +1,3 @@
-import uuid
 import logging
 
 import marcotti.models.common.suppliers as mcs
@@ -74,52 +73,45 @@ class MarcottiLoad(WorkflowBase):
 
     def competitions(self, data_frame):
         remote_ids = []
-        local_ids = []
         comp_records = []
         for idx, row in data_frame.iterrows():
             if 'country_id' in data_frame.columns:
                 fields = ['name', 'level', 'country_id']
                 comp_dict = {field: row[field] for field in fields if row[field]}
                 if not self.record_exists(mco.DomesticCompetitions, **comp_dict):
-                    comp_dict.update(id=uuid.uuid4())
                     comp_records.append(mco.DomesticCompetitions(**comp_dict))
                     remote_ids.append(row['remote_id'])
-                    local_ids.append(comp_dict['id'])
             elif 'confederation' in data_frame.columns:
                 fields = ['name', 'level', 'confederation']
                 comp_dict = {field: row[field] for field in fields if row[field]}
                 if not self.record_exists(mco.InternationalCompetitions, **comp_dict):
-                    comp_dict.update(id=uuid.uuid4())
                     comp_records.append(mco.InternationalCompetitions(**comp_dict))
                     remote_ids.append(row['remote_id'])
-                    local_ids.append(comp_dict['id'])
-        self.session.bulk_save_objects(comp_records)
-        map_records = [mcs.CompetitionMap(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, local_id in zip(remote_ids, local_ids) if remote_id]
-        self.session.bulk_save_objects(map_records)
+        self.session.add_all(comp_records)
+        self.session.commit()
+        map_records = [mcs.CompetitionMap(id=comp_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, comp_record in zip(remote_ids, comp_records) if remote_id]
+        self.session.add_all(map_records)
         self.session.commit()
 
     def clubs(self, data_frame):
         remote_ids = []
-        local_ids = []
         club_records = []
         fields = ['short_name', 'name', 'country_id']
         for idx, row in data_frame.iterrows():
             club_dict = {field: row[field] for field in fields if row[field]}
             if not self.record_exists(mc.Clubs, **club_dict):
-                club_dict.update(id=uuid.uuid4())
                 club_records.append(mc.Clubs(**club_dict))
                 remote_ids.append(row['remote_id'])
-                local_ids.append(club_dict['id'])
-        self.session.bulk_save_objects(club_records)
-        map_records = [mc.ClubMap(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, local_id in zip(remote_ids, local_ids) if remote_id]
-        self.session.bulk_save_objects(map_records)
+        self.session.add_all(club_records)
+        self.session.commit()
+        map_records = [mc.ClubMap(id=club_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, club_record in zip(remote_ids, club_records) if remote_id]
+        self.session.add_all(map_records)
         self.session.commit()
 
     def venues(self, data_frame):
         remote_ids = []
-        local_ids = []
         venue_records = []
         history_records = []
         fields = ['name', 'city', 'region', 'latitude', 'longitude', 'altitude', 'country_id', 'timezone_id']
@@ -127,17 +119,15 @@ class MarcottiLoad(WorkflowBase):
         for idx, row in data_frame.iterrows():
             venue_dict = {field: row[field] for field in fields if row[field]}
             if not self.record_exists(mco.Venues, **venue_dict):
-                venue_dict.update(id=uuid.uuid4())
                 venue_records.append(mco.Venues(**venue_dict))
                 history_dict = {field: row[field] for field in history_fields if row[field]}
                 history_records.append(mco.VenueHistory(venue_id=venue_dict['id'], **history_dict))
                 remote_ids.append(row['remote_id'])
-                local_ids.append(venue_dict['id'])
-        self.session.bulk_save_objects(venue_records)
-        self.session.bulk_save_objects(history_records)
-
-        map_records = [mcs.VenueMap(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, local_id in zip(remote_ids, local_ids) if remote_id]
+        self.session.add_all(venue_records)
+        self.session.add_all(history_records)
+        self.session.commit()
+        map_records = [mcs.VenueMap(id=venue_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, venue_record in zip(remote_ids, venue_records) if remote_id]
         self.session.bulk_save_objects(map_records)
         self.session.commit()
 
@@ -158,7 +148,6 @@ class MarcottiLoad(WorkflowBase):
         player_records = []
         remote_countryids = []
         remote_ids = []
-        local_ids = []
         fields = ['known_first_name', 'first_name', 'middle_name', 'last_name', 'second_last_name',
                   'nick_name', 'birth_date', 'order', 'country_id', 'position_id', 'remote_id',
                   'remote_country_id']
@@ -173,15 +162,13 @@ class MarcottiLoad(WorkflowBase):
             remote_country_id = player_dict.pop('remote_country_id', None)
             if not self.record_exists(mcs.PlayerMap, remote_id=remote_id):
                 if not self.record_exists(mcp.Players, **player_dict):
-                    player_dict.update(id=uuid.uuid4(), person_id=uuid.uuid4())
                     player_records.append(mcp.Players(**player_dict))
-                    local_ids.append(player_dict['id'])
                     remote_ids.append(remote_id)
                     remote_countryids.append(remote_country_id)
                 else:
                     player_id = self.session.query(mcp.Players).filter_by(**player_dict).one().id
-                    local_ids.append(player_id)
-                    remote_ids.append(remote_id)
+                    map_record = mcs.PlayerMap(id=player_id, remote_id=remote_id, supplier_id=self.supplier_id)
+                    self.session.add(map_record)
             else:
                 player_id = self.session.query(mcs.PlayerMap).filter_by(remote_id=remote_id).one().id
                 if not self.record_exists(mcp.Players, **player_dict):
@@ -195,10 +182,11 @@ class MarcottiLoad(WorkflowBase):
             self.session.commit()
 
         logger.info("{} player records ingested".format(len(player_records)))
-        self.session.bulk_save_objects(player_records)
-        map_records = [mcs.PlayerMap(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, local_id in zip(remote_ids, local_ids) if remote_id]
-        self.session.bulk_save_objects(map_records)
+        self.session.add_all(player_records)
+        self.session.commit()
+        map_records = [mcs.PlayerMap(id=player_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, player_record in zip(remote_ids, player_records) if remote_id]
+        self.session.add_all(map_records)
         self.session.commit()
 
         for remote_id, player_record in zip(remote_countryids, player_records):
@@ -211,21 +199,19 @@ class MarcottiLoad(WorkflowBase):
     def managers(self, data_frame):
         manager_records = []
         remote_ids = []
-        local_ids = []
         fields = ['known_first_name', 'first_name', 'middle_name', 'last_name', 'second_last_name',
                   'nick_name', 'birth_date', 'order', 'country_id']
         for indx, row in data_frame.iterrows():
             manager_dict = {field: row[field] for field in fields if field in row and row[field]}
             if not self.record_exists(mcs.ManagerMap, remote_id=row['remote_id']):
                 if not self.record_exists(mcp.Managers, **manager_dict):
-                    manager_dict.update(id=uuid.uuid4(), person_id=uuid.uuid4())
                     manager_records.append(mcp.Managers(**manager_dict))
-                    local_ids.append(manager_dict['id'])
                     remote_ids.append(row['remote_id'])
                 else:
                     manager_id = self.session.query(mcp.Managers).filter_by(**manager_dict).one().id
-                    local_ids.append(manager_id)
-                    remote_ids.append(row['remote_id'])
+                    map_record = mcs.ManagerMap(id=manager_id, remote_id=row['remote_id'],
+                                                supplier_id=self.supplier_id)
+                    self.session.add(map_record)
             else:
                 manager_id = self.session.query(mcs.ManagerMap).filter_by(remote_id=row['remote_id']).one().id
                 if not self.record_exists(mcp.Managers, **manager_dict):
@@ -238,30 +224,29 @@ class MarcottiLoad(WorkflowBase):
         if self.session.dirty:
             self.session.commit()
 
-        self.session.bulk_save_objects(manager_records)
-        map_records = [mcs.ManagerMap(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, local_id in zip(remote_ids, local_ids) if remote_id]
-        self.session.bulk_save_objects(map_records)
+        self.session.add_all(manager_records)
+        self.session.commit()
+        map_records = [mcs.ManagerMap(id=manager_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, manager_record in zip(remote_ids, manager_records) if remote_id]
+        self.session.add_all(map_records)
         self.session.commit()
 
     def referees(self, data_frame):
         referee_records = []
         remote_ids = []
-        local_ids = []
         fields = ['known_first_name', 'first_name', 'middle_name', 'last_name', 'second_last_name',
                   'nick_name', 'birth_date', 'order', 'country_id']
         for indx, row in data_frame.iterrows():
             referee_dict = {field: row[field] for field in fields if field in row and row[field]}
             if not self.record_exists(mcs.RefereeMap, remote_id=row['remote_id']):
                 if not self.record_exists(mcp.Referees, **referee_dict):
-                    referee_dict.update(id=uuid.uuid4(), person_id=uuid.uuid4())
                     referee_records.append(mcp.Referees(**referee_dict))
                     remote_ids.append(row['remote_id'])
-                    local_ids.append(referee_dict['id'])
                 else:
                     referee_id = self.session.query(mcp.Referees).filter_by(**referee_dict).one().id
-                    local_ids.append(referee_id)
-                    remote_ids.append(row['remote_id'])
+                    map_record = mcs.RefereeMap(id=referee_id, remote_id=row['remote_id'],
+                                                supplier_id=self.supplier_id)
+                    self.session.add(map_record)
             else:
                 referee_id = self.session.query(mcs.RefereeMap).filter_by(remote_id=row['remote_id']).one().id
                 if not self.record_exists(mcp.Referees, **referee_dict):
@@ -274,10 +259,11 @@ class MarcottiLoad(WorkflowBase):
         if self.session.dirty:
             self.session.commit()
 
-        self.session.bulk_save_objects(referee_records)
-        map_records = [mcs.RefereeMap(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, local_id in zip(remote_ids, local_ids) if remote_id]
-        self.session.bulk_save_objects(map_records)
+        self.session.add_all(referee_records)
+        self.session.commit()
+        map_records = [mcs.RefereeMap(id=referee_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, referee_record in zip(remote_ids, referee_records) if remote_id]
+        self.session.add_all(map_records)
         self.session.commit()
 
     def positions(self, data_frame):
@@ -298,7 +284,6 @@ class MarcottiLoad(WorkflowBase):
         condition_records = []
         match_records = []
         remote_ids = []
-        local_ids = []
         fields = ['match_date', 'competition_id', 'season_id', 'venue_id', 'home_team_id', 'away_team_id',
                   'home_manager_id', 'away_manager_id', 'referee_id', 'attendance', 'matchday']
         condition_fields = ['kickoff_time', 'kickoff_temp', 'kickoff_humidity',
@@ -308,25 +293,23 @@ class MarcottiLoad(WorkflowBase):
             condition_dict = {field: row[field] for field in condition_fields
                               if field in row and row[field] is not None}
             if not self.record_exists(mc.ClubLeagueMatches, **match_dict):
-                match_dict.update(id=uuid.uuid4())
                 match_records.append(mc.ClubLeagueMatches(**match_dict))
                 condition_records.append(mcm.MatchConditions(id=match_dict['id'], **condition_dict))
                 remote_ids.append(row['remote_id'])
-                local_ids.append(match_dict['id'])
 
-        self.session.bulk_save_objects(match_records)
-        self.session.bulk_save_objects(condition_records)
+        self.session.add_all(match_records)
+        self.session.add_all(condition_records)
+        self.session.commit()
 
-        map_records = [mcs.MatchMap(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, local_id in zip(remote_ids, local_ids) if remote_id]
-        self.session.bulk_save_objects(map_records)
+        map_records = [mcs.MatchMap(id=match_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, match_record in zip(remote_ids, match_records) if remote_id]
+        self.session.add_all(map_records)
         self.session.commit()
 
     def knockout_matches(self, data_frame):
         condition_records = []
         match_records = []
         remote_ids = []
-        local_ids = []
         fields = ['match_date', 'competition_id', 'season_id', 'venue_id', 'home_team_id', 'away_team_id',
                   'home_manager_id', 'away_manager_id', 'referee_id', 'attendance', 'matchday', 'ko_round',
                   'extra_time']
@@ -337,18 +320,17 @@ class MarcottiLoad(WorkflowBase):
             condition_dict = {field: row[field] for field in condition_fields
                               if field in row and row[field] is not None}
             if not self.record_exists(mc.ClubKnockoutMatches, **match_dict):
-                match_dict.update(id=uuid.uuid4())
                 match_records.append(mc.ClubKnockoutMatches(**match_dict))
                 condition_records.append(mcm.MatchConditions(id=match_dict['id'], **condition_dict))
                 remote_ids.append(row['remote_id'])
-                local_ids.append(match_dict['id'])
 
-        self.session.bulk_save_objects(match_records)
-        self.session.bulk_save_objects(condition_records)
+        self.session.add_all(match_records)
+        self.session.add_all(condition_records)
+        self.session.commit()
 
-        map_records = [mcs.MatchMap(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, local_id in zip(remote_ids, local_ids) if remote_id]
-        self.session.bulk_save_objects(map_records)
+        map_records = [mcs.MatchMap(id=match_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, match_record in zip(remote_ids, match_records) if remote_id]
+        self.session.add_all(map_records)
         self.session.commit()
 
     def match_lineups(self, data_frame):
@@ -621,6 +603,5 @@ class MarcottiStatLoad(MarcottiLoad):
     def touches(self, data_frame):
         model = stats.Touches
         fields = ['dribble_overruns', 'dribble_success', 'dribble_failure',
-                  'balltouch_success', 'balltouch_failure', 'possession_loss',
-                  'total']
+                  'balltouch_success', 'balltouch_failure', 'possession_loss', 'total']
         self.load_stat_record(model, data_frame, fields)

@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 class Marcotti(object):
 
     def __init__(self, config):
-        logger.info("Marcotti-Events v{0}: Python {1} on {2}".format(
+        logger.info("Marcotti v{0}: Python {1} on {2}".format(
             __version__, sys.version, sys.platform))
         logger.info("Opened connection to {0}".format(self._public_db_uri(config.database_uri)))
         self.engine = create_engine(config.database_uri)

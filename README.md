@@ -70,4 +70,4 @@ package.
 
 ## License
 
-(c) 2015-2016 Soccermetrics Research, LLC. Created under MIT license.  See `LICENSE` file for details.
+(c) 2015-2017 Soccermetrics Research, LLC. Created under MIT license.  See `LICENSE` file for details.

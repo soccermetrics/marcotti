@@ -66,20 +66,8 @@ def setup_user_input():
     end_yr = prompt.query('End season year', default='2020', validators=[validators.IntegerValidator()])
     print("#### Data file setup ####")
     supplier = prompt.query('Name of data supplier:')
-    is_club_db = prompt.options('Is this a club database?')
-    spanish = prompt.options('Are country names in Spanish?')
-    using_xml = prompt.options('Are XML files stored locally?', binary_options)
-    if using_xml:
-        xml_data_dir = prompt.query('Directory containing XML data files:', default='.',
-                                    validators=[validators.PathValidator()])
-        xml_squads = path_query('Relative path of Squad XML data files:')
-        xml_summaries = path_query('Relative path of Match Summary XML data files:')
-        xml_events = path_query('Relative path of Match Event XML data files:')
-    else:
-        xml_data_dir = None
-        xml_squads = None
-        xml_summaries = None
-        xml_events = None
+    is_club_db = prompt.options('Is this a club database?', binary_options)
+    spanish = prompt.options('Are country names in Spanish?', binary_options)
     csv_data_dir = prompt.query('Directory containing CSV data files:', default='.',
                                 validators=[validators.PathValidator()])
     supplier_data_path = path_query('Relative path of Suppliers CSV data files:')
@@ -87,11 +75,19 @@ def setup_user_input():
     comp_data_path = path_query('Relative path of Competitions CSV data files:')
     season_data_path = path_query('Relative path of Seasons CSV data files:')
     venue_data_path = path_query('Relative path of Venues CSV data files:')
+    position_data_path = path_query('Relative path of Player Positions CSV data files:')
     player_data_path = path_query('Relative path of Players CSV data files:')
     manager_data_path = path_query('Relative path of Managers CSV data files:')
     referee_data_path = path_query('Relative path of Referees CSV data files:')
-    summary_data_path = path_query('Relative path of Match Summary CSV data files:')
-    event_data_path = path_query('Relative path of Match Event CSV data files:')
+    league_match_data_path = path_query('Relative path of League Matches CSV data files:')
+    group_match_data_path = path_query('Relative path of Group Matches CSV data files:')
+    knockout_match_data_path = path_query('Relative path of Knockout Matches CSV data files:')
+    goal_data_path = path_query('Relative path of Goals CSV data files:')
+    penalty_data_path = path_query('Relative path of Penalties CSV data files:')
+    bookable_data_path = path_query('Relative path of Bookables CSV data files:')
+    substitution_data_path = path_query('Relative path of Substitutions CSV data files:')
+    shootout_data_path = path_query('Relative path of Penalty Shootouts CSV data files:')
+    player_stats_data_path = path_query('Relative path of Player Statistics CSV data files:')
 
     print("#### End setup questions ####")
 
@@ -111,12 +107,6 @@ def setup_user_input():
         'log_file_path': os.path.join(log_folder, 'marcotti.log'),
         'club_db': is_club_db,
         'country_prefix': 'es' * (spanish is True),
-        'xml_data_dir': xml_data_dir,
-        'xml_data': {
-            'squads': xml_squads,
-            'matches': xml_summaries,
-            'events': xml_events
-        },
         'csv_data_dir': csv_data_dir,
         'csv_data': {
             'suppliers': supplier_data_path,
@@ -124,11 +114,19 @@ def setup_user_input():
             'seasons': season_data_path,
             'clubs': club_data_path,
             'venues': venue_data_path,
+            'positions': position_data_path,
             'players': player_data_path,
             'managers': manager_data_path,
             'referees': referee_data_path,
-            'matches': summary_data_path,
-            'events': event_data_path
+            'league_matches': league_match_data_path,
+            'group_matches': group_match_data_path,
+            'knockout_matches': knockout_match_data_path,
+            'goals': goal_data_path,
+            'penalties': penalty_data_path,
+            'bookables': bookable_data_path,
+            'substitutions': substitution_data_path,
+            'shootouts': shootout_data_path,
+            'statistics': player_stats_data_path
         }
     }
     return setup_dict
@@ -138,7 +136,7 @@ def main():
     """
     Main function exposed as script command.
     """
-    DATA_PATH = pkg_resources.resource_filename('marcottievents', 'data/')
+    DATA_PATH = pkg_resources.resource_filename('marcotti', 'data/')
     setup_dict = setup_user_input()
     print("#### Installing database driver ####")
     if setup_dict['dialect'] == 'sqlite':

@@ -18,7 +18,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'dbsetup = marcotti.tools.dbsetup:main'
+            'dbsetup = marcotti.tools.dbsetup:main',
+            'testsetup = marcotti.tools.testsetup:main',
         ]
     },
     url='https://github.com/soccermetrics/marcotti',
